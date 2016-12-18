@@ -6,8 +6,10 @@
         "tzsk",
         "sms",
 		"sms gateway",
+        "laravel textlocal",
 		"laravel sms gateway",
-		"textlocal"
+		"textlocal gateway",
+        "laravel textlocal package"
     ],
     "homepage": "https://github.com/tzsk/sms",
     "license": "MIT",
