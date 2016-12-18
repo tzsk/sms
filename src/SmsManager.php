@@ -56,14 +56,14 @@ class SmsManager
      * @throws \Exception
      */
     public function send($message, $callback) {
-        if (! $this->driver) {
+        if (!$this->driver) {
             throw new \Exception("Driver not selected or default driver does not exist.");
         }
         if (empty($this->config['drivers'][$this->driver]) OR empty($this->config['map'][$this->driver])) {
             throw new \Exception("Driver not found in config file. Try updating the package.");
         }
 
-        if (! class_exists($this->config['map'][$this->driver])) {
+        if (!class_exists($this->config['map'][$this->driver])) {
             throw new \Exception("Driver source not found. Please update the package.");
         }
 
