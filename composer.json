@@ -1,0 +1,54 @@
+{
+    "name": "tzsk/sms",
+    "type": "library",
+    "description": "Laravel 5 SMS Gateway Integration Package",
+    "keywords": [
+        "tzsk",
+        "sms",
+		"sms gateway",
+		"laravel sms gateway",
+		"textlocal"
+    ],
+    "homepage": "https://github.com/tzsk/sms",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kazi Mainuddin Ahmed",
+            "email": "mailtokmahmed@gmail.com",
+            "homepage": "https://github.com/tzsk",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.2",
+        "php" : "~5.6|~7.0",
+        "guzzlehttp/guzzle": "~6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0||~5.0",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tzsk\\Sms\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tzsk\\Sms\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
