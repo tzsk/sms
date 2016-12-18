@@ -10,7 +10,7 @@ This is a Laravel 5 Package for SMS Gateway Integration. This package supports `
 
 List of supported gateways:
 - [Textlocal](http://textlocal.in)
-- Others area under way.
+- Others are under way.
 
 Older version support (Laravel 5.1) is coming soon.
 
