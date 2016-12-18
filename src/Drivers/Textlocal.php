@@ -74,12 +74,12 @@ class Textlocal implements SendSmsInterface
      * Set text message body.
      *
      * @param $message string
-     * @return mixed
+     * @return Textlocal
      * @throws \Exception
      */
     public function message($message)
     {
-        if (! is_string($message)) {
+        if (!is_string($message)) {
             throw new \Exception("Message text should be a string.");
         }
         if (trim($message) == '') {
