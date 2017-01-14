@@ -37,6 +37,6 @@ interface SendSmsInterface
      * @param $message
      * @return mixed
      */
-    public function send($message);
+    public function send();
 
 }

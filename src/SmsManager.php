@@ -70,9 +70,10 @@ class SmsManager
 
         $class = $this->config['map'][$this->driver];
         $object = new $class($this->settings);
+        $object->message($message);
         call_user_func($callback, $object);
 
-        return $object->send($message);
+        return $object->send();
     }
 
 }
