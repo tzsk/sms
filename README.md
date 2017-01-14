@@ -94,7 +94,7 @@ First you have to name your driver in the drivers array and also you can specify
 ]
 ```
 
-Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You havet to implement 'Tzsk\Sms\Contract\SendSmsInterface'.
+Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You havet to implement `Tzsk\Sms\Contract\SendSmsInterface`.
 
 Ex. You careated a class : `App\Packages\SMSDriver\MyDriver`.
 
