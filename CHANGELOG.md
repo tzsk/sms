@@ -6,16 +6,16 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 
 ### Added
-- Nothing
+- [Twilio](https://www.twilio.com) Driver added.
 
 ### Deprecated
 - Nothing
 
 ### Fixed
-- Nothing
+- Some bugs in custom made driver.
 
 ### Removed
 - Nothing
 
 ### Security
-- Nothing
+- Security improvements.

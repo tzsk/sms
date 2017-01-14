@@ -43,6 +43,7 @@ class SmsManager
      */
     public function with($driver) {
         $this->driver = $driver;
+        $this->settings = $this->config['drivers'][$this->driver];
 
         return $this;
     }

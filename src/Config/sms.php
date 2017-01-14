@@ -28,6 +28,11 @@ return [
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
         ],
+        'twilio' => [
+            'sid' => 'Your SID',
+            'token' => 'Your Token',
+            'from' => 'Your Default From Number',
+        ]
     ],
 
     /*
@@ -44,5 +49,6 @@ return [
     */
     'map' => [
         'textlocal' => Tzsk\Sms\Drivers\Textlocal::class,
+        'twilio' => Tzsk\Sms\Drivers\Twilio::class,
     ]
 ];

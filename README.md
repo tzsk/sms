@@ -10,6 +10,7 @@ This is a Laravel 5 Package for SMS Gateway Integration. This package supports `
 
 List of supported gateways:
 - [Textlocal](http://textlocal.in)
+- [Twilio](https://www.twilio.com)
 - Others are under way.
 
 Older version support (Laravel 5.1) is coming soon.
@@ -39,7 +40,22 @@ In your `config/app.php` file add these two lines.
 ```
 
 Now run `php artisan vendor:publish` to publish `config/sms.php` file in your config directory.
-Change Config file with your creadentials.
+
+In the config file you can set the default driver to use for all your SMS. But you can also change the driver at runtime.
+
+#### Textlocal Configuration:
+
+Textlocal is added by default. You just have to change the creadentials in the `textlocal` driver section.
+
+#### Twilio Configuratoin:
+
+In case you want to use Twilio. Then you have to pull a composer library first.
+
+```bash
+composer require twilio/sdk
+```
+
+Then you just have to change the creadentials in the `twilio` driver section.
 
 ## Usage
 
@@ -59,7 +75,56 @@ Sms::send("Text to send.", function($sms) {
 Sms::with('driver name')->send("Text to send.", function($sms) {
 	$sms->to(['Number 1', 'Number 2']);
 });
+
+# Here driver name is explicit : 'twilio' or 'textlocal'.
 ```
+
+
+#### Custom Made Driver, How To:
+
+First you have to name your driver in the drivers array and also you can specify any config params you want.
+
+```php
+'drivers' => [
+	'textlocal' => [...],
+    'twilio' => [...],
+    'my_driver' => [
+    	... # Your Config Params here.
+    ]
+]
+```
+
+Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You havet to implement 'Tzsk\Sms\Contract\SendSmsInterface'.
+
+Ex. You careated a class : `App\Packages\SMSDriver\MyDriver`.
+
+
+```php
+namespace App\Packages\SMSDriver;
+
+use Tzsk\Sms\Contract\SendSmsInterface;
+
+class MyDriver implements SendSmsInterface {
+	# You will have to make 4 methods.
+    /**
+    * 1. __constructor($settings) # This settings is your Config Params that you've set.
+    * 2. to($numbers) # This is the numbers of the recipient. Can eiter be array or string.
+    * 3. message($message) # This is the message text if they want to change on the fly.
+    * 4. send($message) # This is the main message that will be sent.
+    */
+}
+```
+
+Once you crate that class you have to specify it in the `sms.php` Config file `map` section.
+
+```php
+'map' => [
+	...
+    'my_driver' => App\Packages\SMSDriver\MyDriver::class,
+]
+```
+**Note:-** You have to make sure that the key of the `map` array is identical to the key of the `drivers` array.
+
 
 ## Change log
 
