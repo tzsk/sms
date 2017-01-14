@@ -6,10 +6,15 @@
         "tzsk",
         "sms",
 		"sms gateway",
+        "laravel sms gateway",
         "laravel textlocal",
-		"laravel sms gateway",
+        "laravel twilio",
 		"textlocal gateway",
-        "laravel textlocal package"
+		"textlocal sms gateway",
+        "twilio gateway",
+        "twilio sms gateway",
+        "laravel textlocal package",
+        "laravel twilio package"
     ],
     "homepage": "https://github.com/tzsk/sms",
     "license": "MIT",

@@ -14,7 +14,7 @@ class MasterDriver
     /**
      * Message body.
      *
-     * @var null
+     * @var string
      */
     protected $body = "";
 
