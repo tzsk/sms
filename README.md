@@ -1,5 +1,6 @@
 # Laravel SMS Gateway
 
+[![Build Status](https://scrutinizer-ci.com/g/tzsk/sms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tzsk/sms/build-status/master)
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Code Climate](https://codeclimate.com/github/tzsk/payu/badges/gpa.svg)](https://codeclimate.com/github/tzsk/sms)
