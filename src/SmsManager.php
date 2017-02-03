@@ -54,7 +54,6 @@ class SmsManager
      * @param $message
      * @param $callback
      * @return mixed
-     * @throws \Exception
      */
     public function send($message, $callback) {
         $this->validateParams();
@@ -69,6 +68,8 @@ class SmsManager
 
     /**
      * Validate Parameters before sending.
+     *
+     * @throws \Exception
      */
     protected function validateParams()
     {
