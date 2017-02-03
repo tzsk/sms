@@ -52,6 +52,20 @@ class Textlocal extends MasterDriver implements SendSmsInterface
             ],
         ]);
 
+        $data = $this->getResponseData($response);
+
+        return (object) array_merge($data, ["status" => true]);
+
+    }
+
+    /**
+     * Get the response data.
+     *
+     * @param  object $response
+     * @return array|object
+     */
+    protected function getResponseData($response)
+    {
         if ($response->getStatusCode() != 200) {
             return (object) ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
         }
@@ -62,7 +76,6 @@ class Textlocal extends MasterDriver implements SendSmsInterface
             return (object) ["status" => false, "message" => "Something went wrong.", "data" => $data];
         }
 
-        return (object) array_merge($data, ["status" => true]);
-
+        return $data;
     }
 }

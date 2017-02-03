@@ -57,6 +57,21 @@ class SmsManager
      * @throws \Exception
      */
     public function send($message, $callback) {
+        $this->validateParams();
+
+        $class = $this->config['map'][$this->driver];
+        $object = new $class($this->settings);
+        $object->message($message);
+        call_user_func($callback, $object);
+
+        return $object->send();
+    }
+
+    /**
+     * Validate Parameters before sending.
+     */
+    protected function validateParams()
+    {
         if (!$this->driver) {
             throw new \Exception("Driver not selected or default driver does not exist.");
         }
@@ -67,13 +82,6 @@ class SmsManager
         if (!class_exists($this->config['map'][$this->driver])) {
             throw new \Exception("Driver source not found. Please update the package.");
         }
-
-        $class = $this->config['map'][$this->driver];
-        $object = new $class($this->settings);
-        $object->message($message);
-        call_user_func($callback, $object);
-
-        return $object->send();
     }
 
 }

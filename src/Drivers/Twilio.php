@@ -44,10 +44,7 @@ class Twilio extends MasterDriver implements SendSmsInterface
         foreach ($this->recipients as $recipient) {
             $sms = $this->client->account->messages->create(
                 $recipient,
-                array(
-                    'from' => $this->settings->from,
-                    'body' => $this->body
-                )
+                ['from' => $this->settings->from, 'body' => $this->body]
             );
 
             $response['data'][$recipient] = $this->getSmsResponse($sms);
