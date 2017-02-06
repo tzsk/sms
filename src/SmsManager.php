@@ -73,7 +73,7 @@ class SmsManager
      */
     protected function validateParams()
     {
-        if (!$this->driver) {
+        if (empty($this->driver)) {
             throw new \Exception("Driver not selected or default driver does not exist.");
         }
         if (empty($this->config['drivers'][$this->driver]) OR empty($this->config['map'][$this->driver])) {
