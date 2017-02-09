@@ -38,5 +38,4 @@ interface SendSmsInterface
      * @return mixed
      */
     public function send();
-
 }

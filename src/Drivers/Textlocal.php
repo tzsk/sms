@@ -1,7 +1,6 @@
 <?php
 namespace Tzsk\Sms\Drivers;
 
-
 use GuzzleHttp\Client;
 use Tzsk\Sms\Contract\SendSmsInterface;
 
@@ -55,7 +54,6 @@ class Textlocal extends MasterDriver implements SendSmsInterface
         $data = $this->getResponseData($response);
 
         return (object) array_merge($data, ["status" => true]);
-
     }
 
     /**

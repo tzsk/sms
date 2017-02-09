@@ -1,5 +1,6 @@
 <?php
 namespace Tzsk\Sms\Facade;
+
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -14,8 +15,8 @@ class Sms extends Facade
      *
      * @return string
      */
-    public static function getFacadeAccessor() {
+    public static function getFacadeAccessor()
+    {
         return 'tzsk-sms';
     }
-
 }

@@ -1,7 +1,6 @@
 <?php
 namespace Tzsk\Sms\Drivers;
 
-
 class MasterDriver
 {
     /**
@@ -28,7 +27,7 @@ class MasterDriver
     public function to($numbers)
     {
         $recipients = is_array($numbers) ? $numbers : [$numbers];
-        $recipients = array_map(function($item) {
+        $recipients = array_map(function ($item) {
             return trim($item);
         }, array_merge($this->recipients, $recipients));
 
@@ -60,5 +59,4 @@ class MasterDriver
 
         return $this;
     }
-
 }

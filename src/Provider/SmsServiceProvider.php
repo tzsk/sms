@@ -24,10 +24,9 @@ class SmsServiceProvider extends ServiceProvider
         /**
          * Bind to service container.
          */
-        $this->app->singleton('tzsk-sms', function() {
+        $this->app->singleton('tzsk-sms', function () {
             return new SmsManager();
         });
-
     }
 
     /**

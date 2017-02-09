@@ -1,7 +1,6 @@
 <?php
 namespace Tzsk\Sms\Drivers;
 
-
 use Twilio\Rest\Client;
 use Tzsk\Sms\Contract\SendSmsInterface;
 
@@ -75,5 +74,4 @@ class Twilio extends MasterDriver implements SendSmsInterface
 
         return (object) $res;
     }
-
 }
