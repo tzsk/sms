@@ -1,7 +1,6 @@
 <?php
 namespace Tzsk\Sms;
 
-
 class SmsManager
 {
     /**
@@ -41,7 +40,8 @@ class SmsManager
      * @param $driver
      * @return $this
      */
-    public function with($driver) {
+    public function with($driver)
+    {
         $this->driver = $driver;
         $this->settings = $this->config['drivers'][$this->driver];
 
@@ -55,7 +55,8 @@ class SmsManager
      * @param $callback
      * @return mixed
      */
-    public function send($message, $callback) {
+    public function send($message, $callback)
+    {
         $this->validateParams();
 
         $class = $this->config['map'][$this->driver];
@@ -76,7 +77,7 @@ class SmsManager
         if (empty($this->driver)) {
             throw new \Exception("Driver not selected or default driver does not exist.");
         }
-        if (empty($this->config['drivers'][$this->driver]) OR empty($this->config['map'][$this->driver])) {
+        if (empty($this->config['drivers'][$this->driver]) or empty($this->config['map'][$this->driver])) {
             throw new \Exception("Driver not found in config file. Try updating the package.");
         }
 
@@ -84,5 +85,4 @@ class SmsManager
             throw new \Exception("Driver source not found. Please update the package.");
         }
     }
-
 }
