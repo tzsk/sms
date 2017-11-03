@@ -17,14 +17,14 @@ abstract class MasterDriver
      */
     protected $body = "";
 
-	/**
-	 * MasterDriver constructor.
-	 *
-	 * @param $settings
-	 */
+    /**
+     * MasterDriver constructor.
+     *
+     * @param $settings
+     */
     abstract public function __construct($settings);
 
-	/**
+    /**
      * String or Array of numbers.
      *
      * @param $numbers string|array
@@ -67,8 +67,8 @@ abstract class MasterDriver
         return $this;
     }
 
-	/**
-	 * @return object
-	 */
+    /**
+     * @return object
+     */
     abstract public function send();
 }
