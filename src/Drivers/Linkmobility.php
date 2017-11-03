@@ -56,23 +56,23 @@ class Linkmobility extends MasterDriver
         return (object) array_merge($data, ["status" => true]);
     }
 
-	/**
-	 * @param mixed $response
-	 *
-	 * @return mixed|object
-	 */
-	protected function getResponseData($response)
-	{
-		if ($response->getStatusCode() != 200) {
-			return (object) ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
-		}
+    /**
+     * @param mixed $response
+     *
+     * @return mixed|object
+     */
+    protected function getResponseData($response)
+    {
+        if ($response->getStatusCode() != 200) {
+            return (object) ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
+        }
 
-		$data = json_decode((string) $response->getBody(), true);
+        $data = json_decode((string) $response->getBody(), true);
 
-		if ($data["status"] != "success") {
-			return (object) ["status" => false, "message" => "Something went wrong.", "data" => $data];
-		}
+        if ($data["status"] != "success") {
+            return (object) ["status" => false, "message" => "Something went wrong.", "data" => $data];
+        }
 
-		return $data;
-	}
+        return $data;
+    }
 }
