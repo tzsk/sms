@@ -1,7 +1,6 @@
 <?php
 namespace Tzsk\Sms\Drivers;
 
-
 use GuzzleHttp\Client;
 use Tzsk\Sms\Contract\SendSmsInterface;
 
@@ -63,6 +62,5 @@ class Linkmobility extends MasterDriver implements SendSmsInterface
         }
 
         return (object) array_merge($data, ["status" => true]);
-
     }
 }
