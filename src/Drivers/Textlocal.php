@@ -2,9 +2,9 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
-use Tzsk\Sms\Contract\SendSmsInterface;
+use Tzsk\Sms\Contract\MasterDriver;
 
-class Textlocal extends MasterDriver implements SendSmsInterface
+class Textlocal extends MasterDriver
 {
     /**
      * Textlocal Settings.

@@ -2,12 +2,12 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
-use Tzsk\Sms\Contract\SendSmsInterface;
+use Tzsk\Sms\Contract\MasterDriver;
 
-class Linkmobility extends MasterDriver implements SendSmsInterface
+class Linkmobility extends MasterDriver
 {
     /**
-     * Textlocal Settings.
+     * Linkmobility Settings.
      *
      * @var object|null
      */
@@ -51,16 +51,28 @@ class Linkmobility extends MasterDriver implements SendSmsInterface
             ],
         ]);
 
-        if ($response->getStatusCode() != 200) {
-            return (object) ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
-        }
-
-        $data = json_decode((string) $response->getBody(), true);
-
-        if ($data["status"] != "success") {
-            return (object) ["status" => false, "message" => "Something went wrong.", "data" => $data];
-        }
+        $data = $this->getResponseData($response);
 
         return (object) array_merge($data, ["status" => true]);
     }
+
+	/**
+	 * @param mixed $response
+	 *
+	 * @return mixed|object
+	 */
+	protected function getResponseData($response)
+	{
+		if ($response->getStatusCode() != 200) {
+			return (object) ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
+		}
+
+		$data = json_decode((string) $response->getBody(), true);
+
+		if ($data["status"] != "success") {
+			return (object) ["status" => false, "message" => "Something went wrong.", "data" => $data];
+		}
+
+		return $data;
+	}
 }

@@ -89,7 +89,7 @@ First you have to name your driver in the drivers array and also you can specify
 
 ```php
 'drivers' => [
-	'textlocal' => [...],
+    'textlocal' => [...],
     'twilio' => [...],
     'my_driver' => [
     	... # Your Config Params here.
@@ -97,40 +97,52 @@ First you have to name your driver in the drivers array and also you can specify
 ]
 ```
 
-Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You havet to extend `Tzsk\Sms\Drivers\MasterDriver` and also implement `Tzsk\Sms\Contract\SendSmsInterface`.
+Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You just have to extend `Tzsk\Sms\Drivers\MasterDriver`.
 
 Ex. You careated a class : `App\Packages\SMSDriver\MyDriver`.
 
 ```php
 namespace App\Packages\SMSDriver;
 
-use Tzsk\Sms\Contract\SendSmsInterface;
 use Tzsk\Sms\Drivers\MasterDriver;
 
-class MyDriver extends MasterDriver implements SendSmsInterface {
-	# You will have to make 4 methods of them 2 are created in the Master Driver. You can override if you want.
+class MyDriver extends MasterDriver 
+{
+	# You will have to make 2 methods.
     /**
     * 1. __constructor($settings) # {Mandatory} This settings is your Config Params that you've set.
-    * 2. to($numbers) # (Optional) This is the numbers of the recipient. Can eiter be array or string.
-    * 3. message($message) # (Optional) This is the message text if they want to change on the fly.
-    * 4. send() # (Mandatory) This is the main message that will be sent.
+    * 2. send() # (Mandatory) This is the main message that will be sent.
     *
-    * If you just create __construct() & send() and don't override to() & message()
-    * then you will have access to $this->recipients & $this->body inside your send() method.
     * Example Given below:
     */
 
-	protected $settings = null;
+	/**
+    * @var object
+    */
+	protected $settings;
 
-    protected $client = null;
+	/**
+    * @var mixed
+    */
+    protected $client;
 
-    public function __construct($settings) {
+	/**
+    * Your Driver Config.
+    *
+    * @var array $settings
+    */
+    public function __construct($settings)
+    {
     	$this->settings = (object) $settings;
         # Initialize any Client that you want.
         $this->client = new Client(); # Guzzle Client for example.
     }
 
-	public function send() {
+	/**
+    * @return object Ex.: (object) ['status' => true, 'data' => 'Client Response Data'];
+    */
+	public function send()
+    {
     	$this->recipients; # Array of Recipients.
         $this->body; # SMS Body.
 

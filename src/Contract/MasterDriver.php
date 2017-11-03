@@ -1,7 +1,7 @@
 <?php
-namespace Tzsk\Sms\Drivers;
+namespace Tzsk\Sms\Contract;
 
-class MasterDriver
+abstract class MasterDriver
 {
     /**
      * To Numbers array.
@@ -17,7 +17,14 @@ class MasterDriver
      */
     protected $body = "";
 
-    /**
+	/**
+	 * MasterDriver constructor.
+	 *
+	 * @param $settings
+	 */
+    abstract public function __construct($settings);
+
+	/**
      * String or Array of numbers.
      *
      * @param $numbers string|array
@@ -59,4 +66,9 @@ class MasterDriver
 
         return $this;
     }
+
+	/**
+	 * @return object
+	 */
+    abstract public function send();
 }
