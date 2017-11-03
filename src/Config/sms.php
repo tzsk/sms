@@ -32,6 +32,12 @@ return [
             'sid' => 'Your SID',
             'token' => 'Your Token',
             'from' => 'Your Default From Number',
+        ],
+        'linkmobility' => [
+          'url' => 'http://simple.pswin.com', # Country Wise this may change.
+          'username' => 'Your Username',
+          'password' => 'Your Password',
+          'sender' => 'Sender name',
         ]
     ],
 
@@ -50,5 +56,6 @@ return [
     'map' => [
         'textlocal' => Tzsk\Sms\Drivers\Textlocal::class,
         'twilio' => Tzsk\Sms\Drivers\Twilio::class,
+        'linkmobility' => Tzsk\Sms\Drivers\Linkmobility::class,
     ]
 ];
