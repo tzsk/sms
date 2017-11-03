@@ -31,14 +31,14 @@ In your `config/app.php` file add these two lines.
 ```php
 # In your providers array.
 'providers' => [
-	...
-	Tzsk\Sms\Provider\SmsServiceProvider::class,
+    ...
+    Tzsk\Sms\Provider\SmsServiceProvider::class,
 ],
 
 # In your aliases array.
 'aliases' => [
-	...
-	'Sms' => Tzsk\Sms\Facade\Sms::class,
+    ...
+    'Sms' => Tzsk\Sms\Facade\Sms::class,
 ],
 ```
 
@@ -71,12 +71,12 @@ use Tzsk\Sms\Facade\Sms;
 
 # In your Controller.
 Sms::send("Text to send.", function($sms) {
-	$sms->to(['Number 1', 'Number 2']); # The numbers to send to.
+    $sms->to(['Number 1', 'Number 2']); # The numbers to send to.
 });
 
 # If you want to use a different driver.
 Sms::with('driver name')->send("Text to send.", function($sms) {
-	$sms->to(['Number 1', 'Number 2']);
+    $sms->to(['Number 1', 'Number 2']);
 });
 
 # Here driver name is explicit : 'twilio' or 'textlocal'.
@@ -92,7 +92,7 @@ First you have to name your driver in the drivers array and also you can specify
     'textlocal' => [...],
     'twilio' => [...],
     'my_driver' => [
-    	... # Your Config Params here.
+        ... # Your Config Params here.
     ]
 ]
 ```
@@ -108,7 +108,7 @@ use Tzsk\Sms\Drivers\MasterDriver;
 
 class MyDriver extends MasterDriver 
 {
-	# You will have to make 2 methods.
+    # You will have to make 2 methods.
     /**
     * 1. __constructor($settings) # {Mandatory} This settings is your Config Params that you've set.
     * 2. send() # (Mandatory) This is the main message that will be sent.
@@ -116,37 +116,37 @@ class MyDriver extends MasterDriver
     * Example Given below:
     */
 
-	/**
+    /**
     * @var object
     */
-	protected $settings;
+    protected $settings;
 
-	/**
+    /**
     * @var mixed
     */
     protected $client;
 
-	/**
+    /**
     * Your Driver Config.
     *
     * @var array $settings
     */
     public function __construct($settings)
     {
-    	$this->settings = (object) $settings;
+        $this->settings = (object) $settings;
         # Initialize any Client that you want.
         $this->client = new Client(); # Guzzle Client for example.
     }
 
-	/**
+    /**
     * @return object Ex.: (object) ['status' => true, 'data' => 'Client Response Data'];
     */
-	public function send()
+    public function send()
     {
-    	$this->recipients; # Array of Recipients.
+        $this->recipients; # Array of Recipients.
         $this->body; # SMS Body.
 
-		# Main logic of Sending SMS.
+        # Main logic of Sending SMS.
         ...
     }
 
@@ -157,7 +157,7 @@ Once you crate that class you have to specify it in the `sms.php` Config file `m
 
 ```php
 'map' => [
-	...
+    ...
     'my_driver' => App\Packages\SMSDriver\MyDriver::class,
 ]
 ```
