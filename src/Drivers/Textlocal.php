@@ -9,16 +9,16 @@ class Textlocal extends MasterDriver
     /**
      * Textlocal Settings.
      *
-     * @var object|null
+     * @var object
      */
-    protected $settings = null;
+    protected $settings;
 
     /**
      * Http Client.
      *
-     * @var Client|null
+     * @var Client
      */
-    protected $client = null;
+    protected $client;
 
     /**
      * Construct the class with the relevant settings.
@@ -65,13 +65,13 @@ class Textlocal extends MasterDriver
     protected function getResponseData($response)
     {
         if ($response->getStatusCode() != 200) {
-            return (object) ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
+            return ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
         }
 
         $data = json_decode((string) $response->getBody(), true);
 
         if ($data["status"] != "success") {
-            return (object) ["status" => false, "message" => "Something went wrong.", "data" => $data];
+            return ["status" => false, "message" => "Something went wrong.", "data" => $data];
         }
 
         return $data;

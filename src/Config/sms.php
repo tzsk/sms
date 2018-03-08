@@ -49,8 +49,8 @@ return [
     | This is the array of Classes that maps to Drivers above.
     | You can create your own driver if you like and add the
     | config in the drivers array and the class to use for
-    | here with the same name. You will have to implement
-    | Tzsk\Sms\Contract\SendSmsInterface in your driver.
+    | here with the same name. You will have to extend
+    | Tzsk\Sms\Contract\MasterDriver in your driver.
     |
     */
     'map' => [

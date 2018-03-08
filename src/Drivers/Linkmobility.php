@@ -64,13 +64,13 @@ class Linkmobility extends MasterDriver
     protected function getResponseData($response)
     {
         if ($response->getStatusCode() != 200) {
-            return (object) ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
+            return ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
         }
 
         $data = json_decode((string) $response->getBody(), true);
 
         if ($data["status"] != "success") {
-            return (object) ["status" => false, "message" => "Something went wrong.", "data" => $data];
+            return ["status" => false, "message" => "Something went wrong.", "data" => $data];
         }
 
         return $data;
