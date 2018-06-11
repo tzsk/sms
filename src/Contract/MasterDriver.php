@@ -33,6 +33,7 @@ abstract class MasterDriver
      */
     public function to($numbers)
     {
+        $this->recipients = [];
         $recipients = is_array($numbers) ? $numbers : [$numbers];
         $recipients = array_map(function ($item) {
             return trim($item);
