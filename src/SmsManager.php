@@ -30,8 +30,7 @@ class SmsManager
     public function __construct()
     {
         $this->config = config('sms');
-        $this->driver = $this->config['default'];
-        $this->settings = $this->config['drivers'][$this->driver];
+        $this->withDriver($this->config['default']);
     }
 
     /**
@@ -40,7 +39,7 @@ class SmsManager
      * @param $driver
      * @return $this
      */
-    public function with($driver)
+    public function withDriver($driver)
     {
         $this->driver = $driver;
         $this->settings = $this->config['drivers'][$this->driver];
