@@ -29,7 +29,7 @@ class SmsChannel
         }
 
         // Send notification.
-        return $manager->send($message['body'], function($sms) use ($message) {
+        return $manager->send($message['body'], function ($sms) use ($message) {
             $sms->to($message['recipients']);
         });
     }
@@ -40,7 +40,8 @@ class SmsChannel
      * @param $message
      * @throws \Exception
      */
-    private function validate($message) {
+    private function validate($message)
+    {
         if (empty($message['body'])) {
             throw new \Exception("Message body could not be empty.");
         }
