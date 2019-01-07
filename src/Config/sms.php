@@ -38,7 +38,13 @@ return [
           'username' => 'Your Username',
           'password' => 'Your Password',
           'sender' => 'Sender name',
-        ]
+        ],
+        'melipayamak' => [ #install at first: composer require melipayamak/php
+            'username' => 'Your Username',
+            'password' => 'Your Password',
+            'from' => 'Sender name',
+            'flash' => false,
+        ],
     ],
 
     /*
