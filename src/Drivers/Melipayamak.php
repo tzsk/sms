@@ -38,7 +38,8 @@ class Melipayamak extends Driver
      * @param bool $flash
      * @return $this
      */
-    public function asFlash($flash=true) {
+    public function asFlash($flash=true)
+    {
         $this->settings->flash = $flash;
 
         return $this;
@@ -62,14 +63,15 @@ class Melipayamak extends Driver
                     $this->settings->flash
                 );
             }
-        }catch(\Exception $e){
+        } catch(\Exception $e) {
             $response['status'][$recipient] = false;
             $response['data'][$recipient] = $e->getMessage();
-        }finally{
-            if(empty($data))
+        } finally {
+            if(empty($data)) {
                 $response['data'][$recipient] = $this->getSmsResponse(
                     json_decode($response, JSON_UNESCAPED_UNICODE)
                 );
+            }
         }
 
         $this->flash(false);
