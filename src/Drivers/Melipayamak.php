@@ -52,7 +52,7 @@ class Melipayamak extends Driver
      */
     public function send()
     {
-        try{
+        try {
             $sms = $this->client->sms();
             $response = ['status' => true, 'data' =>[]];
             foreach ($this->recipients as $recipient) {
@@ -63,7 +63,7 @@ class Melipayamak extends Driver
                     $this->settings->flash
                 );
             }
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $response['status'][$recipient] = false;
             $response['data'][$recipient] = $e->getMessage();
         } finally {
