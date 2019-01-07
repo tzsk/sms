@@ -1,4 +1,6 @@
 <?php
+namespace Tzsk\Sms\Contracts;
+
 interface DriverInterface
 {
     /**
@@ -20,8 +22,7 @@ interface DriverInterface
     /**
      * Send the message.
      *
-     * @param $message
      * @return mixed
      */
-    public function send($message);
+    public function send();
 }

@@ -1,7 +1,9 @@
 <?php
 namespace Tzsk\Sms\Abstracts;
 
-abstract class Driver
+use Tzsk\Sms\Contracts\DriverInterface;
+
+abstract class Driver implements DriverInterface
 {
     /**
      * To Numbers array.
