@@ -53,6 +53,7 @@ class SmsManager
      * @param $message
      * @param $callback
      * @return mixed
+     * @throws \Exception
      */
     public function send($message, $callback)
     {
