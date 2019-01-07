@@ -2,9 +2,9 @@
 namespace Tzsk\Sms\Drivers;
 
 use Twilio\Rest\Client;
-use Tzsk\Sms\Contract\MasterDriver;
+use Tzsk\Sms\Abstracts\Driver;
 
-class Twilio extends MasterDriver
+class Twilio extends Driver
 {
     /**
      * Twilio Settings.

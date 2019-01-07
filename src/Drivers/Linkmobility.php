@@ -2,9 +2,9 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
-use Tzsk\Sms\Contract\MasterDriver;
+use Tzsk\Sms\Abstracts\Driver;
 
-class Linkmobility extends MasterDriver
+class Linkmobility extends Driver
 {
     /**
      * Linkmobility Settings.
