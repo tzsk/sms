@@ -51,7 +51,7 @@ class Smsir extends Driver
             ]
         );
 
-        return json_decode((string) $response->getBody(),true)['TokenKey'];
+        return json_decode((string) $response->getBody(), true)['TokenKey'];
     }
 
     /**
