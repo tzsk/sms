@@ -70,7 +70,7 @@ class Melipayamak extends Driver
             $response['data'][$recipient] = $e->getMessage();
         }
 
-        $this->flash(false);
+        $this->asFlash(false);
 
         return (object) $response;
     }
