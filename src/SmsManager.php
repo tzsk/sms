@@ -73,7 +73,7 @@ class SmsManager
      *
      * @return mixed
      */
-    public function getDriverInstance()
+    protected function getDriverInstance()
     {
         $class = $this->config['map'][$this->driver];
         return new $class($this->settings);
