@@ -16,7 +16,7 @@ class Melipayamak extends Driver
     /**
      * Melipayamak Client.
      *
-     * @var null|Client
+     * @var null|MelipayamakApi
      */
     protected $client = null;
 
