@@ -99,7 +99,7 @@ class SmsManager
             throw new \Exception("Driver source not found. Please update the package.");
         }
 
-        if(!($this->getDriverInstance() instanceof Contracts\DriverInterface)) {
+        if (!($this->getDriverInstance() instanceof Contracts\DriverInterface)) {
             throw new \Exception("Driver must be an instance of Contracts\DriverInterface.");
         }
     }
