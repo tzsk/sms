@@ -28,7 +28,7 @@ return [
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
         ],
-        'twilio' => [
+        'twilio' => [ # Install: composer require twilio/sdk
             'sid' => 'Your SID',
             'token' => 'Your Token',
             'from' => 'Your Default From Number',
@@ -39,11 +39,21 @@ return [
           'password' => 'Your Password',
           'sender' => 'Sender name',
         ],
-        'melipayamak' => [ #install at first: composer require melipayamak/php
+        'melipayamak' => [ # Install: composer require melipayamak/php
             'username' => 'Your Username',
             'password' => 'Your Password',
-            'from' => 'Sender name',
+            'from' => 'Your Default From Number',
             'flash' => false,
+        ],
+        'kavenegar' => [ # Install: composer require kavenegar/php
+            'apiKey' => 'Your Api Key',
+            'from' => 'Your Default From Number',
+        ],
+        'smsir' => [
+            'url' => 'https://ws.sms.ir/',
+            'apiKey' => 'Your Api Key',
+            'secretKey' => 'Your Secret Key',
+            'from' => 'Your Default From Number',
         ],
     ],
 
@@ -56,12 +66,15 @@ return [
     | You can create your own driver if you like and add the
     | config in the drivers array and the class to use for
     | here with the same name. You will have to extend
-    | Tzsk\Sms\Contract\MasterDriver in your driver.
+    | Tzsk\Sms\Abstracts\Driver in your driver.
     |
     */
     'map' => [
         'textlocal' => Tzsk\Sms\Drivers\Textlocal::class,
         'twilio' => Tzsk\Sms\Drivers\Twilio::class,
         'linkmobility' => Tzsk\Sms\Drivers\Linkmobility::class,
+        'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,
+        'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
+        'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
     ]
 ];
