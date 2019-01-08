@@ -16,7 +16,7 @@ class Kavenegar extends Driver
     /**
      * Kavenegar Client.
      *
-     * @var null|Client
+     * @var null|KavenegarApi
      */
     protected $client = null;
 
