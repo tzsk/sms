@@ -14,7 +14,7 @@ class Melipayamak extends Driver
     protected $settings = null;
 
     /**
-     * MeliPayamak Client.
+     * Melipayamak Client.
      *
      * @var null|Client
      */
@@ -53,25 +53,21 @@ class Melipayamak extends Driver
     public function send()
     {
         try {
-            $sms = $this->client->sms();
             $response = ['status' => true, 'data' =>[]];
             foreach ($this->recipients as $recipient) {
-                $response = $sms->send(
+                $sms = $this->client->sms()->send(
                     $recipient,
                     $this->settings->from,
                     $this->body,
                     $this->settings->flash
                 );
+                $response['data'][$recipient] = $this->getSmsResponse(
+                    json_decode($sms, true)
+                );
             }
         } catch (\Exception $e) {
             $response['status'][$recipient] = false;
             $response['data'][$recipient] = $e->getMessage();
-        } finally {
-            if (empty($data)) {
-                $response['data'][$recipient] = $this->getSmsResponse(
-                    json_decode($response, JSON_UNESCAPED_UNICODE)
-                );
-            }
         }
 
         $this->flash(false);
@@ -80,7 +76,7 @@ class Melipayamak extends Driver
     }
 
     /**
-     * Get the MeliPayamak Response.
+     * Get the Melipayamak Response.
      *
      * @param $sms
      * @return object
