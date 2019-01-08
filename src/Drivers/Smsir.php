@@ -81,7 +81,7 @@ class Smsir extends Driver
             $response = $this->client->post(
                 $this->settings->url.'api/UltraFastSend',
                 [
-                    'json' => $this->body,
+                    'json' => $body,
                     'headers' => [
                         'x-sms-ir-secure-token' => $this->getToken(),
                     ],
