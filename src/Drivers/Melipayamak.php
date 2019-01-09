@@ -1,22 +1,22 @@
 <?php
 namespace Tzsk\Sms\Drivers;
 
-use Twilio\Rest\Client;
+use Melipayamak\MelipayamakApi;
 use Tzsk\Sms\Abstracts\Driver;
 
-class Twilio extends Driver
+class Melipayamak extends Driver
 {
     /**
-     * Twilio Settings.
+     * Melipayamak Settings.
      *
      * @var null|object
      */
     protected $settings = null;
 
     /**
-     * Twilio Client.
+     * Melipayamak Client.
      *
-     * @var null|Client
+     * @var null|MelipayamakApi
      */
     protected $client = null;
 
@@ -29,7 +29,20 @@ class Twilio extends Driver
     public function __construct($settings)
     {
         $this->settings = (object) $settings;
-        $this->client = new Client($this->settings->sid, $this->settings->token);
+        $this->client = new MelipayamakApi($this->settings->username, $this->settings->password);
+    }
+
+    /**
+     * Determine if the sms must be a flash message or not.
+     *
+     * @param bool $flash
+     * @return $this
+     */
+    public function asFlash($flash=true)
+    {
+        $this->settings->flash = $flash;
+
+        return $this;
     }
 
     /**
@@ -39,37 +52,37 @@ class Twilio extends Driver
      */
     public function send()
     {
-        $response = ['status' => true, 'data' =>[]];
+        $response = [];
         foreach ($this->recipients as $recipient) {
-            $sms = $this->client->account->messages->create(
+            $sms = $this->client->sms()->send(
                 $recipient,
-                ['from' => $this->settings->from, 'body' => $this->body]
+                $this->settings->from,
+                $this->body,
+                $this->settings->flash
             );
-
-            $response['data'][$recipient] = $this->getSmsResponse($sms);
+            $response[$recipient]['data'] = $this->getSmsResponse($sms);
+            $response[$recipient]['status'] = true;
         }
 
         return (object) $response;
     }
 
     /**
-     * Get the Twilio Response.
+     * Get the Melipayamak Response.
      *
      * @param $sms
      * @return object
      */
     protected function getSmsResponse($sms)
     {
+        $sms = json_decode($sms, true);
         $attributes = [
-            'accountSid', 'apiVersion', 'body', 'direction', 'errorCode',
-            'errorMessage', 'from', 'numMedia', 'numSegments', 'price',
-            'priceUnit', 'sid', 'status', 'subresourceUris', 'to', 'uri',
-            'dateCreated', 'dateUpdated', 'dateSent',
+            'Value', 'RetStatus', 'StrRetStatus'
         ];
 
         $res = [];
         foreach ($attributes as $attribute) {
-            $res[$attribute] = $sms->$attribute;
+            $res[$attribute] = $sms[$attribute];
         }
 
         return (object) $res;

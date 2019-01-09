@@ -14,6 +14,9 @@ List of supported gateways:
 - [Textlocal](http://textlocal.in)
 - [Twilio](https://www.twilio.com)
 - [LINK Mobility](https://www.linkmobility.com)
+- [Kavenegar](https://kavenegar.com)
+- [Melipayamak](https://www.melipayamak.com)
+- [Smsir](https://www.sms.ir)
 - Others are under way.
 
 Older version support (Laravel 5.1) is coming soon.
@@ -60,10 +63,26 @@ composer require twilio/sdk
 
 Then you just have to change the creadentials in the `twilio` driver section.
 
+#### Melipayamak Configuratoin:
+
+In case you want to use Melipayamak. Then you have to pull a composer library first.
+
+```bash
+composer require melipayamak/php
+```
+
+#### Kavenegar Configuratoin:
+
+In case you want to use Kavenegar. Then you have to pull a composer library first.
+
+```bash
+composer require kavenegar/php
+```
+
 ## Usage
 
 In your code just use it like this.
-``` php
+```php
 # On the top of the file.
 use Tzsk\Sms\Facade\Sms;
 
@@ -75,13 +94,56 @@ Sms::send("Text to send.", function($sms) {
 });
 
 # If you want to use a different driver.
-Sms::with('driver name')->send("Text to send.", function($sms) {
+Sms::withDriver('driver name')->send("Text to send.", function($sms) {
     $sms->to(['Number 1', 'Number 2']);
 });
 
 # Here driver name is explicit : 'twilio' or 'textlocal'.
 ```
 
+## Channel Usage
+
+First you have to create your notification using `php artisan make:notification` command.
+then `SmsChannel::class` can be used as channel like the below:
+
+```php
+namespace App\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Tzsk\Sms\Channels\SmsChannel;
+use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class InvoicePaid extends Notification
+{
+    use Queueable;
+
+    /**
+     * Get the notification channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array|string
+     */
+    public function via($notifiable)
+    {
+        return [SmsChannel::class];
+    }
+
+    /**
+     * Get the repicients and body of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return VoiceMessage
+     */
+    public function toSms($notifiable)
+    {
+        return [
+            'recipients' => ['Number 1', 'Number 2'],
+            'body' => 'your message'
+        ];
+    }
+}
+```
 
 #### Custom Made Driver, How To:
 
@@ -97,16 +159,17 @@ First you have to name your driver in the drivers array and also you can specify
 ]
 ```
 
-Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You just have to extend `Tzsk\Sms\Drivers\MasterDriver`.
+Now you have to create a Driver Map Class that will be used to send the SMS.
+In your driver, You just have to extend `Tzsk\Sms\Abstracts\Driver`.
 
-Ex. You careated a class : `App\Packages\SMSDriver\MyDriver`.
+Ex. You created a class : `App\Packages\SMSDriver\MyDriver`.
 
 ```php
 namespace App\Packages\SMSDriver;
 
-use Tzsk\Sms\Drivers\MasterDriver;
+use Tzsk\Sms\Abstracts\Driver;
 
-class MyDriver extends MasterDriver 
+class MyDriver extends Driver 
 {
     # You will have to make 2 methods.
     /**
@@ -161,13 +224,12 @@ Once you crate that class you have to specify it in the `sms.php` Config file `m
     'my_driver' => App\Packages\SMSDriver\MyDriver::class,
 ]
 ```
-**Note:-** You have to make sure that the key of the `map` array is identical to the key of the `drivers` array.
 
+**Note:-** You have to make sure that the key of the `map` array is identical to the key of the `drivers` array.
 
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
 
 ## Contributing
 

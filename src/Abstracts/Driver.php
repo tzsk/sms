@@ -1,7 +1,9 @@
 <?php
-namespace Tzsk\Sms\Contract;
+namespace Tzsk\Sms\Abstracts;
 
-abstract class MasterDriver
+use Tzsk\Sms\Contracts\DriverInterface;
+
+abstract class Driver implements DriverInterface
 {
     /**
      * To Numbers array.
@@ -18,7 +20,7 @@ abstract class MasterDriver
     protected $body = "";
 
     /**
-     * MasterDriver constructor.
+     * Driver constructor.
      *
      * @param $settings
      */
@@ -68,6 +70,8 @@ abstract class MasterDriver
     }
 
     /**
+     * Send the message
+     *
      * @return object
      */
     abstract public function send();

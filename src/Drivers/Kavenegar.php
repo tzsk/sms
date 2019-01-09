@@ -1,22 +1,22 @@
 <?php
 namespace Tzsk\Sms\Drivers;
 
-use Twilio\Rest\Client;
+use Kavenegar\KavenegarApi;
 use Tzsk\Sms\Abstracts\Driver;
 
-class Twilio extends Driver
+class Kavenegar extends Driver
 {
     /**
-     * Twilio Settings.
+     * Kavenegar Settings.
      *
      * @var null|object
      */
     protected $settings = null;
 
     /**
-     * Twilio Client.
+     * Kavenegar Client.
      *
-     * @var null|Client
+     * @var null|KavenegarApi
      */
     protected $client = null;
 
@@ -29,7 +29,7 @@ class Twilio extends Driver
     public function __construct($settings)
     {
         $this->settings = (object) $settings;
-        $this->client = new Client($this->settings->sid, $this->settings->token);
+        $this->client = new KavenegarApi($this->settings->apiKey);
     }
 
     /**
@@ -39,21 +39,22 @@ class Twilio extends Driver
      */
     public function send()
     {
-        $response = ['status' => true, 'data' =>[]];
+        $response = [];
         foreach ($this->recipients as $recipient) {
-            $sms = $this->client->account->messages->create(
+            $sms = $this->client->Send(
+                $this->settings->from,
                 $recipient,
-                ['from' => $this->settings->from, 'body' => $this->body]
+                $this->body
             );
-
-            $response['data'][$recipient] = $this->getSmsResponse($sms);
+            $response[$recipient]['data'] = $this->getSmsResponse($sms[0]);
+            $response[$recipient]['status'] = true;
         }
 
         return (object) $response;
     }
 
     /**
-     * Get the Twilio Response.
+     * Get the Kavenegar Response.
      *
      * @param $sms
      * @return object
@@ -61,10 +62,8 @@ class Twilio extends Driver
     protected function getSmsResponse($sms)
     {
         $attributes = [
-            'accountSid', 'apiVersion', 'body', 'direction', 'errorCode',
-            'errorMessage', 'from', 'numMedia', 'numSegments', 'price',
-            'priceUnit', 'sid', 'status', 'subresourceUris', 'to', 'uri',
-            'dateCreated', 'dateUpdated', 'dateSent',
+            'messageid', 'message', 'status', 'statustext',
+            'sender', 'receptor', 'date', 'cost',
         ];
 
         $res = [];
