@@ -73,6 +73,15 @@ class Smsir extends Driver
         }
 
         foreach ($this->recipients as $recipient) {
+
+            // Get token:
+            $response = $this->getToken();
+            if ($response['status'] == false) {
+                $responses[$recipient] = (object) $response;
+                continue;
+            }
+            $token = $response['data']['TokenKey'];
+
             $body = [
                 'ParameterArray' => $params,
                 'TemplateId' => $template_id,
@@ -83,7 +92,7 @@ class Smsir extends Driver
                 [
                     'json' => $body,
                     'headers' => [
-                        'x-sms-ir-secure-token' => $this->getToken(),
+                        'x-sms-ir-secure-token' => $token,
                     ],
                     'connect_timeout' => 30
                 ]
@@ -105,7 +114,7 @@ class Smsir extends Driver
         // Get token:
         $response = $this->getToken();
         if ($response['status'] == false) {
-            return $response;
+            return (object) $response;
         }
         $token = $response['data']['TokenKey'];
 
