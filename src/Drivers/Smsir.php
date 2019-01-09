@@ -51,7 +51,7 @@ class Smsir extends Driver
             ]
         );
 
-        return json_decode((string) $response->getBody(), true)['TokenKey'];
+        return $this->getResponseData($response);
     }
 
     /**
@@ -98,19 +98,30 @@ class Smsir extends Driver
      * Send text message and return response.
      *
      * @return object
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function send()
     {
+        // Get token:
+        $response = $this->getToken();
+        if ($response['status'] == false) {
+            return $response;
+        }
+        $token = $response['data']['TokenKey'];
+
+        // Create message:
         $body = [
-            'Messages' => $this->body,
-            'MobileNumbers' => [$this->recipients],
+            'Messages' => [$this->body],
+            'MobileNumbers' => $this->recipients,
             'LineNumber' => $this->settings->from,
         ];
+
+        // Send message:
         $response = $this->client->request("POST", $this->settings->url.'api/MessageSend',
             [
                 'json' => $body,
                 'headers' => [
-                    'x-sms-ir-secure-token' => $this->getToken()
+                    'x-sms-ir-secure-token' => $token
                 ],
                 'connect_timeout' => 30
             ]
@@ -118,7 +129,7 @@ class Smsir extends Driver
 
         $data = $this->getResponseData($response);
 
-        return (object) array_merge($data, ["status" => true]);
+        return (object) $data;
     }
 
     /**
@@ -129,16 +140,16 @@ class Smsir extends Driver
      */
     protected function getResponseData($response)
     {
-        if ($response->getStatusCode() != 200) {
+        if ($response->getStatusCode() != 200 && $response->getStatusCode() != 201) {
             return ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
         }
 
         $data = json_decode((string) $response->getBody(), true);
 
-        if ($data["status"] != "success") {
+        if ($data["IsSuccessful"] == false) {
             return ["status" => false, "message" => "Something went wrong.", "data" => $data];
         }
 
-        return $data;
+        return ["status" => true, "message" => "", "data" => $data];
     }
 }

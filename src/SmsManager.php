@@ -73,9 +73,11 @@ class SmsManager
      *
      * @return mixed
      */
-    protected function getDriverInstance()
+    protected function getDriverInstance($driver=null)
     {
-        $class = $this->config['map'][$this->driver];
+        $driver = $driver ?? $this->driver;
+        $class = $this->config['map'][$driver];
+
         return new $class($this->settings);
     }
 
@@ -99,7 +101,9 @@ class SmsManager
             throw new \Exception("Driver source not found. Please update the package.");
         }
 
-        if (!($this->getDriverInstance() instanceof Contracts\DriverInterface)) {
+        $reflect = new \ReflectionClass($this->config['map'][$driver]);
+
+        if (!$reflect->implementsInterface(Contracts\DriverInterface::class)) {
             throw new \Exception("Driver must be an instance of Contracts\DriverInterface.");
         }
     }

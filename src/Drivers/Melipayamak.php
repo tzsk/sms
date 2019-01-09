@@ -52,25 +52,17 @@ class Melipayamak extends Driver
      */
     public function send()
     {
-        try {
-            $response = ['status' => true, 'data' =>[]];
-            foreach ($this->recipients as $recipient) {
-                $sms = $this->client->sms()->send(
-                    $recipient,
-                    $this->settings->from,
-                    $this->body,
-                    $this->settings->flash
-                );
-                $response['data'][$recipient] = $this->getSmsResponse(
-                    json_decode($sms, true)
-                );
-            }
-        } catch (\Exception $e) {
-            $response['status'][$recipient] = false;
-            $response['data'][$recipient] = $e->getMessage();
+        $response = [];
+        foreach ($this->recipients as $recipient) {
+            $sms = $this->client->sms()->send(
+                $recipient,
+                $this->settings->from,
+                $this->body,
+                $this->settings->flash
+            );
+            $response[$recipient]['data'] = $this->getSmsResponse($sms);
+            $response[$recipient]['status'] = true;
         }
-
-        $this->asFlash(false);
 
         return (object) $response;
     }
@@ -83,13 +75,14 @@ class Melipayamak extends Driver
      */
     protected function getSmsResponse($sms)
     {
+        $sms = json_decode($sms, true);
         $attributes = [
-            'recId',
+            'Value', 'RetStatus', 'StrRetStatus'
         ];
 
         $res = [];
         foreach ($attributes as $attribute) {
-            $res[$attribute] = $sms->$attribute;
+            $res[$attribute] = $sms[$attribute];
         }
 
         return (object) $res;

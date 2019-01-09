@@ -39,21 +39,15 @@ class Kavenegar extends Driver
      */
     public function send()
     {
-        try {
-            $response = ['status' => true, 'data' =>[]];
-            foreach ($this->recipients as $recipient) {
-                $sms = $this->client->Send(
-                    $this->settings->from,
-                    $recipient,
-                    $this->body
-                );
-                $response['data'][$recipient] = $this->getSmsResponse(
-                    json_decode($sms, true)
-                );
-            }
-        } catch (\Exception $e) {
-            $response['status'][$recipient] = false;
-            $response['data'][$recipient] = $e->getMessage();
+        $response = [];
+        foreach ($this->recipients as $recipient) {
+            $sms = $this->client->Send(
+                $this->settings->from,
+                $recipient,
+                $this->body
+            );
+            $response[$recipient]['data'] = $this->getSmsResponse($sms[0]);
+            $response[$recipient]['status'] = true;
         }
 
         return (object) $response;
