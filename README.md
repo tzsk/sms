@@ -19,8 +19,6 @@ List of supported gateways:
 - [Smsir](https://www.sms.ir)
 - Others are under way.
 
-Older version support (Laravel 5.1) is coming soon.
-
 ## Install
 
 Via Composer

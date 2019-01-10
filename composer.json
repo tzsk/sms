@@ -8,13 +8,23 @@
 		"sms gateway",
         "laravel sms gateway",
         "laravel textlocal",
-        "laravel twilio",
-		"textlocal gateway",
 		"textlocal sms gateway",
-        "twilio gateway",
-        "twilio sms gateway",
         "laravel textlocal package",
-        "laravel twilio package"
+        "laravel twilio",
+        "twilio sms gateway",
+        "laravel twilio package",
+        "laravel link mobility",
+		"link mobility sms gateway",
+        "laravel link mobility package",
+        "laravel kavenegar",
+		"kavenegar sms gateway",
+        "laravel kavenegar package",
+        "laravel melipayamak",
+		"melipayamak sms gateway",
+        "laravel melipayamak package",
+        "laravel smsir",
+		"smsir sms gateway",
+        "laravel smsir package"
     ],
     "homepage": "https://github.com/tzsk/sms",
     "license": "MIT",
@@ -53,6 +63,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Tzsk\\Sms\\Provider\\SmsServiceProvider"
+            ],
+            "aliases": {
+                "Sms": "Tzsk\\Sms\\Facade\\Sms"
+            }
         }
     },
     "config": {
