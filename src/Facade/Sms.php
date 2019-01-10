@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Facade;
 
 use Illuminate\Support\Facades\Facade;

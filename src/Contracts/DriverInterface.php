@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Contracts;
 
 interface DriverInterface

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Abstracts;
 
 use Tzsk\Sms\Contracts\DriverInterface;
@@ -17,7 +18,7 @@ abstract class Driver implements DriverInterface
      *
      * @var string
      */
-    protected $body = "";
+    protected $body = '';
 
     /**
      * Driver constructor.
@@ -43,7 +44,7 @@ abstract class Driver implements DriverInterface
         $this->recipients = array_values(array_filter($recipients));
 
         if (count($this->recipients) < 1) {
-            throw new \Exception("Message recipient could not be empty.");
+            throw new \Exception('Message recipient could not be empty.');
         }
 
         return $this;
@@ -58,11 +59,11 @@ abstract class Driver implements DriverInterface
      */
     public function message($message)
     {
-        if (!is_string($message)) {
-            throw new \Exception("Message text should be a string.");
+        if (! is_string($message)) {
+            throw new \Exception('Message text should be a string.');
         }
         if (trim($message) == '') {
-            throw new \Exception("Message text could not be empty.");
+            throw new \Exception('Message text could not be empty.');
         }
         $this->body = $message;
 

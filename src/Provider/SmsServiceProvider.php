@@ -2,8 +2,8 @@
 
 namespace Tzsk\Sms\Provider;
 
-use Illuminate\Support\ServiceProvider;
 use Tzsk\Sms\SmsManager;
+use Illuminate\Support\ServiceProvider;
 
 class SmsServiceProvider extends ServiceProvider
 {
@@ -18,7 +18,7 @@ class SmsServiceProvider extends ServiceProvider
          * Configurations that needs to be done by user.
          */
         $this->publishes([
-            __DIR__ . '/../Config/sms.php' => config_path('sms.php'),
+            __DIR__.'/../Config/sms.php' => config_path('sms.php'),
         ], 'config');
 
         /**

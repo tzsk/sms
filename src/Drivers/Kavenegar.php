@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Drivers;
 
 use Kavenegar\KavenegarApi;
@@ -11,14 +12,14 @@ class Kavenegar extends Driver
      *
      * @var null|object
      */
-    protected $settings = null;
+    protected $settings;
 
     /**
      * Kavenegar Client.
      *
      * @var null|KavenegarApi
      */
-    protected $client = null;
+    protected $client;
 
     /**
      * Construct the class with the relevant settings.

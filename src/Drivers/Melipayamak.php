@@ -1,8 +1,9 @@
 <?php
+
 namespace Tzsk\Sms\Drivers;
 
-use Melipayamak\MelipayamakApi;
 use Tzsk\Sms\Abstracts\Driver;
+use Melipayamak\MelipayamakApi;
 
 class Melipayamak extends Driver
 {
@@ -11,14 +12,14 @@ class Melipayamak extends Driver
      *
      * @var null|object
      */
-    protected $settings = null;
+    protected $settings;
 
     /**
      * Melipayamak Client.
      *
      * @var null|MelipayamakApi
      */
-    protected $client = null;
+    protected $client;
 
     /**
      * Construct the class with the relevant settings.
@@ -38,7 +39,7 @@ class Melipayamak extends Driver
      * @param bool $flash
      * @return $this
      */
-    public function asFlash($flash=true)
+    public function asFlash($flash = true)
     {
         $this->settings->flash = $flash;
 

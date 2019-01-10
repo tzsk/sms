@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Drivers;
 
 use Twilio\Rest\Client;
@@ -11,14 +12,14 @@ class Twilio extends Driver
      *
      * @var null|object
      */
-    protected $settings = null;
+    protected $settings;
 
     /**
      * Twilio Client.
      *
      * @var null|Client
      */
-    protected $client = null;
+    protected $client;
 
     /**
      * Construct the class with the relevant settings.
@@ -39,7 +40,7 @@ class Twilio extends Driver
      */
     public function send()
     {
-        $response = ['status' => true, 'data' =>[]];
+        $response = ['status' => true, 'data' => []];
         foreach ($this->recipients as $recipient) {
             $sms = $this->client->account->messages->create(
                 $recipient,

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
@@ -39,21 +40,21 @@ class Textlocal extends Driver
      */
     public function send()
     {
-        $numbers = implode(",", $this->recipients);
+        $numbers = implode(',', $this->recipients);
 
-        $response = $this->client->request("POST", $this->settings->url, [
-            "form_params" => [
-                "username" => $this->settings->username,
-                "hash" => $this->settings->hash,
-                "numbers" => $numbers,
-                "sender" => urlencode($this->settings->sender),
-                "message" => $this->body,
+        $response = $this->client->request('POST', $this->settings->url, [
+            'form_params' => [
+                'username' => $this->settings->username,
+                'hash' => $this->settings->hash,
+                'numbers' => $numbers,
+                'sender' => urlencode($this->settings->sender),
+                'message' => $this->body,
             ],
         ]);
 
         $data = $this->getResponseData($response);
 
-        return (object) array_merge($data, ["status" => true]);
+        return (object) array_merge($data, ['status' => true]);
     }
 
     /**
@@ -65,13 +66,13 @@ class Textlocal extends Driver
     protected function getResponseData($response)
     {
         if ($response->getStatusCode() != 200) {
-            return ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
+            return ['status' => false, 'message' => 'Request Error. '.$response->getReasonPhrase()];
         }
 
         $data = json_decode((string) $response->getBody(), true);
 
-        if ($data["status"] != "success") {
-            return ["status" => false, "message" => "Something went wrong.", "data" => $data];
+        if ($data['status'] != 'success') {
+            return ['status' => false, 'message' => 'Something went wrong.', 'data' => $data];
         }
 
         return $data;

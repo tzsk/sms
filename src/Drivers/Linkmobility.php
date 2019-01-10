@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
@@ -11,14 +12,14 @@ class Linkmobility extends Driver
      *
      * @var object|null
      */
-    protected $settings = null;
+    protected $settings;
 
     /**
      * Http Client.
      *
      * @var Client|null
      */
-    protected $client = null;
+    protected $client;
 
     /**
      * Construct the class with the relevant settings.
@@ -39,21 +40,21 @@ class Linkmobility extends Driver
      */
     public function send()
     {
-        $numbers = implode(",", $this->recipients);
+        $numbers = implode(',', $this->recipients);
 
-        $response = $this->client->request("POST", $this->settings->url, [
-            "form_params" => [
-                "USER" => $this->settings->username,
-                "PW" => $this->settings->password,
-                "RCV"  => $numbers,
-                "SND" => urlencode($this->settings->sender),
-                "TXT" => $this->body,
+        $response = $this->client->request('POST', $this->settings->url, [
+            'form_params' => [
+                'USER' => $this->settings->username,
+                'PW' => $this->settings->password,
+                'RCV' => $numbers,
+                'SND' => urlencode($this->settings->sender),
+                'TXT' => $this->body,
             ],
         ]);
 
         $data = $this->getResponseData($response);
 
-        return (object) array_merge($data, ["status" => true]);
+        return (object) array_merge($data, ['status' => true]);
     }
 
     /**
@@ -64,13 +65,13 @@ class Linkmobility extends Driver
     protected function getResponseData($response)
     {
         if ($response->getStatusCode() != 200) {
-            return ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
+            return ['status' => false, 'message' => 'Request Error. '.$response->getReasonPhrase()];
         }
 
         $data = json_decode((string) $response->getBody(), true);
 
-        if ($data["status"] != "success") {
-            return ["status" => false, "message" => "Something went wrong.", "data" => $data];
+        if ($data['status'] != 'success') {
+            return ['status' => false, 'message' => 'Something went wrong.', 'data' => $data];
         }
 
         return $data;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms;
 
 class SmsManager
@@ -8,21 +9,21 @@ class SmsManager
      *
      * @var null|object
      */
-    protected $config = null;
+    protected $config;
 
     /**
      * Sms Driver Settings.
      *
      * @var null|object
      */
-    protected $settings = null;
+    protected $settings;
 
     /**
      * Sms Driver Name.
      *
      * @var null|string
      */
-    protected $driver = null;
+    protected $driver;
 
     /**
      * SmsManager constructor.
@@ -30,7 +31,7 @@ class SmsManager
     public function __construct()
     {
         $this->config = config('sms');
-        $this->withDriver($this->config['default']);
+        $this->via($this->config['default']);
     }
 
     /**
@@ -40,11 +41,10 @@ class SmsManager
      * @return $this
      * @throws \Exception
      */
-    public function withDriver($driver)
+    public function via($driver)
     {
-        $this->validateDriver($driver);
-
         $this->driver = $driver;
+        $this->validateDriver();
         $this->settings = $this->config['drivers'][$this->driver];
 
         return $this;
@@ -60,12 +60,12 @@ class SmsManager
      */
     public function send($message, $callback)
     {
-        $driverObj = $this->getDriverInstance();
-        $driverObj->message($message);
+        $driver = $this->getDriverInstance();
+        $driver->message($message);
 
-        call_user_func($callback, $driverObj);
+        call_user_func($callback, $driver);
 
-        return $driverObj->send();
+        return $driver->send();
     }
 
     /**
@@ -73,10 +73,10 @@ class SmsManager
      *
      * @return mixed
      */
-    protected function getDriverInstance($driver=null)
+    protected function getDriverInstance()
     {
-        $driver = $driver ?? $this->driver;
-        $class = $this->config['map'][$driver];
+        $this->validateDriver();
+        $class = $this->config['map'][$this->driver];
 
         return new $class($this->settings);
     }
@@ -84,26 +84,25 @@ class SmsManager
     /**
      * Validate Parameters before sending.
      *
-     * @param $driver
      * @throws \Exception
      */
-    protected function validateDriver($driver)
+    protected function validateDriver()
     {
-        if (empty($driver)) {
-            throw new \Exception("Driver not selected or default driver does not exist.");
+        if (empty($this->driver)) {
+            throw new \Exception('Driver not selected or default driver does not exist.');
         }
 
-        if (empty($this->config['drivers'][$driver]) || empty($this->config['map'][$driver])) {
-            throw new \Exception("Driver not found in config file. Try updating the package.");
+        if (empty($this->config['drivers'][$this->driver]) || empty($this->config['map'][$this->driver])) {
+            throw new \Exception('Driver not found in config file. Try updating the package.');
         }
 
-        if (!class_exists($this->config['map'][$driver])) {
-            throw new \Exception("Driver source not found. Please update the package.");
+        if (! class_exists($this->config['map'][$this->driver])) {
+            throw new \Exception('Driver source not found. Please update the package.');
         }
 
-        $reflect = new \ReflectionClass($this->config['map'][$driver]);
+        $reflect = new \ReflectionClass($this->config['map'][$this->driver]);
 
-        if (!$reflect->implementsInterface(Contracts\DriverInterface::class)) {
+        if (! $reflect->implementsInterface(Contracts\DriverInterface::class)) {
             throw new \Exception("Driver must be an instance of Contracts\DriverInterface.");
         }
     }

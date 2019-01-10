@@ -1,4 +1,5 @@
 <?php
+
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
@@ -11,14 +12,14 @@ class Smsir extends Driver
      *
      * @var null|object
      */
-    protected $settings = null;
+    protected $settings;
 
     /**
      * Smsir Client.
      *
      * @var null|Client
      */
-    protected $client = null;
+    protected $client;
 
     /**
      * Construct the class with the relevant settings.
@@ -41,7 +42,7 @@ class Smsir extends Driver
     {
         $body = [
             'UserApiKey' => $this->settings->apiKey,
-            'SecretKey'=> $this->settings->secretKey,
+            'SecretKey' => $this->settings->secretKey,
         ];
         $response = $this->client->post(
             $this->settings->url.'api/Token',
@@ -73,7 +74,6 @@ class Smsir extends Driver
         }
 
         foreach ($this->recipients as $recipient) {
-
             // Get token:
             $response = $this->getToken();
             if ($response['status'] == false) {
@@ -126,7 +126,9 @@ class Smsir extends Driver
         ];
 
         // Send message:
-        $response = $this->client->request("POST", $this->settings->url.'api/MessageSend',
+        $response = $this->client->request(
+            'POST',
+            $this->settings->url.'api/MessageSend',
             [
                 'json' => $body,
                 'headers' => [
@@ -150,15 +152,15 @@ class Smsir extends Driver
     protected function getResponseData($response)
     {
         if ($response->getStatusCode() != 200 && $response->getStatusCode() != 201) {
-            return ["status" => false, "message" => "Request Error. " . $response->getReasonPhrase()];
+            return ['status' => false, 'message' => 'Request Error. '.$response->getReasonPhrase()];
         }
 
         $data = json_decode((string) $response->getBody(), true);
 
-        if ($data["IsSuccessful"] == false) {
-            return ["status" => false, "message" => "Something went wrong.", "data" => $data];
+        if ($data['IsSuccessful'] == false) {
+            return ['status' => false, 'message' => 'Something went wrong.', 'data' => $data];
         }
 
-        return ["status" => true, "message" => "", "data" => $data];
+        return ['status' => true, 'message' => '', 'data' => $data];
     }
 }

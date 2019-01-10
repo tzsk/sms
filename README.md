@@ -94,7 +94,7 @@ Sms::send("Text to send.", function($sms) {
 });
 
 # If you want to use a different driver.
-Sms::withDriver('driver name')->send("Text to send.", function($sms) {
+Sms::via('driver name')->send("Text to send.", function($sms) {
     $sms->to(['Number 1', 'Number 2']);
 });
 

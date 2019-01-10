@@ -23,29 +23,29 @@ return [
     */
     'drivers' => [
         'textlocal' => [
-            'url' => 'http://api.textlocal.in/send/', # Country Wise this may change.
+            'url' => 'http://api.textlocal.in/send/', // Country Wise this may change.
             'username' => 'Your Username',
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
         ],
-        'twilio' => [ # Install: composer require twilio/sdk
+        'twilio' => [ // Install: composer require twilio/sdk
             'sid' => 'Your SID',
             'token' => 'Your Token',
             'from' => 'Your Default From Number',
         ],
         'linkmobility' => [
-          'url' => 'http://simple.pswin.com', # Country Wise this may change.
-          'username' => 'Your Username',
-          'password' => 'Your Password',
-          'sender' => 'Sender name',
+            'url' => 'http://simple.pswin.com', // Country Wise this may change.
+            'username' => 'Your Username',
+            'password' => 'Your Password',
+            'sender' => 'Sender name',
         ],
-        'melipayamak' => [ # Install: composer require melipayamak/php
+        'melipayamak' => [ // Install: composer require melipayamak/php
             'username' => 'Your Username',
             'password' => 'Your Password',
             'from' => 'Your Default From Number',
             'flash' => false,
         ],
-        'kavenegar' => [ # Install: composer require kavenegar/php
+        'kavenegar' => [ // Install: composer require kavenegar/php
             'apiKey' => 'Your Api Key',
             'from' => 'Your Default From Number',
         ],
@@ -70,9 +70,9 @@ return [
     |
     */
     'map' => [
-        'textlocal' => Tzsk\Sms\Drivers\Textlocal::class,
-        'twilio' => Tzsk\Sms\Drivers\Twilio::class,
-        'linkmobility' => Tzsk\Sms\Drivers\Linkmobility::class,
+        'textlocal' => \Tzsk\Sms\Drivers\Textlocal::class,
+        'twilio' => \Tzsk\Sms\Drivers\Twilio::class,
+        'linkmobility' => \Tzsk\Sms\Drivers\Linkmobility::class,
         'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,
         'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,

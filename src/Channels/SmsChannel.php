@@ -1,8 +1,9 @@
 <?php
+
 namespace Tzsk\Sms\Channels;
 
-use Illuminate\Notifications\Notification;
 use Tzsk\Sms\SmsManager;
+use Illuminate\Notifications\Notification;
 
 class SmsChannel
 {
@@ -24,7 +25,7 @@ class SmsChannel
         $manager = new SmsManager;
 
         // Use custom driver if exists.
-        if (!empty($message['driver'])) {
+        if (! empty($message['driver'])) {
             $manager->withDriver($message['driver']);
         }
 
@@ -43,11 +44,11 @@ class SmsChannel
     private function validate($message)
     {
         if (empty($message['body'])) {
-            throw new \Exception("Message body could not be empty.");
+            throw new \Exception('Message body could not be empty.');
         }
 
         if (empty($message['recipients'])) {
-            throw new \Exception("Message recipient could not be empty.");
+            throw new \Exception('Message recipient could not be empty.');
         }
     }
 }
