@@ -2,10 +2,11 @@
 
 namespace Tzsk\Sms\Tests;
 
+use Tzsk\Sms\Facade\Sms;
+use Tzsk\Sms\SmsBuilder;
 use Tzsk\Sms\Abstracts\Driver;
 use Tzsk\Sms\Drivers\Textlocal;
 use Tzsk\Sms\Tests\Mocks\MockSmsManager;
-use Tzsk\Sms\Facade\Sms;
 use Tzsk\Sms\Tests\Mocks\Drivers\BarDriver;
 
 class SmsManagerTest extends TestCase
@@ -36,7 +37,7 @@ class SmsManagerTest extends TestCase
 
     public function test_it_has_proper_driver_instance()
     {
-        $manager = (new MockSmsManager());
+        $manager = new MockSmsManager();
 
         $this->assertInstanceOf(Driver::class, $manager->driverInstance());
     }
@@ -57,6 +58,33 @@ class SmsManagerTest extends TestCase
         $response = Sms::via('bar')->send('foo', function ($m) {
             $m->to('baz');
         });
+
+        $this->assertInstanceOf(BarDriver::class, $response);
+        $this->assertEquals('foo', $response->getBody());
+        $this->assertContains('baz', $response->getRecipients());
+    }
+
+    public function test_can_be_sent_by_dispatch_method()
+    {
+        $response = Sms::via('bar')->send('foo')->to('baz')->dispatch();
+
+        $this->assertInstanceOf(BarDriver::class, $response);
+        $this->assertEquals('foo', $response->getBody());
+        $this->assertContains('baz', $response->getRecipients());
+    }
+
+    public function test_sms_builder_can_be_sent()
+    {
+        $response = Sms::send((new SmsBuilder)->via('bar')->to('baz')->send('foo'));
+
+        $this->assertInstanceOf(BarDriver::class, $response);
+        $this->assertEquals('foo', $response->getBody());
+        $this->assertContains('baz', $response->getRecipients());
+    }
+
+    public function test_sms_builder_via_can_be_sent(Type $var = null)
+    {
+        $response = Sms::via('bar')->send((new SmsBuilder)->to('baz')->send('foo'));
 
         $this->assertInstanceOf(BarDriver::class, $response);
         $this->assertEquals('foo', $response->getBody());

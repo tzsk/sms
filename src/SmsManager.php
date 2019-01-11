@@ -21,9 +21,14 @@ class SmsManager
     /**
      * Sms Driver Name.
      *
-     * @var null|string
+     * @var string
      */
     protected $driver;
+
+    /**
+     * @var SmsBuilder
+     */
+    protected $builder;
 
     /**
      * SmsManager constructor.
@@ -33,7 +38,19 @@ class SmsManager
     public function __construct($config)
     {
         $this->config = $config;
+        $this->setBuilder(new SmsBuilder());
         $this->via($this->config['default']);
+    }
+
+    /**
+     * @param string|array $recipients
+     * @return self
+     */
+    public function to($recipients)
+    {
+        $this->builder->to($recipients);
+
+        return $this;
     }
 
     /**
@@ -47,7 +64,8 @@ class SmsManager
     {
         $this->driver = $driver;
         $this->validateDriver();
-        $this->settings = $this->config['drivers'][$this->driver];
+        $this->builder->via($driver);
+        $this->settings = $this->config['drivers'][$driver];
 
         return $this;
     }
@@ -60,14 +78,49 @@ class SmsManager
      * @return mixed
      * @throws \Exception
      */
-    public function send($message, $callback)
+    public function send($message, $callback = null)
     {
+        if ($message instanceof SmsBuilder) {
+            return $this->setBuilder($message)->dispatch();
+        }
+
+        $this->builder->send($message);
+        if (! $callback) {
+            return $this;
+        }
+
         $driver = $this->getDriverInstance();
         $driver->message($message);
-
         call_user_func($callback, $driver);
 
         return $driver->send();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function dispatch()
+    {
+        $this->driver = $this->builder->getDriver() ?: $this->driver;
+        if (empty($this->driver)) {
+            $this->via($this->config['default']);
+        }
+        $driver = $this->getDriverInstance();
+        $driver->message($this->builder->getBody());
+        $driver->to($this->builder->getRecipients());
+
+        return $driver->send();
+    }
+
+    /**
+     * @param SmsBuilder $builder
+     * @return self
+     */
+    protected function setBuilder(SmsBuilder $builder)
+    {
+        $this->builder = $builder;
+
+        return $this;
     }
 
     /**

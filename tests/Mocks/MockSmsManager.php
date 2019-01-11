@@ -30,14 +30,4 @@ class MockSmsManager extends SmsManager
     {
         return $this->getDriverInstance();
     }
-
-    public function send($message, $callback)
-    {
-        $driver = $this->getDriverInstance();
-        $driver->message($message);
-
-        call_user_func($callback, $driver);
-
-        return $driver->send();
-    }
 }

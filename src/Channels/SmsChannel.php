@@ -2,6 +2,7 @@
 
 namespace Tzsk\Sms\Channels;
 
+use Tzsk\Sms\SmsBuilder;
 use Tzsk\Sms\SmsManager;
 use Illuminate\Notifications\Notification;
 
@@ -19,19 +20,15 @@ class SmsChannel
     {
         $message = $notification->toSms($notifiable);
 
-        // Validate the message.
         $this->validate($message);
+        $manager = app()->make('tzsk-sms');
 
-        $manager = new SmsManager;
-
-        // Use custom driver if exists.
-        if (! empty($message['driver'])) {
-            $manager->via($message['driver']);
+        if (! empty($message->getDriver())) {
+            $manager->via($message->getDriver());
         }
 
-        // Send notification.
-        return $manager->send($message['body'], function ($sms) use ($message) {
-            $sms->to($message['recipients']);
+        return $manager->send($message->getBody(), function ($sms) use ($message) {
+            $sms->to($message->getRecipients());
         });
     }
 
@@ -43,11 +40,15 @@ class SmsChannel
      */
     private function validate($message)
     {
-        if (empty($message['body'])) {
+        if (! is_a($message, SmsBuilder::class)) {
+            throw new \Exception('Invalid data for sms notification.');
+        }
+
+        if (empty($message->getBody())) {
             throw new \Exception('Message body could not be empty.');
         }
 
-        if (empty($message['recipients'])) {
+        if (empty($message->getRecipients())) {
             throw new \Exception('Message recipient could not be empty.');
         }
     }

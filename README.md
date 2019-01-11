@@ -28,6 +28,9 @@ $ composer require tzsk/sms
 ```
 
 ## Configure
+
+If you are using `Laravel 5.5` or higher then you don't need to add the provider and alias.
+
 In your `config/app.php` file add these two lines.
 ```php
 # In your providers array.
@@ -41,7 +44,7 @@ In your `config/app.php` file add these two lines.
     ...
     'Sms' => Tzsk\Sms\Facade\Sms::class,
 ],
-```
+``` 
 
 Now run `php artisan vendor:publish` to publish `config/sms.php` file in your config directory.
 
@@ -87,16 +90,21 @@ use Tzsk\Sms\Facade\Sms;
 ...
 
 # In your Controller.
-Sms::send("Text to send.", function($sms) {
+Sms::send("this message", function($sms) {
     $sms->to(['Number 1', 'Number 2']); # The numbers to send to.
 });
+# OR...
+Sms::send("this message")->to(['Number 1', 'Number 2'])->dispatch();
 
 # If you want to use a different driver.
-Sms::via('driver name')->send("Text to send.", function($sms) {
+Sms::via('gateway')->send("this message", function($sms) {
     $sms->to(['Number 1', 'Number 2']);
 });
+# OR...
+Sms::via('gateway')->send("this message")->to(['Number 1', 'Number 2'])->dispatch();
 
-# Here driver name is explicit : 'twilio' or 'textlocal'.
+# Here gateway is explicit : 'twilio' or 'textlocal' or any other driver in the config.
+# The numbers can be a single string as well.
 ```
 
 ## Channel Usage
@@ -107,6 +115,7 @@ then `SmsChannel::class` can be used as channel like the below:
 ```php
 namespace App\Notifications;
 
+use Tzsk\Sms\SmsBuilder;
 use Illuminate\Bus\Queueable;
 use Tzsk\Sms\Channels\SmsChannel;
 use Illuminate\Notifications\Notification;
@@ -131,16 +140,30 @@ class InvoicePaid extends Notification
      * Get the repicients and body of the notification.
      *
      * @param  mixed  $notifiable
-     * @return VoiceMessage
+     * @return SmsBuilder
      */
     public function toSms($notifiable)
     {
-        return [
-            'recipients' => ['Number 1', 'Number 2'],
-            'body' => 'your message'
-        ];
+        return (new SmsBuilder)->via('gateway') # via() is Optional
+            ->send('this message')
+            ->to('some number');
     }
 }
+```
+
+> **Tip:** You can use the same Builder Instance in the send method.
+```php
+$builder = (new SmsBuilder)->via('gateway') # via() is Optional
+    ->send('this message')
+    ->to('some number');
+
+Sms::send($builder);
+
+# OR...
+$builder = (new SmsBuilder)->send('this message')
+    ->to(['some number']);
+
+Sms::via('gateway')->send($builder);
 ```
 
 #### Custom Made Driver, How To:
