@@ -7,14 +7,14 @@ class SmsManager
     /**
      * Sms Configuration.
      *
-     * @var null|object
+     * @var array
      */
     protected $config;
 
     /**
      * Sms Driver Settings.
      *
-     * @var null|object
+     * @var array
      */
     protected $settings;
 
@@ -27,10 +27,12 @@ class SmsManager
 
     /**
      * SmsManager constructor.
+     *
+     * @param array $config
      */
-    public function __construct()
+    public function __construct($config)
     {
-        $this->config = config('sms');
+        $this->config = $config;
         $this->via($this->config['default']);
     }
 

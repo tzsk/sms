@@ -54,7 +54,7 @@ class Textlocal extends Driver
 
         $data = $this->getResponseData($response);
 
-        return (object) array_merge($data, ['status' => true]);
+        return (object) $data;
     }
 
     /**
@@ -75,6 +75,6 @@ class Textlocal extends Driver
             return ['status' => false, 'message' => 'Something went wrong.', 'data' => $data];
         }
 
-        return $data;
+        return array_merge($data, ['status' => true]);
     }
 }

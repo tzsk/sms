@@ -49,5 +49,5 @@ Temporary Items
 # PhpStorm project's cache
 .idea
 
-# Vendor folder
+# Vendor directory
 vendor/
