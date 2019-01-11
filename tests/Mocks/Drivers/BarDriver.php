@@ -17,6 +17,6 @@ class BarDriver extends Driver
 
     public function send()
     {
-        return 'foo';
+        return $this;
     }
 }

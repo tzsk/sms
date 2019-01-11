@@ -5,6 +5,8 @@ namespace Tzsk\Sms\Tests;
 use Tzsk\Sms\Abstracts\Driver;
 use Tzsk\Sms\Drivers\Textlocal;
 use Tzsk\Sms\Tests\Mocks\MockSmsManager;
+use Tzsk\Sms\Facade\Sms;
+use Tzsk\Sms\Tests\Mocks\Drivers\BarDriver;
 
 class SmsManagerTest extends TestCase
 {
@@ -39,12 +41,25 @@ class SmsManagerTest extends TestCase
         $this->assertInstanceOf(Driver::class, $manager->driverInstance());
     }
 
-    public function test_it_has_send_method()
+    public function test_can_call_directly()
     {
         $response = (new MockSmsManager())->via('bar')
-            ->send('Example', function ($message) {
-                $message->to(['1234567890']);
+            ->send('foo', function ($message) {
+                $message->to(['baz']);
             });
-        $this->assertEquals('foo', $response);
+        $this->assertInstanceOf(BarDriver::class, $response);
+        $this->assertEquals('foo', $response->getBody());
+        $this->assertContains('baz', $response->getRecipients());
+    }
+
+    public function test_can_call_from_facade()
+    {
+        $response = Sms::via('bar')->send('foo', function ($m) {
+            $m->to('baz');
+        });
+
+        $this->assertInstanceOf(BarDriver::class, $response);
+        $this->assertEquals('foo', $response->getBody());
+        $this->assertContains('baz', $response->getRecipients());
     }
 }
