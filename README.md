@@ -4,7 +4,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![StyleCI](https://styleci.io/repos/76770163/shield?branch=master)](https://styleci.io/repos/76770163)
-[![Build Status](https://scrutinizer-ci.com/g/tzsk/sms/badges/build.png?b=master)](https://scrutinizer-ci.com/g/tzsk/sms/build-status/master)
+[![Build Status](https://travis-ci.org/tzsk/sms.svg?branch=master)](https://travis-ci.org/tzsk/sms)(https://scrutinizer-ci.com/g/tzsk/sms/build-status/master)
 [![Code Climate](https://codeclimate.com/github/tzsk/payu/badges/gpa.svg)](https://codeclimate.com/github/tzsk/sms)
 [![Quality Score][ico-code-quality]][link-code-quality]
 
