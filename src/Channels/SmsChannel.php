@@ -26,7 +26,7 @@ class SmsChannel
 
         // Use custom driver if exists.
         if (! empty($message['driver'])) {
-            $manager->withDriver($message['driver']);
+            $manager->via($message['driver']);
         }
 
         // Send notification.
