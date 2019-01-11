@@ -42,9 +42,12 @@
         "guzzlehttp/guzzle": "~6.2"
     },
     "require-dev": {
+        "kavenegar/php": "^1.2",
+        "melipayamak/php": "^0.1.0",
+        "orchestra/testbench": "~3.2",
         "phpunit/phpunit": ">=5.4.3",
         "squizlabs/php_codesniffer": "^2.3",
-        "orchestra/testbench": "~3.2"
+        "twilio/sdk": "^5.27"
     },
     "autoload": {
         "psr-4": {

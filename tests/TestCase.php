@@ -2,9 +2,10 @@
 
 namespace Tzsk\Sms\Tests;
 
-use Orchestra\Testbench\TestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
+use Tzsk\Sms\Tests\Mocks\Drivers\BarDriver;
 
-class LaravelTestCase extends TestCase
+class TestCase extends BaseTestCase
 {
     protected function getPackageProviders($app)
     {
@@ -20,6 +21,10 @@ class LaravelTestCase extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('sms', require __DIR__.'/../src/Config/sms.php');
+        $settings = require __DIR__.'/../src/Config/sms.php';
+        $settings['drivers']['bar'] = ['key' => 'foo'];
+        $settings['map']['bar'] = BarDriver::class;
+
+        $app['config']->set('sms', $settings);
     }
 }

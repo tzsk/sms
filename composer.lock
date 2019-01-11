@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "41243318134908ab52ed6d18fd36d4d9",
+    "content-hash": "662bd1552e703e41e0f649f41f5ed57d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2960,6 +2960,94 @@
             "time": "2016-01-20T08:20:44+00:00"
         },
         {
+            "name": "kavenegar/php",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KaveNegar/kavenegar-php.git",
+                "reference": "02dac39b0376dd4b434d848abdd4f450f83c4380"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KaveNegar/kavenegar-php/zipball/02dac39b0376dd4b434d848abdd4f450f83c4380",
+                "reference": "02dac39b0376dd4b434d848abdd4f450f83c4380",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kavenegar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kavenegar API Team",
+                    "email": "support@kavenegar.com"
+                }
+            ],
+            "description": "A PHP wrapper for Kavenegar's API",
+            "homepage": "http://github.com/Kavenegar/kavenegar-php",
+            "keywords": [
+                "api",
+                "kavenegar",
+                "sms"
+            ],
+            "time": "2018-03-19T16:35:00+00:00"
+        },
+        {
+            "name": "melipayamak/php",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Melipayamak/melipayamak-php.git",
+                "reference": "c167f71190897617a8aaa06e29539212ddf2a225"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Melipayamak/melipayamak-php/zipball/c167f71190897617a8aaa06e29539212ddf2a225",
+                "reference": "c167f71190897617a8aaa06e29539212ddf2a225",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Melipayamak\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Melipayamak Team",
+                    "email": "melipayamak.ir@gmail.com"
+                },
+                {
+                    "name": "Ara Code It",
+                    "email": "ahnara92@gmail.com"
+                }
+            ],
+            "description": "A PHP wrapper for melipayamak's web services",
+            "homepage": "http://github.com/Melipayamak/melipayamak-php",
+            "keywords": [
+                "api",
+                "melipayamak",
+                "sms"
+            ],
+            "time": "2018-03-13T01:38:51+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.2.0",
             "source": {
@@ -4519,6 +4607,52 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2017-04-07T12:08:54+00:00"
+        },
+        {
+            "name": "twilio/sdk",
+            "version": "5.27.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "3acdaa0f542ff3e9ad988dab85c1f0f9e7621375"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/3acdaa0f542ff3e9ad988dab85c1f0f9e7621375",
+                "reference": "3acdaa0f542ff3e9ad988dab85c1f0f9e7621375",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "apigen/apigen": "^4.1",
+                "phpunit/phpunit": "4.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "http://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2019-01-02T17:00:14+00:00"
         },
         {
             "name": "webmozart/assert",
