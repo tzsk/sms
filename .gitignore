@@ -48,3 +48,6 @@ Temporary Items
 
 # PhpStorm project's cache
 .idea
+
+# Vendor directory
+vendor/
