@@ -40,6 +40,9 @@ return [
             'token' => 'Your Token',
             'from' => 'Your Default From Number',
         ],
+        'clockwork' => [
+            'key' => 'Your clockwork API Key',
+        ],
         'linkmobility' => [
             'url' => 'http://simple.pswin.com', // Country Wise this may change.
             'username' => 'Your Username',
@@ -84,5 +87,6 @@ return [
         'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
         'sns' => \Tzsk\Sms\Drivers\Sns::class,
+        'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
     ]
 ];

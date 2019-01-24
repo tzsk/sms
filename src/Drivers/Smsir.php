@@ -34,76 +34,6 @@ class Smsir extends Driver
     }
 
     /**
-     * Get token.
-     *
-     * @return mixed - the Token for use api
-     */
-    private function getToken()
-    {
-        $body = [
-            'UserApiKey' => $this->settings->apiKey,
-            'SecretKey' => $this->settings->secretKey,
-        ];
-        $response = $this->client->post(
-            $this->settings->url.'api/Token',
-            [
-                'json' => $body,
-                'connect_timeout' => 30
-            ]
-        );
-
-        return $this->getResponseData($response);
-    }
-
-    /**
-     * Send with ultraFast method
-     *
-     * @param array $parameters
-     * @param $template_id
-     * @param $number
-     * @return mixed
-     */
-    public function ultraFastSend(array $parameters, $template_id)
-    {
-        $responses = [];
-
-        $params = [];
-
-        foreach ($parameters as $key => $value) {
-            $params[] = ['Parameter' => $key, 'ParameterValue' => $value];
-        }
-
-        foreach ($this->recipients as $recipient) {
-            // Get token:
-            $response = $this->getToken();
-            if ($response['status'] == false) {
-                $responses[$recipient] = (object) $response;
-                continue;
-            }
-            $token = $response['data']['TokenKey'];
-
-            $body = [
-                'ParameterArray' => $params,
-                'TemplateId' => $template_id,
-                'Mobile' => $recipient,
-            ];
-            $response = $this->client->post(
-                $this->settings->url.'api/UltraFastSend',
-                [
-                    'json' => $body,
-                    'headers' => [
-                        'x-sms-ir-secure-token' => $token,
-                    ],
-                    'connect_timeout' => 30
-                ]
-            );
-            $responses[$recipient] = $this->getResponseData($response);
-        }
-
-        return (object) $responses;
-    }
-
-    /**
      * Send text message and return response.
      *
      * @return object
@@ -111,56 +41,63 @@ class Smsir extends Driver
      */
     public function send()
     {
-        // Get token:
-        $response = $this->getToken();
-        if ($response['status'] == false) {
-            return (object) $response;
+        $token = $this->getToken();
+        $response = collect();
+
+        foreach ($this->recipients as $recipient) {
+            $result = $this->client->request(
+                'POST',
+                $this->settings->url.'api/MessageSend',
+                $this->payload($recipient, $token)
+            );
+            $response->put($recipient, $result);
         }
-        $token = $response['data']['TokenKey'];
 
-        // Create message:
-        $body = [
-            'Messages' => [$this->body],
-            'MobileNumbers' => $this->recipients,
-            'LineNumber' => $this->settings->from,
-        ];
-
-        // Send message:
-        $response = $this->client->request(
-            'POST',
-            $this->settings->url.'api/MessageSend',
-            [
-                'json' => $body,
-                'headers' => [
-                    'x-sms-ir-secure-token' => $token
-                ],
-                'connect_timeout' => 30
-            ]
-        );
-
-        $data = $this->getResponseData($response);
-
-        return (object) $data;
+        return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
     /**
-     * Get the response data.
-     *
-     * @param  object $response
-     * @return array|object
+     * @param string $recipient
+     * @param string $token
+     * @return array
      */
-    protected function getResponseData($response)
+    protected function payload($recipient, $token)
     {
-        if ($response->getStatusCode() != 200 && $response->getStatusCode() != 201) {
-            return ['status' => false, 'message' => 'Request Error. '.$response->getReasonPhrase()];
+        return [
+            'json' => [
+                'Messages' => [$this->body],
+                'MobileNumbers' => [$recipient],
+                'LineNumber' => $this->settings->from,
+            ],
+            'headers' => [
+                'x-sms-ir-secure-token' => $token
+            ],
+            'connect_timeout' => 30
+        ];
+    }
+
+    /**
+     * Get token.
+     *
+     * @throws \Exception
+     * @return string
+     */
+    protected function getToken()
+    {
+        $body = [
+            'UserApiKey' => $this->settings->apiKey,
+            'SecretKey' => $this->settings->secretKey,
+        ];
+        $response = $this->client->post(
+            $this->settings->url.'api/Token',
+            ['json' => $body, 'connect_timeout' => 30]
+        );
+
+        $body = json_decode((string) $response->getBody(), true);
+        if (empty($body['TokenKey'])) {
+            throw new \Exception('Smsir token could not be generated.');
         }
 
-        $data = json_decode((string) $response->getBody(), true);
-
-        if ($data['IsSuccessful'] == false) {
-            return ['status' => false, 'message' => 'Something went wrong.', 'data' => $data];
-        }
-
-        return ['status' => true, 'message' => '', 'data' => $data];
+        return $body['TokenKey'];
     }
 }

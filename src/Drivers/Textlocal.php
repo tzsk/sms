@@ -40,41 +40,31 @@ class Textlocal extends Driver
      */
     public function send()
     {
-        $numbers = implode(',', $this->recipients);
+        $response = collect();
+        foreach ($this->recipients as $recipient) {
+            $response->put(
+                $recipient,
+                $this->client->request('POST', $this->settings->url, $this->payload($recipient))
+            );
+        }
 
-        $response = $this->client->request('POST', $this->settings->url, [
-            'form_params' => [
-                'username' => $this->settings->username,
-                'hash' => $this->settings->hash,
-                'numbers' => $numbers,
-                'sender' => urlencode($this->settings->sender),
-                'message' => $this->body,
-            ],
-        ]);
-
-        $data = $this->getResponseData($response);
-
-        return (object) $data;
+        return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
     /**
-     * Get the response data.
-     *
-     * @param  object $response
-     * @return array|object
+     * @param string $recipient
+     * @return array
      */
-    protected function getResponseData($response)
+    public function payload($recipient)
     {
-        if ($response->getStatusCode() != 200) {
-            return ['status' => false, 'message' => 'Request Error. '.$response->getReasonPhrase()];
-        }
-
-        $data = json_decode((string) $response->getBody(), true);
-
-        if ($data['status'] != 'success') {
-            return ['status' => false, 'message' => 'Something went wrong.', 'data' => $data];
-        }
-
-        return array_merge($data, ['status' => true]);
+        return [
+            'form_params' => [
+                'username' => $this->settings->username,
+                'hash' => $this->settings->hash,
+                'numbers' => $recipient,
+                'sender' => urlencode($this->settings->sender),
+                'message' => $this->body,
+            ],
+        ];
     }
 }

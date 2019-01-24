@@ -10,14 +10,14 @@ class Twilio extends Driver
     /**
      * Twilio Settings.
      *
-     * @var null|object
+     * @var object
      */
     protected $settings;
 
     /**
      * Twilio Client.
      *
-     * @var null|Client
+     * @var Client
      */
     protected $client;
 
@@ -40,39 +40,16 @@ class Twilio extends Driver
      */
     public function send()
     {
-        $response = ['status' => true, 'data' => []];
+        $response = collect();
         foreach ($this->recipients as $recipient) {
-            $sms = $this->client->account->messages->create(
+            $result = $this->client->account->messages->create(
                 $recipient,
                 ['from' => $this->settings->from, 'body' => $this->body]
             );
 
-            $response['data'][$recipient] = $this->getSmsResponse($sms);
+            $response->put($recipient, $result);
         }
 
-        return (object) $response;
-    }
-
-    /**
-     * Get the Twilio Response.
-     *
-     * @param $sms
-     * @return object
-     */
-    protected function getSmsResponse($sms)
-    {
-        $attributes = [
-            'accountSid', 'apiVersion', 'body', 'direction', 'errorCode',
-            'errorMessage', 'from', 'numMedia', 'numSegments', 'price',
-            'priceUnit', 'sid', 'status', 'subresourceUris', 'to', 'uri',
-            'dateCreated', 'dateUpdated', 'dateSent',
-        ];
-
-        $res = [];
-        foreach ($attributes as $attribute) {
-            $res[$attribute] = $sms->$attribute;
-        }
-
-        return (object) $res;
+        return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 }

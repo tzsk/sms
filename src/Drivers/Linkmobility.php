@@ -40,40 +40,31 @@ class Linkmobility extends Driver
      */
     public function send()
     {
-        $numbers = implode(',', $this->recipients);
+        $response = collect();
+        foreach ($this->recipients as $recipient) {
+            $response->put(
+                $recipient,
+                $this->client->request('POST', $this->settings->url, $this->payload($recipient))
+            );
+        }
 
-        $response = $this->client->request('POST', $this->settings->url, [
-            'form_params' => [
-                'USER' => $this->settings->username,
-                'PW' => $this->settings->password,
-                'RCV' => $numbers,
-                'SND' => urlencode($this->settings->sender),
-                'TXT' => $this->body,
-            ],
-        ]);
-
-        $data = $this->getResponseData($response);
-
-        return (object) array_merge($data, ['status' => true]);
+        return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
     /**
-     * @param mixed $response
-     *
-     * @return mixed|object
+     * @param string $recipient
+     * @return array
      */
-    protected function getResponseData($response)
+    protected function payload($recipient)
     {
-        if ($response->getStatusCode() != 200) {
-            return ['status' => false, 'message' => 'Request Error. '.$response->getReasonPhrase()];
-        }
-
-        $data = json_decode((string) $response->getBody(), true);
-
-        if ($data['status'] != 'success') {
-            return ['status' => false, 'message' => 'Something went wrong.', 'data' => $data];
-        }
-
-        return $data;
+        return [
+            'form_params' => [
+                'USER' => $this->settings->username,
+                'PW' => $this->settings->password,
+                'RCV' => $recipient,
+                'SND' => urlencode($this->settings->sender),
+                'TXT' => $this->body,
+            ],
+        ];
     }
 }

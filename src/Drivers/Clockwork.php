@@ -3,21 +3,21 @@
 namespace Tzsk\Sms\Drivers;
 
 use Tzsk\Sms\Abstracts\Driver;
-use Melipayamak\MelipayamakApi;
+use mediaburst\ClockworkSMS\Clockwork as ClockworkClient;
 
-class Melipayamak extends Driver
+class Clockwork extends Driver
 {
     /**
-     * Melipayamak Settings.
+     * Settings.
      *
      * @var object
      */
     protected $settings;
 
     /**
-     * Melipayamak Client.
+     * Client.
      *
-     * @var MelipayamakApi
+     * @var ClockworkClient
      */
     protected $client;
 
@@ -30,20 +30,7 @@ class Melipayamak extends Driver
     public function __construct($settings)
     {
         $this->settings = (object) $settings;
-        $this->client = new MelipayamakApi($this->settings->username, $this->settings->password);
-    }
-
-    /**
-     * Determine if the sms must be a flash message or not.
-     *
-     * @param bool $flash
-     * @return $this
-     */
-    public function asFlash($flash = true)
-    {
-        $this->settings->flash = $flash;
-
-        return $this;
+        $this->client = new ClockworkClient($this->settings->key);
     }
 
     /**
@@ -55,12 +42,10 @@ class Melipayamak extends Driver
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
-            $response->put($recipient, $this->client->sms()->send(
-                $recipient,
-                $this->settings->from,
-                $this->body,
-                $this->settings->flash
-            ));
+            $response->put($recipient, $this->client->send([
+                'to' => $recipient,
+                'message' => $this->body,
+            ]));
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;

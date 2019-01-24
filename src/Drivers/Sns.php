@@ -47,20 +47,15 @@ class Sns extends Driver
      */
     public function send()
     {
-        $response = ['status' => true, 'data' => []];
+        $response = collect();
         foreach ($this->recipients as $recipient) {
-            $response = ['status' => true];
-            try {
-                $response['data'] = $this->client->publish($this->payload($recipient));
-            } catch (\Exception $e) {
-                $response['status'] = false;
-                $response['message'] = $e->getMessage();
-            }
-
-            $response['data'][$recipient] = $response;
+            $response->put(
+                $recipient,
+                $this->client->publish($this->payload($recipient))
+            );
         }
 
-        return (object) $response;
+        return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
     /**

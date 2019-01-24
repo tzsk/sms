@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ba55f7aa3793ae9c7069b53f060363d",
+    "content-hash": "5b47aeb0bcbfa6c035a5ef1ece53994f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -3083,6 +3083,42 @@
                 "sms"
             ],
             "time": "2018-03-19T16:35:00+00:00"
+        },
+        {
+            "name": "mediaburst/clockworksms",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mediaburst/clockwork-php.git",
+                "reference": "5a5e49406614dcb49c0ff3dea2a96a81cbc32c38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mediaburst/clockwork-php/zipball/5a5e49406614dcb49c0ff3dea2a96a81cbc32c38",
+                "reference": "5a5e49406614dcb49c0ff3dea2a96a81cbc32c38",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mediaburst\\ClockworkSMS\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Wise",
+                    "email": "andy@mediaburst.co.uk"
+                }
+            ],
+            "description": "ClockworkSMS, International SMS API",
+            "keywords": [
+                "sms"
+            ],
+            "time": "2017-11-30T10:53:58+00:00"
         },
         {
             "name": "melipayamak/php",

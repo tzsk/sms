@@ -88,7 +88,15 @@ In case you want to use AWS SNS. Then you have to pull a composer library first.
 composer require aws/aws-sdk-php
 ```
 
-#### Twilio Configuratoin:
+#### Clockwork Configuration:
+
+In case you want to use Clockwork. Then you have to pull a composer library first.
+
+```bash
+composer require mediaburst/clockworksms
+```
+
+#### Twilio Configuration:
 
 In case you want to use Twilio. Then you have to pull a composer library first.
 
@@ -98,7 +106,7 @@ composer require twilio/sdk
 
 Then you just have to change the creadentials in the `twilio` driver section.
 
-#### Melipayamak Configuratoin:
+#### Melipayamak Configuration:
 
 In case you want to use Melipayamak. Then you have to pull a composer library first.
 
@@ -106,7 +114,7 @@ In case you want to use Melipayamak. Then you have to pull a composer library fi
 composer require melipayamak/php
 ```
 
-#### Kavenegar Configuratoin:
+#### Kavenegar Configuration:
 
 In case you want to use Kavenegar. Then you have to pull a composer library first.
 
