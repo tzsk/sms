@@ -12,8 +12,10 @@ This is a Laravel 5 Package for SMS Gateway Integration. This package supports `
 
 List of supported gateways:
 - [AWS SNS](https://aws.amazon.com/sns/)
+- [Nexmo](https://www.nexmo.com/)
 - [Textlocal](http://textlocal.in)
 - [Twilio](https://www.twilio.com)
+- [Clockwork](https://www.clockworksms.com/)
 - [LINK Mobility](https://www.linkmobility.com)
 - [Kavenegar](https://kavenegar.com)
 - [Melipayamak](https://www.melipayamak.com)
@@ -86,6 +88,14 @@ In case you want to use AWS SNS. Then you have to pull a composer library first.
 
 ```bash
 composer require aws/aws-sdk-php
+```
+
+#### AWS SNS Configuration:
+
+In case you want to use Nexmo. Then you have to pull a composer library first.
+
+```bash
+composer require nexmo/client
 ```
 
 #### Clockwork Configuration:

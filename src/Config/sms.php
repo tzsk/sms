@@ -22,7 +22,7 @@ return [
     |
     */
     'drivers' => [
-        'sns' => [
+        'sns' => [ // Install: composer require aws/aws-sdk-php
             'key' => 'Your AWS SNS Access Key',
             'secret' => 'Your AWS SNS Secret Key',
             'region' => 'Your AWS SNS Region',
@@ -35,12 +35,17 @@ return [
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
         ],
+        'nexmo' => [ // Install: composer require nexmo/client
+            'key' => 'Your Nexmo API Key',
+            'secret' => 'Your Nexmo API Secret',
+            'from' => 'Your Nexmo From Number',
+        ],
         'twilio' => [ // Install: composer require twilio/sdk
             'sid' => 'Your SID',
             'token' => 'Your Token',
             'from' => 'Your Default From Number',
         ],
-        'clockwork' => [
+        'clockwork' => [ // Install: composer require mediaburst/clockworksms
             'key' => 'Your clockwork API Key',
         ],
         'linkmobility' => [
@@ -80,13 +85,14 @@ return [
     |
     */
     'map' => [
+        'sns' => \Tzsk\Sms\Drivers\Sns::class,
         'textlocal' => \Tzsk\Sms\Drivers\Textlocal::class,
+        'nexmo' => \Tzsk\Sms\Drivers\Nexmo::class,
         'twilio' => \Tzsk\Sms\Drivers\Twilio::class,
+        'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
         'linkmobility' => \Tzsk\Sms\Drivers\Linkmobility::class,
         'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,
         'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
-        'sns' => \Tzsk\Sms\Drivers\Sns::class,
-        'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
     ]
 ];
