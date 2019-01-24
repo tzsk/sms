@@ -83,5 +83,6 @@ return [
         'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,
         'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
+        'sns' => \Tzsk\Sms\Drivers\Sns::class,
     ]
 ];

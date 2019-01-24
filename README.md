@@ -11,6 +11,7 @@
 This is a Laravel 5 Package for SMS Gateway Integration. This package supports `Laravel 5.2 or Higher`. Now Sending SMS is easy.
 
 List of supported gateways:
+- [AWS SNS](https://aws.amazon.com/sns/)
 - [Textlocal](http://textlocal.in)
 - [Twilio](https://www.twilio.com)
 - [LINK Mobility](https://www.linkmobility.com)
@@ -32,6 +33,7 @@ $ composer require tzsk/sms
 If you are using `Laravel 5.5` or higher then you don't need to add the provider and alias.
 
 In your `config/app.php` file add these two lines.
+
 ```php
 # In your providers array.
 'providers' => [
@@ -50,9 +52,41 @@ Now run `php artisan vendor:publish` to publish `config/sms.php` file in your co
 
 In the config file you can set the default driver to use for all your SMS. But you can also change the driver at runtime.
 
+Chose what gateway you would like to use for your application. Then make that as default driver so that you don't have to specify that everywhere. But, you can also use multiple gateways in a project.
+
+```php
+// Eg. if you wan to use SNS.
+'default' => 'sns',
+```
+
+Then fill the credentials for that gateway in the drivers array.
+
+```php
+// Eg. for SNS.
+'drivers' => [
+    'sns' => [
+        // Fill all the credentials here.
+        'key' => 'Your AWS SNS Access Key',
+        'secret' => 'Your AWS SNS Secret Key',
+        'region' => 'Your AWS SNS Region',
+        'sender' => 'Your AWS SNS Sender ID',
+        'type' => 'Tansactional', // Or: 'Promotional'
+    ],
+    ...
+]
+```
+
 #### Textlocal Configuration:
 
 Textlocal is added by default. You just have to change the creadentials in the `textlocal` driver section.
+
+#### AWS SNS Configuration:
+
+In case you want to use AWS SNS. Then you have to pull a composer library first.
+
+```bash
+composer require aws/aws-sdk-php
+```
 
 #### Twilio Configuratoin:
 
@@ -152,6 +186,7 @@ class InvoicePaid extends Notification
 ```
 
 > **Tip:** You can use the same Builder Instance in the send method.
+
 ```php
 $builder = (new SmsBuilder)->via('gateway') # via() is Optional
     ->send('this message')
