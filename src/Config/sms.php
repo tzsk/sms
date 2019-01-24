@@ -22,6 +22,13 @@ return [
     |
     */
     'drivers' => [
+        'sns' => [
+            'key' => 'Your AWS SNS Access Key',
+            'secret' => 'Your AWS SNS Secret Key',
+            'region' => 'Your AWS SNS Region',
+            'sender' => 'Your AWS SNS Sender ID',
+            'type' => 'Tansactional', // Or: 'Promotional'
+        ],
         'textlocal' => [
             'url' => 'http://api.textlocal.in/send/', // Country Wise this may change.
             'username' => 'Your Username',

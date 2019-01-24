@@ -42,6 +42,7 @@
         "guzzlehttp/guzzle": "~6.2"
     },
     "require-dev": {
+        "aws/aws-sdk-php": "^3.87",
         "kavenegar/php": "^1.2",
         "melipayamak/php": "^0.1.0",
         "orchestra/testbench": "~3.1",
