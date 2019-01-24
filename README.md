@@ -90,7 +90,7 @@ In case you want to use AWS SNS. Then you have to pull a composer library first.
 composer require aws/aws-sdk-php
 ```
 
-#### AWS SNS Configuration:
+#### Nexmo Configuration:
 
 In case you want to use Nexmo. Then you have to pull a composer library first.
 
