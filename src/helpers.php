@@ -10,5 +10,4 @@ if (!function_exists('sms')) {
     {
         return app('tzsk-sms');
     }
-
 }

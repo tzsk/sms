@@ -2,14 +2,14 @@
 
 namespace Tzsk\Sms\Tests;
 
-class HelperTest extends TestCase
+class HelpersTest extends TestCase
 {
-    public function test_helper_exists()
+    public function testHelperExists()
     {
         $this->assertTrue(function_exists('sms'));
     }
 
-    public function test_helper_returns_correct_instance()
+    public function testHelperReturnsCorrectInstance()
     {
         $sms = app('tzsk-sms');
         $this->assertTrue(sms() instanceof $sms);
