@@ -157,6 +157,21 @@ Sms::via('gateway')->send("this message")->to(['Number 1', 'Number 2'])->dispatc
 
 # Here gateway is explicit : 'twilio' or 'textlocal' or any other driver in the config.
 # The numbers can be a single string as well.
+
+# If you are not a Laravel's facade fan, you can use sms helper:
+
+sms()->send("this message", function($sms) {
+    $sms->to(['Number 1', 'Number 2']); # The numbers to send to.
+});
+
+sms()->send("this message")->to(['Number 1', 'Number 2'])->dispatch();
+
+sms()->via('gateway')->send("this message", function($sms) {
+    $sms->to(['Number 1', 'Number 2']);
+});
+
+sms()->via('gateway')->send("this message")->to(['Number 1', 'Number 2'])->dispatch();
+
 ```
 
 ## Channel Usage
