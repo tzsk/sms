@@ -3,7 +3,7 @@
 namespace Tzsk\Sms\Drivers;
 
 use Nexmo\Message\Text;
-use Nexmo\Application\Client;
+use Nexmo\Client;
 use Tzsk\Sms\Abstracts\Driver;
 use Nexmo\Client\Credentials\Basic;
 
