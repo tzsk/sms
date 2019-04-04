@@ -20,6 +20,7 @@ List of supported gateways:
 - [Kavenegar](https://kavenegar.com)
 - [Melipayamak](https://www.melipayamak.com)
 - [Smsir](https://www.sms.ir)
+- [SMS Gateway Me](https://smsgateway.me)
 - Others are under way.
 
 ## Install
