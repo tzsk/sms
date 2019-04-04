@@ -70,6 +70,10 @@ return [
             'secretKey' => 'Your Secret Key',
             'from' => 'Your Default From Number',
         ],
+        'smsgatewayme' => [
+            'apiToken' => 'Your Api Token',
+            'from' => 'Your Default Device ID',
+        ],
     ],
 
     /*

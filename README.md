@@ -132,6 +132,14 @@ In case you want to use Kavenegar. Then you have to pull a composer library firs
 composer require kavenegar/php
 ```
 
+#### SMS Gateway Me Configuration:
+
+In case you want to use SMS Gateway Me. Then you have to pull a composer library first.
+
+```bash
+composer require smsgatewayme/client
+```
+
 ## Usage
 
 In your code just use it like this.
