@@ -20,6 +20,7 @@ List of supported gateways:
 - [Kavenegar](https://kavenegar.com)
 - [Melipayamak](https://www.melipayamak.com)
 - [Smsir](https://www.sms.ir)
+- [Tsms](http://www.tsms.ir)
 - Others are under way.
 
 ## Install
@@ -48,7 +49,7 @@ In your `config/app.php` file add these two lines.
     ...
     'Sms' => Tzsk\Sms\Facade\Sms::class,
 ],
-``` 
+```
 
 Now run `php artisan vendor:publish` to publish `config/sms.php` file in your config directory.
 
