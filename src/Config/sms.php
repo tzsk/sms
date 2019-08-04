@@ -70,6 +70,12 @@ return [
             'secretKey' => 'Your Secret Key',
             'from' => 'Your Default From Number',
         ],
+        'tsms' => [
+            'url' => 'http://www.tsms.ir/soapWSDL/?wsdl',
+            'username' => 'Your Username',
+            'password' => 'Your Password',
+            'from' => 'Your Default From Number',
+        ],
     ],
 
     /*
@@ -94,5 +100,6 @@ return [
         'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,
         'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
+        'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
     ]
 ];
