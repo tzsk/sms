@@ -21,6 +21,7 @@ List of supported gateways:
 - [Melipayamak](https://www.melipayamak.com)
 - [Smsir](https://www.sms.ir)
 - [Tsms](http://www.tsms.ir)
+- [Farazsms](https://farazsms.com)
 - Others are under way.
 
 ## Install
