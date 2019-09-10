@@ -76,6 +76,12 @@ return [
             'password' => 'Your Password',
             'from' => 'Your Default From Number',
         ],
+        'farazsms' => [
+            'url' => '37.130.202.188/services.jspd',
+            'username' => 'Your Username',
+            'password' => 'Your Password',
+            'from' => 'Your Default From Number',
+        ],
     ],
 
     /*
@@ -101,5 +107,6 @@ return [
         'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
         'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
+        'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
     ]
 ];
