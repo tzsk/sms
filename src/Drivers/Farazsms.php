@@ -2,20 +2,20 @@
 
 namespace Tzsk\Sms\Drivers;
 
+use GuzzleHttp\Client;
 use Tzsk\Sms\Abstracts\Driver;
-use \SoapClient;
 
 class Farazsms extends Driver
 {
     /**
-     * Tsms Settings.
+     * Farazsms Settings.
      *
      * @var null|object
      */
     protected $settings;
 
     /**
-     * Smsir Client.
+     * Farazsms Client.
      *
      * @var null|SoapClient
      */
@@ -49,7 +49,9 @@ class Farazsms extends Driver
                 $this->settings->url,
                 $this->payload($recipient)
             );
-            $response->put($recipient, json_decode($result));
+            dd($result->getBody()->getContents());
+
+            $response->put($recipient, json_decode($result->getBody()));
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;
@@ -63,12 +65,14 @@ class Farazsms extends Driver
     protected function payload($recipient)
     {
         return [
-            'uname' => $this->settings->username,
-            'pass' => $this->settings->password,
-            'from' => $this->settings->from,
-            'message' => $this->body,
-            'to' => json_encode([$recipient]),
-            'op'=>'send'
+            'form_params' => [
+                'uname' => $this->settings->username,
+                'pass' => $this->settings->password,
+                'from' => $this->settings->from,
+                'message' => $this->body,
+                'to' => json_encode([$recipient]),
+                'op'=>'send'
+            ],
         ];
     }
 }
