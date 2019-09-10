@@ -5,7 +5,7 @@ namespace Tzsk\Sms\Tests\Drivers;
 use Tzsk\Sms\Tests\TestCase;
 use Tzsk\Sms\Tests\Mocks\Drivers\MockFarazsms;
 
-class TsmsTest extends TestCase
+class FarazsmsTest extends TestCase
 {
     use DriverCommon;
 
