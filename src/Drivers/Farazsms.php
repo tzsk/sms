@@ -17,15 +17,15 @@ class Farazsms extends Driver
     /**
      * Farazsms Client.
      *
-     * @var null|SoapClient
+     * @var null|Client
      */
     protected $client;
 
     /**
      * Construct the class with the relevant settings.
      *
-     * @param $settings
-     * @throws \SoapFault
+     * SendSmsInterface constructor.
+     * @param $settings object
      */
     public function __construct($settings)
     {
@@ -49,8 +49,6 @@ class Farazsms extends Driver
                 $this->settings->url,
                 $this->payload($recipient)
             );
-            dd($result->getBody()->getContents());
-
             $response->put($recipient, json_decode($result->getBody()));
         }
 
