@@ -15,7 +15,7 @@ class Tsms extends Driver
     protected $settings;
 
     /**
-     * Smsir Client.
+     * Tsms Client.
      *
      * @var null|SoapClient
      */
