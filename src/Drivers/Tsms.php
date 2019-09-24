@@ -30,7 +30,6 @@ class Tsms extends Driver
     public function __construct($settings)
     {
         $this->settings = (object) $settings;
-        $this->client = new SoapClient($this->settings->url);
     }
 
     /**
@@ -41,19 +40,18 @@ class Tsms extends Driver
      */
     public function send()
     {
+        $this->client = new SoapClient($this->settings->url);
         $response = collect();
         foreach ($this->recipients as $recipient) {
-            $result = $this
-                ->client
-                ->sendSms(
-                    $this->settings->username,
-                    $this->settings->password,
-                    [$this->settings->from],
-                    [$recipient],
-                    [$this->body],
-                    [],
-                    rand()
-                );
+            $result = $this->client->sendSms(
+                $this->settings->username,
+                $this->settings->password,
+                [$this->settings->from],
+                [$recipient],
+                [$this->body],
+                [],
+                rand()
+            );
 
             $response->put($recipient, $result);
         }

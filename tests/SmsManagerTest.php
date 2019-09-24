@@ -5,7 +5,6 @@ namespace Tzsk\Sms\Tests;
 use Tzsk\Sms\Facade\Sms;
 use Tzsk\Sms\SmsBuilder;
 use Tzsk\Sms\Abstracts\Driver;
-use Tzsk\Sms\Drivers\Textlocal;
 use Tzsk\Sms\Tests\Mocks\MockSmsManager;
 use Tzsk\Sms\Tests\Mocks\Drivers\BarDriver;
 
@@ -15,9 +14,9 @@ class SmsManagerTest extends TestCase
     {
         $manager = new MockSmsManager();
 
-        $this->assertArraySubset(config('sms'), $manager->getConfig());
+        $this->assertSameSize(config('sms'), $manager->getConfig());
         $this->assertEquals(config('sms.default'), $manager->getDriver());
-        $this->assertArraySubset($manager->getSettings(), config('sms.drivers.'.$manager->getDriver()));
+        $this->assertSameSize($manager->getSettings(), config('sms.drivers.'.$manager->getDriver()));
     }
 
     public function test_it_wont_accespt_wrong_driver()
@@ -32,7 +31,7 @@ class SmsManagerTest extends TestCase
         $manager = (new MockSmsManager())->via($gateway);
 
         $this->assertEquals($gateway, $manager->getDriver());
-        $this->assertArraySubset($manager->getSettings(), config('sms.drivers.'.$gateway));
+        $this->assertSameSize($manager->getSettings(), config('sms.drivers.'.$gateway));
     }
 
     public function test_it_has_proper_driver_instance()

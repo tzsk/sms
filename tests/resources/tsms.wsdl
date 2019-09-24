@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml-stylesheet type="text/xsl" href="./wsdl-viewer.xsl"?>-->
+<definitions name="SMSService" targetNamespace="http://sms.tsms.ir/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sms.tsms.ir/" xmlns:encoding="http://schemas.xmlsoap.org/soap/encoding/" >
+	<types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sms.tsms.ir/">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<complexType name="ArrayOfString">
+				<complexContent>
+					<restriction base="encoding:Array">
+						<attribute ref="encoding:arrayType" wsdl:arrayType="xsd:string[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="ArrayOfInt">
+				<complexContent>
+					<restriction base="encoding:Array">
+						<attribute ref="encoding:arrayType" wsdl:arrayType="xsd:int[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="object1">
+                <sequence>
+                    <element minOccurs="0" maxOccurs="1" name="status" type="xs:int"  />
+                    <element minOccurs="0" maxOccurs="1" name="phone" type="xs:string"  />
+					<element minOccurs="0" maxOccurs="1" name="trycount" type="xs:int"/>
+					<element minOccurs="0" maxOccurs="1" name="duration" type="xs:int" />
+                </sequence>
+            </complexType>
+
+            <complexType name="ArrayOfObject">
+                <complexContent>
+                    <restriction base="encoding:Array">
+                        <attribute ref="encoding:arrayType" wsdl:arrayType="tns:object1[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+			<complexType name="object2">
+                <sequence>
+                    <element minOccurs="0" maxOccurs="1" name="status" type="xs:int"  />
+                    <element minOccurs="0" maxOccurs="1" name="phone" type="xs:string"  />
+
+
+                </sequence>
+            </complexType>
+
+            <complexType name="ArrayOfObjectSMS">
+                <complexContent>
+                    <restriction base="encoding:Array">
+                        <attribute ref="encoding:arrayType" wsdl:arrayType="tns:object2[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+
+			<complexType name="object3">
+                <sequence>
+                    <element minOccurs="0" maxOccurs="1" name="status" type="xs:int"  />
+                    <element minOccurs="0" maxOccurs="1" name="id" type="xs:int"  />
+                    <element minOccurs="0" maxOccurs="1" name="phone" type="xs:string"  />
+					<element minOccurs="0" maxOccurs="1" name="sms_number" type="xs:string"  />
+					<element minOccurs="0" maxOccurs="1" name="msg" type="xs:string"  />
+					<element minOccurs="0" maxOccurs="1" name="date" type="xs:string"  />
+                </sequence>
+            </complexType>
+
+			<complexType name="ArrayOfObjectR">
+                <complexContent>
+                    <restriction base="encoding:Array">
+                        <attribute ref="encoding:arrayType" wsdl:arrayType="tns:object3[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+
+			<complexType name="ArrayOfObjectInfo">
+                <complexContent>
+                    <restriction base="encoding:Array">
+                        <attribute ref="encoding:arrayType" wsdl:arrayType="tns:objectInfo[]"/>
+                    </restriction>
+                </complexContent>
+            </complexType>
+
+			<complexType name="objectInfo">
+                <sequence>
+                    <element minOccurs="0" maxOccurs="1" name="credit" type="xs:int"  />
+                    <element minOccurs="0" maxOccurs="1" name="sms_numebrs" type="tns:ArrayOfString"  />
+                </sequence>
+            </complexType>
+
+
+		</schema>
+	</types>
+	<message name="sendSmsRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="sms_number" type="tns:ArrayOfString"/>
+		<part name="mobile" type="tns:ArrayOfString"/>
+		<part name="msg" type="tns:ArrayOfString"/>
+		<part name="mclass" type="tns:ArrayOfString"/>
+		<part name="messageid" type="xs:string"/>
+	</message>
+	<message name="sendSmsResponse">
+		<part name="sendSmsResult" type="tns:ArrayOfInt"/>
+	</message>
+
+
+	<message name="sendSmsExtRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="sms_number" type="tns:ArrayOfString"/>
+		<part name="mobile" type="tns:ArrayOfString"/>
+		<part name="msg" type="tns:ArrayOfString"/>
+		<part name="mclass" type="tns:ArrayOfString"/>
+		<part name="messageid" type="xs:string"/>
+		<part name="send_dates" type="tns:ArrayOfInt"/>
+
+	</message>
+	<message name="sendSmsExtResponse">
+		<part name="sendSmsExtResult" type="tns:ArrayOfInt"/>
+	</message>
+
+
+
+	<message name="sendSmsGroupRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="sms_number" type="xs:string"/>
+		<part name="mobile" type="xs:string"/>
+		<part name="msg" type="xs:string"/>
+		<part name="mclass" type="xs:int"/>
+		<part name="messageid" type="xs:string"/>
+	</message>
+	<message name="sendSmsGroupResponse">
+		<part name="sendSmsResult" type="tns:ArrayOfInt"/>
+	</message>
+
+	<message name="GetSmsReceivedRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+
+	</message>
+	<message name="GetSmsReceivedResponse">
+		<part name="GetSmsReceivedResponse" type="tns:ArrayOfObjectR"/>
+
+	</message>
+
+
+
+	<message name="GetSmsReceivedIdRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="id" type="xs:int"/>
+
+	</message>
+	<message name="GetSmsReceivedIdResponse">
+		<part name="GetSmsReceivedIdResponse" type="tns:ArrayOfObjectR"/>
+
+	</message>
+
+	<message name="GetDeliverySmsRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="recipientIds" type="tns:ArrayOfInt"/>
+	</message>
+	<message name="GetDeliverySmsResponse">
+		<part name="GetDeliverySmsResult" type="tns:ArrayOfInt"/>
+	</message>
+	<message name="WsdlCheckSendRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="messageid" type="xs:string"/>
+	</message>
+	<message name="WsdlCheckSendResponse">
+		<part name="WsdlCheckSendResult" type="tns:ArrayOfInt"/>
+	</message>
+    <message name="DeleteSendSMSQueueRequest">
+        <part name="username" type="xs:string"/>
+        <part name="password" type="xs:string"/>
+        <part name="messageid" type="xs:string"/>
+    </message>
+    <message name="DeleteSendSMSQueueResponse">
+        <part name="DeleteSendSMSQueueResult" type="tns:ArrayOfInt"/>
+    </message>
+
+	<message name="sendSoundOfTextRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="phones" type="xs:string"/>
+		<part name="msg" type="xs:string"/>
+		<part name="speaker" type="xs:string"/>
+		<part name="gainLevel" type="xs:int"/>
+		<part name="pitchLevel" type="xs:int"/>
+		<part name="punctuationLevel" type="xs:int"/>
+		<part name="speechSpeedLevel" type="xs:int"/>
+		<part name="toneLevel" type="xs:int"/>
+		<part name="tryCount" type="xs:int"/>
+		<part name="MinuteBetweenTry" type="xs:int"/>
+		<part name="messageid" type="xs:string"/>
+	</message>
+	<message name="sendSoundOfTextResponse">
+		<part name="sendSoundOfTextResult" type="tns:ArrayOfInt"/>
+	</message>
+
+	<message name="sendSoundRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="phones" type="xs:string"/>
+		<part name="title" type="xs:string"/>
+		<part name="soundid" type="xs:int"/>
+		<part name="soundIdType" type="xs:int"/>
+		<part name="tryCount" type="xs:int"/>
+		<part name="MinuteBetweenTry" type="xs:int"/>
+		<part name="messageid" type="xs:string"/>
+	</message>
+	<message name="sendSoundResponse">
+		<part name="sendSoundResult" type="tns:ArrayOfInt"/>
+	</message>
+	<message name="uploadRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="title" type="xs:string"/>
+		<part name="binaryfile" type="xs:base64Binary"/>
+	</message>
+	<message name="uploadResponse">
+		<part name="uploadResponse" type="tns:ArrayOfInt"/>
+	</message>
+
+	<message name="GetDeliverySoundRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="phones" type="xs:string"/>
+		<part name="idsendsound" type="xs:int"/>
+	</message>
+	<message name="GetDeliverySoundResponse">
+		<part name="GetDeliverySoundResponse" type="tns:ArrayOfObject"/>
+	</message>
+	<message name="GetDeliverySmsGroupRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="phones" type="xs:string"/>
+		<part name="idsendsms" type="xs:int"/>
+	</message>
+	<message name="GetDeliverySmsGroupResponse">
+		<part name="GetDeliverySmsGroupResponse" type="tns:ArrayOfObjectSMS"/>
+	</message>
+	<message name="sendSoundOfPatternRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+		<part name="phone" type="xs:string"/>
+		<part name="title" type="xs:string"/>
+		<part name="patternid" type="xs:int"/>
+		<part name="patternVariables" type="tns:ArrayOfString"/>
+		<part name="tryCount" type="xs:int"/>
+		<part name="MinuteBetweenTry" type="xs:int"/>
+		<part name="messageid" type="xs:string"/>
+	</message>
+	<message name="sendSoundOfPatternResponse">
+		<part name="sendSoundOfPatternResponse" type="tns:ArrayOfInt"/>
+	</message>
+	<message name="UserInfoRequest">
+		<part name="username" type="xs:string"/>
+		<part name="password" type="xs:string"/>
+	</message>
+	<message name="UserInfoResponse">
+		<part name="UserInfoResponse" type="tns:ArrayOfObjectInfo"/>
+	</message>
+	<portType name="tsmsService" >
+
+		<operation name="sendSms" parameterOrder="username password sms_number mobile msg mclass messageid">
+			<input message="tns:sendSmsRequest"/>
+			<output message="tns:sendSmsResponse"/>
+		</operation>
+		<operation name="sendSmsExt" parameterOrder="username password sms_number mobile msg mclass messageid send_dates">
+			<input message="tns:sendSmsExtRequest"/>
+			<output message="tns:sendSmsExtResponse"/>
+		</operation>
+
+		<operation name="sendSmsGroup" parameterOrder="username password sms_number mobile msg mclass messageid">
+			<input message="tns:sendSmsGroupRequest"/>
+			<output message="tns:sendSmsGroupResponse"/>
+		</operation>
+		<operation name="GetDeliverySms" parameterOrder="username password recipientIds">
+			<input message="tns:GetDeliverySmsRequest"/>
+			<output message="tns:GetDeliverySmsResponse"/>
+		</operation>
+		<operation name="WsdlCheckSend" parameterOrder="username password messageid">
+			<input message="tns:WsdlCheckSendRequest"/>
+			<output message="tns:WsdlCheckSendResponse"/>
+		</operation>
+
+        <operation name="DeleteSendSMSQueue" parameterOrder="username password messageid">
+            <input message="tns:DeleteSendSMSQueueRequest"/>
+            <output message="tns:DeleteSendSMSQueueResponse"/>
+        </operation>
+
+		<operation name="sendSoundOfText" parameterOrder="username password phones msg speaker gainLevel pitchLevel punctuationLevel speechSpeedLevel toneLevel tryCount MinuteBetweenTry messageid">
+			<input message="tns:sendSoundOfTextRequest"/>
+			<output message="tns:sendSoundOfTextResponse"/>
+		</operation>
+
+		<operation name="sendSound" parameterOrder="username password phones title soundid soundIdType tryCount MinuteBetweenTry messageid">
+			<input message="tns:sendSoundRequest"/>
+			<output message="tns:sendSoundResponse"/>
+		</operation>
+		<operation name="upload" parameterOrder="username password title binaryfile">
+			<input message="tns:uploadRequest"/>
+			<output message="tns:uploadResponse"/>
+		</operation>
+
+		<operation name="GetDeliverySound" parameterOrder="username password phones idsendsound">
+			<input message="tns:GetDeliverySoundRequest"/>
+			<output message="tns:GetDeliverySoundResponse"/>
+		</operation>
+
+		<operation name="GetDeliverySmsGroup" parameterOrder="username password phones idsendsms">
+			<input message="tns:GetDeliverySmsGroupRequest"/>
+			<output message="tns:GetDeliverySmsGroupResponse"/>
+		</operation>
+
+		<operation name="GetSmsReceived" parameterOrder="username password">
+			<input message="tns:GetSmsReceivedRequest"/>
+			<output message="tns:GetSmsReceivedResponse"/>
+		</operation>
+		<operation name="GetSmsReceivedId" parameterOrder="username password id">
+			<input message="tns:GetSmsReceivedIdRequest"/>
+			<output message="tns:GetSmsReceivedIdResponse"/>
+		</operation>
+		<operation name="sendSoundOfPattern" parameterOrder="username password">
+			<input message="tns:sendSoundOfPatternRequest"/>
+			<output message="tns:sendSoundOfPatternResponse"/>
+		</operation>
+		<operation name="UserInfo" parameterOrder="username password">
+			<input message="tns:UserInfoRequest"/>
+			<output message="tns:UserInfoResponse"/>
+		</operation>
+
+
+	</portType>
+
+	<binding name="tsms_Binding" type="tns:tsmsService">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+
+
+		<operation name="sendSoundOfText">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="sendSound">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="GetSmsReceived">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="GetSmsReceivedId">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="upload">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="GetDeliverySmsGroup">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="GetDeliverySound">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="sendSms">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="sendSmsExt">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="sendSmsGroup">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="GetDeliverySms">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+		<operation name="WsdlCheckSend">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+        <operation name="DeleteSendSMSQueue">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+            </output>
+        </operation>
+		<operation name="sendSoundOfPattern">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="UserInfo">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sms.tsms.ir/" use="encoded"/>
+			</output>
+		</operation>
+
+	</binding>
+
+	<service name="tsmsSoapService">
+		<documentation>WSDL File for tsms.ir Service</documentation>
+		<port binding="tns:tsms_Binding" name="tsms_Port">
+			<soap:address location="http://www.tsms.ir/soapWSDL/"/>
+		</port>
+	</service>
+</definitions>
