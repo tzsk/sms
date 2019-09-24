@@ -57,7 +57,6 @@ class Farazsms extends Driver
 
     /**
      * @param string $recipient
-     * @param string $token
      * @return array
      */
     protected function payload($recipient)
