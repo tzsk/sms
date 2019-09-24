@@ -10,10 +10,10 @@ use Nexmo\Client\Credentials\Basic;
 class Nexmo extends Driver
 {
     /**
-         * Settings.
-         *
-         * @var object
-         */
+     * Settings.
+     *
+     * @var object
+     */
     protected $settings;
 
     /**

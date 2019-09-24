@@ -3,7 +3,6 @@
 namespace Tzsk\Sms\Channels;
 
 use Tzsk\Sms\SmsBuilder;
-use Tzsk\Sms\SmsManager;
 use Illuminate\Notifications\Notification;
 
 class SmsChannel
