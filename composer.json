@@ -49,7 +49,7 @@
         "nexmo/client": "^1.6",
         "orchestra/testbench": "~3.7|~3.8|^4.0",
         "phpunit/phpunit": "^8.0",
-        "squizlabs/php_codesniffer": "^2.3",
+        "squizlabs/php_codesniffer": "^2.3 || ^3.0",
         "twilio/sdk": "^5.27"
     },
     "autoload": {
