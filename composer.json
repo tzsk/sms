@@ -46,7 +46,7 @@
         "kavenegar/php": "^1.2",
         "mediaburst/clockworksms": "^2.0",
         "melipayamak/php": "^0.1.0",
-        "nexmo/client": "^1.6",
+        "nexmo/client": "^1.6 || ^2.0",
         "orchestra/testbench": "~3.7|~3.8|^4.0",
         "phpunit/phpunit": "^8.0",
         "squizlabs/php_codesniffer": "^2.3 || ^3.0",
