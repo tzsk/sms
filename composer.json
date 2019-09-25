@@ -1,7 +1,7 @@
 {
     "name": "tzsk/sms",
     "type": "library",
-    "description": "Laravel 5 SMS Gateway Integration Package",
+    "description": "Laravel SMS Gateway Integration Package",
     "keywords": [
         "tzsk",
         "sms",
