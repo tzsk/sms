@@ -2,6 +2,9 @@
 
 namespace Tzsk\Sms;
 
+use Exception;
+use ReflectionClass;
+
 class SmsManager
 {
     /**
@@ -143,22 +146,15 @@ class SmsManager
      */
     protected function validateDriver()
     {
-        if (empty($this->driver)) {
-            throw new \Exception('Driver not selected or default driver does not exist.');
-        }
+        $conditions = [
+            'Driver not selected or default driver does not exist.' => empty($this->driver),
+            'Driver not found in config file. Try updating the package.' => empty($this->config['drivers'][$this->driver]) || empty($this->config['map'][$this->driver]),
+            'Driver source not found. Please update the package.' => ! class_exists($this->config['map'][$this->driver]),
+            'Driver must be an instance of Contracts\DriverInterface.' => ! (new ReflectionClass($this->config['map'][$this->driver]))->implementsInterface(Contracts\DriverInterface::class),
+        ];
 
-        if (empty($this->config['drivers'][$this->driver]) || empty($this->config['map'][$this->driver])) {
-            throw new \Exception('Driver not found in config file. Try updating the package.');
-        }
-
-        if (! class_exists($this->config['map'][$this->driver])) {
-            throw new \Exception('Driver source not found. Please update the package.');
-        }
-
-        $reflect = new \ReflectionClass($this->config['map'][$this->driver]);
-
-        if (! $reflect->implementsInterface(Contracts\DriverInterface::class)) {
-            throw new \Exception("Driver must be an instance of Contracts\DriverInterface.");
+        foreach ($conditions as $ex => $condition) {
+            throw_if($condition, new Exception($ex));
         }
     }
 }

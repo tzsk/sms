@@ -2,6 +2,7 @@
 
 namespace Tzsk\Sms\Channels;
 
+use Exception;
 use Tzsk\Sms\SmsBuilder;
 use Illuminate\Notifications\Notification;
 
@@ -39,16 +40,14 @@ class SmsChannel
      */
     private function validate($message)
     {
-        if (! is_a($message, SmsBuilder::class)) {
-            throw new \Exception('Invalid data for sms notification.');
-        }
+        $conditions = [
+            'Invalid data for sms notification.' => ! is_a($message, SmsBuilder::class),
+            'Message body could not be empty.' => empty($message->getBody()),
+            'Message recipient could not be empty.' => empty($message->getRecipients()),
+        ];
 
-        if (empty($message->getBody())) {
-            throw new \Exception('Message body could not be empty.');
-        }
-
-        if (empty($message->getRecipients())) {
-            throw new \Exception('Message recipient could not be empty.');
+        foreach ($conditions as $ex => $condition) {
+            throw_if($condition, new Exception($ex));
         }
     }
 }
