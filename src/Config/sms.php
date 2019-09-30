@@ -82,6 +82,10 @@ return [
             'password' => 'Your Password',
             'from' => 'Your Default From Number',
         ],
+        'smsgatewayme' => [
+            'apiToken' => 'Your Api Token',
+            'from' => 'Your Default Device ID',
+        ],
     ],
 
     /*

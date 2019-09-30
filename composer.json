@@ -1,30 +1,20 @@
 {
     "name": "tzsk/sms",
     "type": "library",
-    "description": "Laravel 5 SMS Gateway Integration Package",
+    "description": "Laravel SMS Gateway Integration Package",
     "keywords": [
         "tzsk",
         "sms",
-        "sms gateway",
         "laravel sms gateway",
         "laravel textlocal",
-        "textlocal sms gateway",
-        "laravel textlocal package",
         "laravel twilio",
-        "twilio sms gateway",
-        "laravel twilio package",
         "laravel link mobility",
-        "link mobility sms gateway",
-        "laravel link mobility package",
         "laravel kavenegar",
-        "kavenegar sms gateway",
-        "laravel kavenegar package",
         "laravel melipayamak",
-        "melipayamak sms gateway",
-        "laravel melipayamak package",
         "laravel smsir",
-        "smsir sms gateway",
-        "laravel smsir package"
+        "laravel tsms",
+        "laravel farazsms",
+        "laravel SMS gateway me"
     ],
     "homepage": "https://github.com/tzsk/sms",
     "license": "MIT",
@@ -34,6 +24,12 @@
             "email": "mailtokmahmed@gmail.com",
             "homepage": "https://github.com/tzsk",
             "role": "Developer"
+        }
+    ],
+    "repositories": [
+        {
+          "type": "git",
+          "url": "https://github.com/smsgatewayme/client-php.git"
         }
     ],
     "require": {
@@ -49,6 +45,7 @@
         "nexmo/client": "^1.6",
         "orchestra/testbench": "~3.7|~3.8|^4.0",
         "phpunit/phpunit": "^8.0",
+        "smsgatewayme/client": "^0.0.1",
         "squizlabs/php_codesniffer": "^2.3",
         "twilio/sdk": "^5.27"
     },

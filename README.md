@@ -8,7 +8,7 @@
 [![Code Climate](https://codeclimate.com/github/tzsk/payu/badges/gpa.svg)](https://codeclimate.com/github/tzsk/sms)
 [![Quality Score][ico-code-quality]][link-code-quality]
 
-This is a Laravel 5 Package for SMS Gateway Integration. This package supports `Laravel 5.2 or Higher`. Now Sending SMS is easy.
+This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
 
 List of supported gateways:
 - [AWS SNS](https://aws.amazon.com/sns/)
@@ -22,6 +22,7 @@ List of supported gateways:
 - [Smsir](https://www.sms.ir)
 - [Tsms](http://www.tsms.ir)
 - [Farazsms](https://farazsms.com)
+- [SMS Gateway Me](https://smsgateway.me)
 - Others are under way.
 
 ## Install
@@ -132,6 +133,14 @@ In case you want to use Kavenegar. Then you have to pull a composer library firs
 
 ```bash
 composer require kavenegar/php
+```
+
+#### SMS Gateway Me Configuration:
+
+In case you want to use SMS Gateway Me. Then you have to pull a composer library first.
+
+```bash
+composer require smsgatewayme/client
 ```
 
 ## Usage
