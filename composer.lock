@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "225b21c00305731d573b5a08c5b1ab3e",
+    "content-hash": "485c2a5daf214b9501663a226d79bf64",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2809,16 +2809,16 @@
     "packages-dev": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.10",
+            "version": "3.112.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d744986383812c6a9e52134adabbb5683e6750fe"
+                "reference": "0326ba62f6ee0bb075f2b875631ec4abee93bee1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d744986383812c6a9e52134adabbb5683e6750fe",
-                "reference": "d744986383812c6a9e52134adabbb5683e6750fe",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0326ba62f6ee0bb075f2b875631ec4abee93bee1",
+                "reference": "0326ba62f6ee0bb075f2b875631ec4abee93bee1",
                 "shasum": ""
             },
             "require": {
@@ -2888,7 +2888,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-09-27T18:09:39+00:00"
+            "time": "2019-10-02T18:39:21+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -5200,6 +5200,49 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "smsgatewayme/client",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smsgatewayme/client-php.git",
+                "reference": "864f326ad6951599b487aab3cc350a966c5cbd86"
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SMSGatewayMe\\Client\\": "lib/"
+                }
+            },
+            "license": [
+                "Apache v2"
+            ],
+            "authors": [
+                {
+                    "name": "SMS Gateway Me",
+                    "homepage": "https://smsgateway.me"
+                }
+            ],
+            "homepage": "https://smsgateway.me",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "time": "2018-05-16T00:07:48+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
