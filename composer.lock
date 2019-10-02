@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "225b21c00305731d573b5a08c5b1ab3e",
+    "content-hash": "485c2a5daf214b9501663a226d79bf64",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -5202,6 +5202,49 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
+            "name": "smsgatewayme/client",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smsgatewayme/client-php.git",
+                "reference": "864f326ad6951599b487aab3cc350a966c5cbd86"
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SMSGatewayMe\\Client\\": "lib/"
+                }
+            },
+            "license": [
+                "Apache v2"
+            ],
+            "authors": [
+                {
+                    "name": "SMS Gateway Me",
+                    "homepage": "https://smsgateway.me"
+                }
+            ],
+            "homepage": "https://smsgateway.me",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "time": "2018-05-16T00:07:48+00:00"
+        },
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.5.0",
             "source": {
@@ -5294,16 +5337,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.36.0",
+            "version": "5.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "ad4093a19762b76b1ec316ebdb6e0766539859ff"
+                "reference": "a62f726b07725d320f87f4aed43da35693fe14f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/ad4093a19762b76b1ec316ebdb6e0766539859ff",
-                "reference": "ad4093a19762b76b1ec316ebdb6e0766539859ff",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/a62f726b07725d320f87f4aed43da35693fe14f1",
+                "reference": "a62f726b07725d320f87f4aed43da35693fe14f1",
                 "shasum": ""
             },
             "require": {
@@ -5340,7 +5383,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2019-09-18T22:10:18+00:00"
+            "time": "2019-10-02T21:08:39+00:00"
         },
         {
             "name": "webmozart/assert",
