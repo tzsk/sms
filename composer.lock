@@ -5337,16 +5337,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.36.0",
+            "version": "5.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "ad4093a19762b76b1ec316ebdb6e0766539859ff"
+                "reference": "a62f726b07725d320f87f4aed43da35693fe14f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/ad4093a19762b76b1ec316ebdb6e0766539859ff",
-                "reference": "ad4093a19762b76b1ec316ebdb6e0766539859ff",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/a62f726b07725d320f87f4aed43da35693fe14f1",
+                "reference": "a62f726b07725d320f87f4aed43da35693fe14f1",
                 "shasum": ""
             },
             "require": {
@@ -5383,7 +5383,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2019-09-18T22:10:18+00:00"
+            "time": "2019-10-02T21:08:39+00:00"
         },
         {
             "name": "webmozart/assert",
