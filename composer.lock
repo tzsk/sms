@@ -5338,16 +5338,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.36.1",
+            "version": "5.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "a62f726b07725d320f87f4aed43da35693fe14f1"
+                "reference": "bd5b4d0b49814d04c118f8dc3ea3e2395073ba6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/a62f726b07725d320f87f4aed43da35693fe14f1",
-                "reference": "a62f726b07725d320f87f4aed43da35693fe14f1",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/bd5b4d0b49814d04c118f8dc3ea3e2395073ba6d",
+                "reference": "bd5b4d0b49814d04c118f8dc3ea3e2395073ba6d",
                 "shasum": ""
             },
             "require": {
@@ -5356,7 +5356,7 @@
             "require-dev": {
                 "apigen/apigen": "^4.1",
                 "guzzlehttp/guzzle": "^6.3",
-                "phpunit/phpunit": "^7.5"
+                "phpunit/phpunit": ">=4.5"
             },
             "suggest": {
                 "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
@@ -5384,7 +5384,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2019-10-02T21:08:39+00:00"
+            "time": "2019-10-16T21:59:18+00:00"
         },
         {
             "name": "webmozart/assert",
