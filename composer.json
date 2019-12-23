@@ -41,7 +41,7 @@
         "aws/aws-sdk-php": "^3.87",
         "kavenegar/php": "^1.2",
         "mediaburst/clockworksms": "^2.0",
-        "melipayamak/php": "^0.1.0",
+        "melipayamak/php": "^0.1.0 || ^1.0.0",
         "nexmo/client": "^1.6 || ^2.0",
         "orchestra/testbench": "~3.7|~3.8|^4.0",
         "phpunit/phpunit": "^8.0",
