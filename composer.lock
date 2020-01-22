@@ -5342,16 +5342,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.37.0",
+            "version": "5.42.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "bd5b4d0b49814d04c118f8dc3ea3e2395073ba6d"
+                "reference": "aa93c45dda3ac28f0fd01aa775313017af7aa8c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/bd5b4d0b49814d04c118f8dc3ea3e2395073ba6d",
-                "reference": "bd5b4d0b49814d04c118f8dc3ea3e2395073ba6d",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/aa93c45dda3ac28f0fd01aa775313017af7aa8c2",
+                "reference": "aa93c45dda3ac28f0fd01aa775313017af7aa8c2",
                 "shasum": ""
             },
             "require": {
@@ -5388,7 +5388,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2019-10-16T21:59:18+00:00"
+            "time": "2020-01-22T21:27:31+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -5504,6 +5504,7 @@
                 "psr",
                 "psr-7"
             ],
+            "abandoned": "laminas/laminas-diactoros",
             "time": "2019-07-10T16:13:25+00:00"
         }
     ],
