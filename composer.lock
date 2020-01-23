@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "485c2a5daf214b9501663a226d79bf64",
+    "content-hash": "16694670ce6a315619aefbf984f69e61",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -3345,16 +3345,16 @@
         },
         {
             "name": "melipayamak/php",
-            "version": "0.1.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Melipayamak/melipayamak-php.git",
-                "reference": "c167f71190897617a8aaa06e29539212ddf2a225"
+                "reference": "b8f7db07eef1fa57f8a23d379949e3f04cb923b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Melipayamak/melipayamak-php/zipball/c167f71190897617a8aaa06e29539212ddf2a225",
-                "reference": "c167f71190897617a8aaa06e29539212ddf2a225",
+                "url": "https://api.github.com/repos/Melipayamak/melipayamak-php/zipball/b8f7db07eef1fa57f8a23d379949e3f04cb923b8",
+                "reference": "b8f7db07eef1fa57f8a23d379949e3f04cb923b8",
                 "shasum": ""
             },
             "require": {
@@ -3378,6 +3378,10 @@
                 {
                     "name": "Ara Code It",
                     "email": "ahnara92@gmail.com"
+                },
+                {
+                    "name": "Amirhossein Mehrvarzi",
+                    "email": "info@trigger.ir"
                 }
             ],
             "description": "A PHP wrapper for melipayamak's web services",
@@ -3387,7 +3391,7 @@
                 "melipayamak",
                 "sms"
             ],
-            "time": "2018-03-13T01:38:51+00:00"
+            "time": "2019-12-23T13:19:36+00:00"
         },
         {
             "name": "mockery/mockery",
