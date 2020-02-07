@@ -2976,16 +2976,16 @@
     "packages-dev": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.133.9",
+            "version": "3.133.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "59e059bd6d25d315a03cdad10b79102df5cb0a1b"
+                "reference": "17e19f58676e418d9b685378a3b8210673443bce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/59e059bd6d25d315a03cdad10b79102df5cb0a1b",
-                "reference": "59e059bd6d25d315a03cdad10b79102df5cb0a1b",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/17e19f58676e418d9b685378a3b8210673443bce",
+                "reference": "17e19f58676e418d9b685378a3b8210673443bce",
                 "shasum": ""
             },
             "require": {
@@ -3056,7 +3056,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-02-06T19:11:31+00:00"
+            "time": "2020-02-07T19:17:22+00:00"
         },
         {
             "name": "doctrine/instantiator",
