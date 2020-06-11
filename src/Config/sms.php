@@ -77,7 +77,7 @@ return [
             'from' => 'Your Default From Number',
         ],
         'farazsms' => [
-            'url' => '37.130.202.188/services.jspd',
+            'url' => '188.0.240.110/services.jspd',
             'username' => 'Your Username',
             'password' => 'Your Password',
             'from' => 'Your Default From Number',
