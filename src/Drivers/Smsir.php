@@ -3,42 +3,20 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class Smsir extends Driver
 {
-    /**
-     * Smsir Settings.
-     *
-     * @var null|object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Smsir Client.
-     *
-     * @var null|Client
-     */
-    protected $client;
+    protected Client $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param $settings object
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
+        $this->settings = $settings;
         $this->client = new Client();
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
     public function send()
     {
         $token = $this->getToken();
@@ -47,7 +25,7 @@ class Smsir extends Driver
         foreach ($this->recipients as $recipient) {
             $result = $this->client->request(
                 'POST',
-                $this->settings->url.'api/MessageSend',
+                data_get($this->settings, 'url').'/api/MessageSend',
                 $this->payload($recipient, $token)
             );
             $response->put($recipient, $result);
@@ -67,29 +45,23 @@ class Smsir extends Driver
             'json' => [
                 'Messages' => [$this->body],
                 'MobileNumbers' => [$recipient],
-                'LineNumber' => $this->settings->from,
+                'LineNumber' => data_get($this->settings, 'from'),
             ],
             'headers' => [
-                'x-sms-ir-secure-token' => $token
+                'x-sms-ir-secure-token' => $token,
             ],
-            'connect_timeout' => 30
+            'connect_timeout' => 30,
         ];
     }
 
-    /**
-     * Get token.
-     *
-     * @throws \Exception
-     * @return string
-     */
     protected function getToken()
     {
         $body = [
-            'UserApiKey' => $this->settings->apiKey,
-            'SecretKey' => $this->settings->secretKey,
+            'UserApiKey' => data_get($this->settings, 'apiKey'),
+            'SecretKey' => data_get($this->settings, 'secretKey'),
         ];
         $response = $this->client->post(
-            $this->settings->url.'api/Token',
+            data_get($this->settings, 'url').'/api/Token',
             ['json' => $body, 'connect_timeout' => 30]
         );
 

@@ -2,8 +2,8 @@
 
 namespace Tzsk\Sms\Tests\Drivers;
 
-use Tzsk\Sms\Tests\TestCase;
 use Tzsk\Sms\Tests\Mocks\Drivers\MockKavenegar;
+use Tzsk\Sms\Tests\TestCase;
 
 class KavenegarTest extends TestCase
 {

@@ -2,49 +2,27 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Abstracts\Driver;
+use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\ApiClient;
 use SMSGatewayMe\Client\Configuration;
-use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\Model\SendMessageRequest;
+use Tzsk\Sms\Contracts\Driver;
 
 class SmsGatewayMe extends Driver
 {
-    /**
-     * SMSGatewayMe Settings.
-     *
-     * @var object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * SMSGatewayMe Client.
-     *
-     * @var SMSGatewayMe\Client\Api\MessageApi
-     */
-    protected $client;
+    protected MessageApi $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param $settings object
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
+        $this->settings = $settings;
 
-        $config = Configuration::getDefaultConfiguration();
-        $config->setApiKey('Authorization', $this->settings->apiToken);
-        $apiClient = new ApiClient($config);
-        $this->client = new MessageApi($apiClient);
+        $config = Configuration::getDefaultConfiguration()
+            ->setApiKey('Authorization', data_get($this->settings, 'apiToken'));
+        $this->client = new MessageApi(new ApiClient($config));
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     */
     public function send()
     {
         $response = collect();
@@ -58,16 +36,12 @@ class SmsGatewayMe extends Driver
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    /**
-     * @param string $recipient
-     * @return array
-     */
     protected function payload($recipient)
     {
         return new SendMessageRequest([
             'phoneNumber' => $recipient,
             'message' => $this->body,
-            'deviceId' => $this->settings->from
+            'deviceId' => data_get($this->settings, 'from'),
         ]);
     }
 }

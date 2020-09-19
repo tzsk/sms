@@ -3,66 +3,41 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class Linkmobility extends Driver
 {
-    /**
-     * Linkmobility Settings.
-     *
-     * @var object|null
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Http Client.
-     *
-     * @var Client|null
-     */
-    protected $client;
+    protected Client $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param array $settings
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
+        $this->settings = $settings;
         $this->client = new Client();
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return mixed
-     */
     public function send()
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
-                $this->client->request('POST', $this->settings->url, $this->payload($recipient))
+                $this->client->request('POST', data_get($this->settings, 'url'), $this->payload($recipient))
             );
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    /**
-     * @param string $recipient
-     * @return array
-     */
     protected function payload($recipient)
     {
         return [
             'form_params' => [
-                'USER' => $this->settings->username,
-                'PW' => $this->settings->password,
+                'USER' => data_get($this->settings, 'username'),
+                'PW' => data_get($this->settings, 'password'),
                 'RCV' => $recipient,
-                'SND' => urlencode($this->settings->sender),
+                'SND' => urlencode(data_get($this->settings, 'sender')),
                 'TXT' => $this->body,
             ],
         ];

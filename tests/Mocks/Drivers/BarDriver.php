@@ -2,7 +2,7 @@
 
 namespace Tzsk\Sms\Tests\Mocks\Drivers;
 
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class BarDriver extends Driver
 {
@@ -10,7 +10,7 @@ class BarDriver extends Driver
 
     protected $settings;
 
-    public function __construct($settings)
+    public function __construct(array $settings = [])
     {
         $this->settings = $settings;
     }

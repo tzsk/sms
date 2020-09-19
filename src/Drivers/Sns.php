@@ -3,48 +3,27 @@
 namespace Tzsk\Sms\Drivers;
 
 use Aws\Sns\SnsClient;
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class Sns extends Driver
 {
-    /**
-     * SNS Settings.
-     *
-     * @var object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * SNS Client.
-     *
-     * @var SnsClient
-     */
-    protected $client;
+    protected SnsClient $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param $settings object
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
-        $this->client = SnsClient::factory([
+        $this->settings = $settings;
+        $this->client = new SnsClient([
             'credentials' => [
-                'key' => $this->settings->key,
-                'secret' => $this->settings->secret,
+                'key' => data_get($this->settings, 'key'),
+                'secret' => data_get($this->settings, 'secret'),
             ],
-            'region' => $this->settings->region,
+            'region' => data_get($this->settings, 'region'),
             'version' => '2010-03-31',
         ]);
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     */
     public function send()
     {
         $response = collect();
@@ -58,10 +37,6 @@ class Sns extends Driver
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    /**
-     * @param string $recipient
-     * @return array
-     */
     protected function payload($recipient)
     {
         return [
@@ -69,11 +44,11 @@ class Sns extends Driver
             'MessageAttributes' => [
                 'AWS.SNS.SMS.SenderID' => [
                     'DataType' => 'String',
-                    'StringValue' => $this->settings->sender,
+                    'StringValue' => data_get($this->settings, 'sender'),
                 ],
                 'AWS.SNS.SMS.SMSType' => [
                     'DataType' => 'String',
-                    'StringValue' => $this->settings->type,
+                    'StringValue' => data_get($this->settings, 'type'),
                 ],
             ],
             'PhoneNumber' => $recipient,

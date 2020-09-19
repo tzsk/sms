@@ -1,18 +1,17 @@
-# Laravel SMS Gateway
+# :gift: Laravel SMS Gateway
 
-[![Software License][ico-license]](LICENSE.md)
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![StyleCI](https://styleci.io/repos/76770163/shield?branch=master)](https://styleci.io/repos/76770163)
-[![Build Status](https://travis-ci.org/tzsk/sms.svg?branch=master)](https://travis-ci.org/tzsk/sms)
-[![Code Climate](https://codeclimate.com/github/tzsk/payu/badges/gpa.svg)](https://codeclimate.com/github/tzsk/sms)
-[![Quality Score][ico-code-quality]][link-code-quality]
+![SMS Cover](resources/sms.svg)
+
+![GitHub License](https://img.shields.io/github/license/tzsk/sms?style=for-the-badge)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/sms.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/sms)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tzsk/sms/Tests?label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/sms/actions?query=workflow%3ATests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/tzsk/sms.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/sms)
+
 
 This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
 
 List of supported gateways:
 - [AWS SNS](https://aws.amazon.com/sns/)
-- [Nexmo](https://www.nexmo.com/)
 - [Textlocal](http://textlocal.in)
 - [Twilio](https://www.twilio.com)
 - [Clockwork](https://www.clockworksms.com/)
@@ -25,7 +24,7 @@ List of supported gateways:
 - [SMS Gateway Me](https://smsgateway.me)
 - Others are under way.
 
-## Install
+## :package: Install
 
 Via Composer
 
@@ -33,31 +32,17 @@ Via Composer
 $ composer require tzsk/sms
 ```
 
-## Configure
+## :zap: Configure
 
-If you are using `Laravel 5.5` or higher then you don't need to add the provider and alias.
+Publish the config file
 
-In your `config/app.php` file add these two lines.
-
-```php
-# In your providers array.
-'providers' => [
-    ...
-    Tzsk\Sms\Provider\SmsServiceProvider::class,
-],
-
-# In your aliases array.
-'aliases' => [
-    ...
-    'Sms' => Tzsk\Sms\Facade\Sms::class,
-],
+```bash
+$ php artisan sms:publish
 ```
-
-Now run `php artisan vendor:publish` to publish `config/sms.php` file in your config directory.
 
 In the config file you can set the default driver to use for all your SMS. But you can also change the driver at runtime.
 
-Chose what gateway you would like to use for your application. Then make that as default driver so that you don't have to specify that everywhere. But, you can also use multiple gateways in a project.
+Choose what gateway you would like to use for your application. Then make that as default driver so that you don't have to specify that everywhere. But, you can also use multiple gateways in a project.
 
 ```php
 // Eg. if you wan to use SNS.
@@ -91,14 +76,6 @@ In case you want to use AWS SNS. Then you have to pull a composer library first.
 
 ```bash
 composer require aws/aws-sdk-php
-```
-
-#### Nexmo Configuration:
-
-In case you want to use Nexmo. Then you have to pull a composer library first.
-
-```bash
-composer require nexmo/client
 ```
 
 #### Clockwork Configuration:
@@ -143,12 +120,12 @@ In case you want to use SMS Gateway Me. Then you have to pull a composer library
 composer require smsgatewayme/client
 ```
 
-## Usage
+## :fire: Usage
 
 In your code just use it like this.
 ```php
 # On the top of the file.
-use Tzsk\Sms\Facade\Sms;
+use Tzsk\Sms\Facades\Sms;
 
 ...
 
@@ -185,7 +162,7 @@ sms()->via('gateway')->send("this message")->to(['Number 1', 'Number 2'])->dispa
 
 ```
 
-## Channel Usage
+## :heart_eyes: Channel Usage
 
 First you have to create your notification using `php artisan make:notification` command.
 then `SmsChannel::class` can be used as channel like the below:
@@ -193,7 +170,7 @@ then `SmsChannel::class` can be used as channel like the below:
 ```php
 namespace App\Notifications;
 
-use Tzsk\Sms\SmsBuilder;
+use Tzsk\Sms\Builder;
 use Illuminate\Bus\Queueable;
 use Tzsk\Sms\Channels\SmsChannel;
 use Illuminate\Notifications\Notification;
@@ -218,11 +195,11 @@ class InvoicePaid extends Notification
      * Get the repicients and body of the notification.
      *
      * @param  mixed  $notifiable
-     * @return SmsBuilder
+     * @return Builder
      */
     public function toSms($notifiable)
     {
-        return (new SmsBuilder)->via('gateway') # via() is Optional
+        return (new Builder)->via('gateway') # via() is Optional
             ->send('this message')
             ->to('some number');
     }
@@ -232,14 +209,14 @@ class InvoicePaid extends Notification
 > **Tip:** You can use the same Builder Instance in the send method.
 
 ```php
-$builder = (new SmsBuilder)->via('gateway') # via() is Optional
+$builder = (new Builder)->via('gateway') # via() is Optional
     ->send('this message')
     ->to('some number');
 
 Sms::send($builder);
 
 # OR...
-$builder = (new SmsBuilder)->send('this message')
+$builder = (new Builder)->send('this message')
     ->to(['some number']);
 
 Sms::via('gateway')->send($builder);
@@ -260,14 +237,14 @@ First you have to name your driver in the drivers array and also you can specify
 ```
 
 Now you have to create a Driver Map Class that will be used to send the SMS.
-In your driver, You just have to extend `Tzsk\Sms\Abstracts\Driver`.
+In your driver, You just have to extend `Tzsk\Sms\Contracts\Driver`.
 
 Ex. You created a class : `App\Packages\SMSDriver\MyDriver`.
 
 ```php
 namespace App\Packages\SMSDriver;
 
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class MyDriver extends Driver 
 {
@@ -280,7 +257,7 @@ class MyDriver extends Driver
     */
 
     /**
-    * @var object
+    * @var array
     */
     protected $settings;
 
@@ -296,7 +273,7 @@ class MyDriver extends Driver
     */
     public function __construct($settings)
     {
-        $this->settings = (object) $settings;
+        $this->settings = $settings;
         # Initialize any Client that you want.
         $this->client = new Client(); # Guzzle Client for example.
     }
@@ -327,38 +304,29 @@ Once you crate that class you have to specify it in the `sms.php` Config file `m
 
 **Note:-** You have to make sure that the key of the `map` array is identical to the key of the `drivers` array.
 
-## Change log
+## :microscope: Testing
+
+``` bash
+composer test
+```
+
+## :date: Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Contributing
+## :heart: Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
-## Security
+## :lock: Security Vulnerabilities
 
-If you discover any security related issues, please email mailtokmahmed@gmail.com instead of using the issue tracker.
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
-## Credits
+## :crown: Credits
 
-- [Kazi Mainuddin Ahmed][link-author]
-- [All Contributors][link-contributors]
+- [Kazi Ahmed](https://github.com/tzsk)
+- [All Contributors](../../contributors)
 
-## License
+## :policeman: License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/tzsk/sms.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/tzsk/sms/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/tzsk/sms.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/tzsk/sms.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/tzsk/sms.svg?style=flat-square
-
-[link-packagist]: https://packagist.org/packages/tzsk/sms
-[link-travis]: https://travis-ci.org/tzsk/sms
-[link-scrutinizer]: https://scrutinizer-ci.com/g/tzsk/sms/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/tzsk/sms
-[link-downloads]: https://packagist.org/packages/tzsk/sms
-[link-author]: https://github.com/tzsk
-[link-contributors]: ../../contributors

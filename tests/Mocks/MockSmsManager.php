@@ -2,9 +2,9 @@
 
 namespace Tzsk\Sms\Tests\Mocks;
 
-use Tzsk\Sms\SmsManager;
+use Tzsk\Sms\Sms;
 
-class MockSmsManager extends SmsManager
+class MockSmsManager extends Sms
 {
     public function __construct()
     {

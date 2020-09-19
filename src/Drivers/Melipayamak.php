@@ -2,64 +2,37 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Abstracts\Driver;
 use Melipayamak\MelipayamakApi;
+use Tzsk\Sms\Contracts\Driver;
 
 class Melipayamak extends Driver
 {
-    /**
-     * Melipayamak Settings.
-     *
-     * @var object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Melipayamak Client.
-     *
-     * @var MelipayamakApi
-     */
-    protected $client;
+    protected MelipayamakApi $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param $settings object
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
-        $this->client = new MelipayamakApi($this->settings->username, $this->settings->password);
+        $this->settings = $settings;
+        $this->client = new MelipayamakApi(data_get($this->settings, 'username'), data_get($this->settings, 'password'));
     }
 
-    /**
-     * Determine if the sms must be a flash message or not.
-     *
-     * @param bool $flash
-     * @return $this
-     */
     public function asFlash($flash = true)
     {
-        $this->settings->flash = $flash;
+        $this->settings['flash'] = $flash;
 
         return $this;
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     */
     public function send()
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
             $response->put($recipient, $this->client->sms()->send(
                 $recipient,
-                $this->settings->from,
+                data_get($this->settings, 'from'),
                 $this->body,
-                $this->settings->flash
+                data_get($this->settings, 'flash')
             ));
         }
 

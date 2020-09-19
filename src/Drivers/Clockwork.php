@@ -2,42 +2,21 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Abstracts\Driver;
 use mediaburst\ClockworkSMS\Clockwork as ClockworkClient;
+use Tzsk\Sms\Contracts\Driver;
 
 class Clockwork extends Driver
 {
-    /**
-     * Settings.
-     *
-     * @var object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Client.
-     *
-     * @var ClockworkClient
-     */
-    protected $client;
+    protected ClockworkClient $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param $settings object
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
-        $this->client = new ClockworkClient($this->settings->key);
+        $this->settings = $settings;
+        $this->client = new ClockworkClient(data_get($this->settings, 'key'));
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     */
     public function send()
     {
         $response = collect();

@@ -2,29 +2,35 @@
 
 namespace Tzsk\Sms\Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
+use Orchestra\Testbench\TestCase as Orchestra;
+use Tzsk\Sms\SmsServiceProvider;
 use Tzsk\Sms\Tests\Mocks\Drivers\BarDriver;
 
-class TestCase extends BaseTestCase
+class TestCase extends Orchestra
 {
-    protected function getPackageProviders($app)
+    public function setUp(): void
     {
-        return ['Tzsk\Sms\Provider\SmsServiceProvider'];
+        parent::setUp();
     }
 
-    protected function getPackageAliases($app)
+    protected function getPackageProviders($app)
     {
         return [
-            'Sms' => 'Tzsk\Sms\Facade\Sms',
+            SmsServiceProvider::class,
         ];
     }
 
-    protected function getEnvironmentSetUp($app)
+    public function getEnvironmentSetUp($app)
     {
-        $settings = require __DIR__.'/../src/Config/sms.php';
-        $settings['drivers']['bar'] = ['key' => 'foo'];
-        $settings['map']['bar'] = BarDriver::class;
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ]);
 
-        $app['config']->set('sms', $settings);
+        $app['config']->set('sms.drivers.sns.region', 'us-east-1');
+        $app['config']->set('sms.drivers.bar', ['key' => 'foo']);
+        $app['config']->set('sms.map.bar', BarDriver::class);
     }
 }

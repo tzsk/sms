@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +23,8 @@ return [
     |
     */
     'drivers' => [
-        'sns' => [ // Install: composer require aws/aws-sdk-php
+        // Install: composer require aws/aws-sdk-php
+        'sns' => [
             'key' => 'Your AWS SNS Access Key',
             'secret' => 'Your AWS SNS Secret Key',
             'region' => 'Your AWS SNS Region',
@@ -35,17 +37,14 @@ return [
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
         ],
-        'nexmo' => [ // Install: composer require nexmo/client
-            'key' => 'Your Nexmo API Key',
-            'secret' => 'Your Nexmo API Secret',
-            'from' => 'Your Nexmo From Number',
-        ],
-        'twilio' => [ // Install: composer require twilio/sdk
+        // Install: composer require twilio/sdk
+        'twilio' => [
             'sid' => 'Your SID',
             'token' => 'Your Token',
             'from' => 'Your Default From Number',
         ],
-        'clockwork' => [ // Install: composer require mediaburst/clockworksms
+        // Install: composer require mediaburst/clockworksms
+        'clockwork' => [
             'key' => 'Your clockwork API Key',
         ],
         'linkmobility' => [
@@ -54,13 +53,15 @@ return [
             'password' => 'Your Password',
             'sender' => 'Sender name',
         ],
-        'melipayamak' => [ // Install: composer require melipayamak/php
+        // Install: composer require melipayamak/php
+        'melipayamak' => [
             'username' => 'Your Username',
             'password' => 'Your Password',
             'from' => 'Your Default From Number',
             'flash' => false,
         ],
-        'kavenegar' => [ // Install: composer require kavenegar/php
+        // Install: composer require kavenegar/php
+        'kavenegar' => [
             'apiKey' => 'Your Api Key',
             'from' => 'Your Default From Number',
         ],
@@ -103,7 +104,6 @@ return [
     'map' => [
         'sns' => \Tzsk\Sms\Drivers\Sns::class,
         'textlocal' => \Tzsk\Sms\Drivers\Textlocal::class,
-        'nexmo' => \Tzsk\Sms\Drivers\Nexmo::class,
         'twilio' => \Tzsk\Sms\Drivers\Twilio::class,
         'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
         'linkmobility' => \Tzsk\Sms\Drivers\Linkmobility::class,

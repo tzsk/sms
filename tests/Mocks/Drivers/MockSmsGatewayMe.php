@@ -8,8 +8,8 @@ class MockSmsGatewayMe extends SmsGatewayMe
 {
     use MockCommon;
 
-    public function __construct()
+    public function __construct(array $settings = [])
     {
-        parent::__construct(config('sms.drivers.nexmo'));
+        parent::__construct(config('sms.drivers.smsgatewayme'));
     }
 }

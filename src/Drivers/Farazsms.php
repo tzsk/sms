@@ -3,42 +3,20 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class Farazsms extends Driver
 {
-    /**
-     * Farazsms Settings.
-     *
-     * @var null|object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Farazsms Client.
-     *
-     * @var null|Client
-     */
-    protected $client;
+    protected Client $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param $settings object
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
+        $this->settings = $settings;
         $this->client = new Client();
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
     public function send()
     {
         $response = collect();
@@ -46,29 +24,25 @@ class Farazsms extends Driver
         foreach ($this->recipients as $recipient) {
             $result = $this->client->request(
                 'POST',
-                $this->settings->url,
+                data_get($this->settings, 'url'),
                 $this->payload($recipient)
             );
-            $response->put($recipient, json_decode($result->getBody()));
+            $response->put($recipient, json_decode((string) $result->getBody()));
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    /**
-     * @param string $recipient
-     * @return array
-     */
-    protected function payload($recipient)
+    protected function payload($recipient): array
     {
         return [
             'form_params' => [
-                'uname' => $this->settings->username,
-                'pass' => $this->settings->password,
-                'from' => $this->settings->from,
+                'uname' => data_get($this->settings, 'username'),
+                'pass' => data_get($this->settings, 'password'),
+                'from' => data_get($this->settings, 'from'),
                 'message' => $this->body,
                 'to' => json_encode([$recipient]),
-                'op'=>'send'
+                'op' => 'send',
             ],
         ];
     }

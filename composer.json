@@ -1,6 +1,5 @@
 {
     "name": "tzsk/sms",
-    "type": "library",
     "description": "Laravel SMS Gateway Integration Package",
     "keywords": [
         "tzsk",
@@ -20,41 +19,37 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Kazi Mainuddin Ahmed",
+            "name": "Kazi Ahmed",
             "email": "mailtokmahmed@gmail.com",
             "homepage": "https://github.com/tzsk",
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-          "type": "git",
-          "url": "https://github.com/smsgatewayme/client-php.git"
-        }
-    ],
     "require": {
-        "illuminate/support": "~5.7|~5.8|^6.0|^7.0",
-        "php": "^7.2",
-        "guzzlehttp/guzzle": "~6.2"
+        "php": "^7.4",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/http": "^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0"
     },
     "require-dev": {
         "aws/aws-sdk-php": "^3.87",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "kavenegar/php": "^1.2",
+        "laravel/legacy-factories": "^1.0",
         "mediaburst/clockworksms": "^2.0",
-        "melipayamak/php": "^0.1.0 || ^1.0.0",
-        "nexmo/client": "^1.6 || ^2.0",
-        "orchestra/testbench": "~3.7|~3.8|^4.0|^5.0",
-        "phpunit/phpunit": "^8.0|^9.0",
+        "melipayamak/php": "^1.0.0",
+        "orchestra/testbench": "^5.0|^6.0",
+        "phpunit/phpunit": "^9.3",
         "smsgatewayme/client": "^0.0.1",
-        "squizlabs/php_codesniffer": "^2.3 || ^3.0",
-        "twilio/sdk": "^5.27 || ^6.0"
+        "twilio/sdk": "^6.0",
+        "vimeo/psalm": "^3.11"
     },
     "autoload": {
         "psr-4": {
             "Tzsk\\Sms\\": "src"
         },
         "files": [
-            "src/helpers.php"
+            "src/Helper.php"
         ]
     },
     "autoload-dev": {
@@ -63,24 +58,24 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
-        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
-        "laravel": {
-            "providers": [
-                "Tzsk\\Sms\\Provider\\SmsServiceProvider"
-            ],
-            "aliases": {
-                "Sms": "Tzsk\\Sms\\Facade\\Sms"
-            }
-        }
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tzsk\\Sms\\SmsServiceProvider"
+            ],
+            "aliases": {
+                "Sms": "Tzsk\\Sms\\Facades\\Sms"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

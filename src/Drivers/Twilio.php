@@ -3,48 +3,30 @@
 namespace Tzsk\Sms\Drivers;
 
 use Twilio\Rest\Client;
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class Twilio extends Driver
 {
-    /**
-     * Twilio Settings.
-     *
-     * @var object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Twilio Client.
-     *
-     * @var Client
-     */
-    protected $client;
+    protected Client $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param $settings object
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
-        $this->client = new Client($this->settings->sid, $this->settings->token);
+        $this->settings = $settings;
+        $this->client = new Client(data_get($this->settings, 'sid'), data_get($this->settings, 'token'));
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     */
     public function send()
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
+            /**
+             * @psalm-suppress UndefinedMagicPropertyFetch
+             */
             $result = $this->client->account->messages->create(
                 $recipient,
-                ['from' => $this->settings->from, 'body' => $this->body]
+                ['from' => data_get($this->settings, 'from'), 'body' => $this->body]
             );
 
             $response->put($recipient, $result);

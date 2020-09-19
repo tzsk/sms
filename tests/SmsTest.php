@@ -2,13 +2,12 @@
 
 namespace Tzsk\Sms\Tests;
 
-use Tzsk\Sms\Facade\Sms;
-use Tzsk\Sms\SmsBuilder;
-use Tzsk\Sms\Abstracts\Driver;
-use Tzsk\Sms\Tests\Mocks\MockSmsManager;
+use Tzsk\Sms\Builder;
+use Tzsk\Sms\Facades\Sms;
 use Tzsk\Sms\Tests\Mocks\Drivers\BarDriver;
+use Tzsk\Sms\Tests\Mocks\MockSmsManager;
 
-class SmsManagerTest extends TestCase
+class SmsTest extends TestCase
 {
     public function test_it_has_default_driver()
     {
@@ -19,7 +18,7 @@ class SmsManagerTest extends TestCase
         $this->assertSameSize($manager->getSettings(), config('sms.drivers.'.$manager->getDriver()));
     }
 
-    public function test_it_wont_accespt_wrong_driver()
+    public function test_it_wont_accept_wrong_driver()
     {
         $this->expectException(\Exception::class);
         $manager = (new MockSmsManager())->via('foo');
@@ -32,13 +31,6 @@ class SmsManagerTest extends TestCase
 
         $this->assertEquals($gateway, $manager->getDriver());
         $this->assertSameSize($manager->getSettings(), config('sms.drivers.'.$gateway));
-    }
-
-    public function test_it_has_proper_driver_instance()
-    {
-        $manager = new MockSmsManager();
-
-        $this->assertInstanceOf(Driver::class, $manager->driverInstance());
     }
 
     public function test_can_call_directly()
@@ -74,16 +66,16 @@ class SmsManagerTest extends TestCase
 
     public function test_sms_builder_can_be_sent()
     {
-        $response = Sms::send((new SmsBuilder)->via('bar')->to('baz')->send('foo'));
+        $response = Sms::send((new Builder)->via('bar')->to('baz')->send('foo'));
 
         $this->assertInstanceOf(BarDriver::class, $response);
         $this->assertEquals('foo', $response->getBody());
         $this->assertContains('baz', $response->getRecipients());
     }
 
-    public function test_sms_builder_via_can_be_sent(Type $var = null)
+    public function test_sms_builder_via_can_be_sent()
     {
-        $response = Sms::via('bar')->send((new SmsBuilder)->to('baz')->send('foo'));
+        $response = Sms::via('bar')->send((new Builder)->to('baz')->send('foo'));
 
         $this->assertInstanceOf(BarDriver::class, $response);
         $this->assertEquals('foo', $response->getBody());

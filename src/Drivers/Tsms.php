@@ -2,51 +2,29 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Abstracts\Driver;
 use \SoapClient;
+use Tzsk\Sms\Contracts\Driver;
 
 class Tsms extends Driver
 {
-    /**
-     * Tsms Settings.
-     *
-     * @var null|object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Tsms Client.
-     *
-     * @var null|SoapClient
-     */
-    protected $client;
+    protected SoapClient $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * @param $settings
-     * @throws \SoapFault
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
+        $this->settings = $settings;
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return object
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
     public function send()
     {
-        $this->client = new SoapClient($this->settings->url);
+        $this->client = new SoapClient(data_get($this->settings, 'url'));
         $response = collect();
         foreach ($this->recipients as $recipient) {
             $result = $this->client->sendSms(
-                $this->settings->username,
-                $this->settings->password,
-                [$this->settings->from],
+                data_get($this->settings, 'username'),
+                data_get($this->settings, 'password'),
+                [data_get($this->settings, 'from')],
                 [$recipient],
                 [$this->body],
                 [],

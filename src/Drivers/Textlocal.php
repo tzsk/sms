@@ -3,66 +3,41 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
-use Tzsk\Sms\Abstracts\Driver;
+use Tzsk\Sms\Contracts\Driver;
 
 class Textlocal extends Driver
 {
-    /**
-     * Textlocal Settings.
-     *
-     * @var object
-     */
-    protected $settings;
+    protected array $settings;
 
-    /**
-     * Http Client.
-     *
-     * @var Client
-     */
-    protected $client;
+    protected Client $client;
 
-    /**
-     * Construct the class with the relevant settings.
-     *
-     * SendSmsInterface constructor.
-     * @param array $settings
-     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = (object) $settings;
+        $this->settings = $settings;
         $this->client = new Client();
     }
 
-    /**
-     * Send text message and return response.
-     *
-     * @return mixed
-     */
     public function send()
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
-                $this->client->request('POST', $this->settings->url, $this->payload($recipient))
+                $this->client->request('POST', data_get($this->settings, 'url'), $this->payload($recipient))
             );
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    /**
-     * @param string $recipient
-     * @return array
-     */
     public function payload($recipient)
     {
         return [
             'form_params' => [
-                'username' => $this->settings->username,
-                'hash' => $this->settings->hash,
+                'username' => data_get($this->settings, 'username'),
+                'hash' => data_get($this->settings, 'hash'),
                 'numbers' => $recipient,
-                'sender' => urlencode($this->settings->sender),
+                'sender' => urlencode(data_get($this->settings, 'sender')),
                 'message' => $this->body,
             ],
         ];

@@ -1,39 +1,15 @@
 <?php
 
-namespace Tzsk\Sms\Abstracts;
+namespace Tzsk\Sms\Contracts;
 
-use Tzsk\Sms\Contracts\DriverInterface;
-
-abstract class Driver implements DriverInterface
+abstract class Driver
 {
-    /**
-     * To Numbers array.
-     *
-     * @var array
-     */
-    protected $recipients = [];
+    protected array $recipients = [];
 
-    /**
-     * Message body.
-     *
-     * @var string
-     */
-    protected $body = '';
+    protected string $body = '';
 
-    /**
-     * Driver constructor.
-     *
-     * @param $settings
-     */
-    abstract public function __construct($settings);
+    abstract public function __construct(array $settings);
 
-    /**
-     * String or Array of numbers.
-     *
-     * @param $numbers string|array
-     * @return $this
-     * @throws \Exception
-     */
     public function to($numbers)
     {
         $recipients = is_array($numbers) ? $numbers : [$numbers];
@@ -50,13 +26,6 @@ abstract class Driver implements DriverInterface
         return $this;
     }
 
-    /**
-     * Set text message body.
-     *
-     * @param $message string
-     * @return $this
-     * @throws \Exception
-     */
     public function message($message)
     {
         if (! is_string($message)) {
@@ -70,10 +39,5 @@ abstract class Driver implements DriverInterface
         return $this;
     }
 
-    /**
-     * Send the message
-     *
-     * @return object
-     */
     abstract public function send();
 }

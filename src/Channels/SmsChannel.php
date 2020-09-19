@@ -3,21 +3,16 @@
 namespace Tzsk\Sms\Channels;
 
 use Exception;
-use Tzsk\Sms\SmsBuilder;
 use Illuminate\Notifications\Notification;
+use Tzsk\Sms\Builder;
 
 class SmsChannel
 {
-    /**
-     * Send the given notification.
-     *
-     * @param $notifiable
-     * @param Notification $notification
-     * @return mixed
-     * @throws \Exception
-     */
     public function send($notifiable, Notification $notification)
     {
+        /**
+         * @psalm-suppress UndefinedMethod
+         */
         $message = $notification->toSms($notifiable);
 
         $this->validate($message);
@@ -32,16 +27,10 @@ class SmsChannel
         });
     }
 
-    /**
-     * Validate message.
-     *
-     * @param $message
-     * @throws \Exception
-     */
     private function validate($message)
     {
         $conditions = [
-            'Invalid data for sms notification.' => ! is_a($message, SmsBuilder::class),
+            'Invalid data for sms notification.' => ! is_a($message, Builder::class),
             'Message body could not be empty.' => empty($message->getBody()),
             'Message recipient could not be empty.' => empty($message->getRecipients()),
         ];

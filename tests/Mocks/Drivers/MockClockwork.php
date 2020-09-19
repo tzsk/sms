@@ -8,7 +8,7 @@ class MockClockwork extends Clockwork
 {
     use MockCommon;
 
-    public function __construct()
+    public function __construct(array $settings = [])
     {
         parent::__construct(config('sms.drivers.clockwork'));
     }
