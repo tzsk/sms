@@ -2,10 +2,10 @@
 
 namespace Tzsk\Sms\Tests;
 
-use Tzsk\Sms\Facades\Sms;
 use Tzsk\Sms\Builder;
-use Tzsk\Sms\Tests\Mocks\MockSmsManager;
+use Tzsk\Sms\Facades\Sms;
 use Tzsk\Sms\Tests\Mocks\Drivers\BarDriver;
+use Tzsk\Sms\Tests\Mocks\MockSmsManager;
 
 class SmsTest extends TestCase
 {

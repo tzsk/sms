@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('sms')) {
+if (! function_exists('sms')) {
     /**
      * Access SmsManager through helper.
      * @return \Tzsk\Sms\Sms

@@ -42,7 +42,7 @@ class Farazsms extends Driver
                 'from' => data_get($this->settings, 'from'),
                 'message' => $this->body,
                 'to' => json_encode([$recipient]),
-                'op'=>'send'
+                'op' => 'send',
             ],
         ];
     }

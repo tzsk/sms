@@ -48,9 +48,9 @@ class Smsir extends Driver
                 'LineNumber' => data_get($this->settings, 'from'),
             ],
             'headers' => [
-                'x-sms-ir-secure-token' => $token
+                'x-sms-ir-secure-token' => $token,
             ],
-            'connect_timeout' => 30
+            'connect_timeout' => 30,
         ];
     }
 

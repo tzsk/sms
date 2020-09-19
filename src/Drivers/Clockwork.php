@@ -2,8 +2,8 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Contracts\Driver;
 use mediaburst\ClockworkSMS\Clockwork as ClockworkClient;
+use Tzsk\Sms\Contracts\Driver;
 
 class Clockwork extends Driver
 {

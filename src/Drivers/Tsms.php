@@ -2,8 +2,8 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Contracts\Driver;
 use \SoapClient;
+use Tzsk\Sms\Contracts\Driver;
 
 class Tsms extends Driver
 {

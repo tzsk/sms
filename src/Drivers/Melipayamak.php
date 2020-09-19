@@ -2,8 +2,8 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Contracts\Driver;
 use Melipayamak\MelipayamakApi;
+use Tzsk\Sms\Contracts\Driver;
 
 class Melipayamak extends Driver
 {

@@ -2,8 +2,8 @@
 
 namespace Tzsk\Sms\Tests\Drivers;
 
-use Tzsk\Sms\Tests\TestCase;
 use Tzsk\Sms\Tests\Mocks\Drivers\MockTsms;
+use Tzsk\Sms\Tests\TestCase;
 
 class TsmsTest extends TestCase
 {

@@ -2,11 +2,11 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use Tzsk\Sms\Contracts\Driver;
+use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\ApiClient;
 use SMSGatewayMe\Client\Configuration;
-use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\Model\SendMessageRequest;
+use Tzsk\Sms\Contracts\Driver;
 
 class SmsGatewayMe extends Driver
 {
@@ -41,7 +41,7 @@ class SmsGatewayMe extends Driver
         return new SendMessageRequest([
             'phoneNumber' => $recipient,
             'message' => $this->body,
-            'deviceId' => data_get($this->settings, 'from')
+            'deviceId' => data_get($this->settings, 'from'),
         ]);
     }
 }
