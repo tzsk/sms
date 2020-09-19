@@ -1,0 +1,11 @@
+.idea
+.php_cs
+.php_cs.cache
+.phpunit.result.cache
+.DS_Store
+build
+coverage
+docs
+phpunit.xml
+psalm.xml
+vendor
