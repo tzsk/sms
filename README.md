@@ -1,6 +1,7 @@
 # :gift: Laravel SMS Gateway
 
 ![SMS Cover](resources/sms.svg)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftzsk%2Fsms.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftzsk%2Fsms?ref=badge_shield)
 
 ![GitHub License](https://img.shields.io/github/license/tzsk/sms?style=for-the-badge)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/sms.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/sms)
@@ -330,3 +331,6 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## :policeman: License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ftzsk%2Fsms.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ftzsk%2Fsms?ref=badge_large)
