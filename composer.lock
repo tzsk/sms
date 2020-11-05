@@ -4295,16 +4295,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.158.19",
+            "version": "3.158.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b1c3c763e227e518768f0416cbd2b29c11f79561"
+                "reference": "a2aba95a428f9e478d08b3f8dc1a70837b46785a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b1c3c763e227e518768f0416cbd2b29c11f79561",
-                "reference": "b1c3c763e227e518768f0416cbd2b29c11f79561",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a2aba95a428f9e478d08b3f8dc1a70837b46785a",
+                "reference": "a2aba95a428f9e478d08b3f8dc1a70837b46785a",
                 "shasum": ""
             },
             "require": {
@@ -4376,7 +4376,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-11-02T19:49:21+00:00"
+            "time": "2020-11-05T19:24:22+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
