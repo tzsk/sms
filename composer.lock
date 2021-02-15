@@ -8633,16 +8633,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "4.4.1",
+            "version": "4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "9fd7a7d885b3a216cff8dec9d8c21a132f275224"
+                "reference": "77feecb3707bd50378c21ae4d3fe9e320e6cea65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/9fd7a7d885b3a216cff8dec9d8c21a132f275224",
-                "reference": "9fd7a7d885b3a216cff8dec9d8c21a132f275224",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/77feecb3707bd50378c21ae4d3fe9e320e6cea65",
+                "reference": "77feecb3707bd50378c21ae4d3fe9e320e6cea65",
                 "shasum": ""
             },
             "require": {
@@ -8676,6 +8676,7 @@
                 "bamarni/composer-bin-plugin": "^1.2",
                 "brianium/paratest": "^4.0||^6.0",
                 "ext-curl": "*",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpdocumentor/reflection-docblock": "^5",
                 "phpmyadmin/sql-parser": "5.1.0||dev-master",
                 "phpspec/prophecy": ">=1.9.0",
@@ -8731,9 +8732,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/4.4.1"
+                "source": "https://github.com/vimeo/psalm/tree/4.6.0"
             },
-            "time": "2021-01-14T21:44:29+00:00"
+            "time": "2021-02-15T20:32:35+00:00"
         },
         {
             "name": "webmozart/path-util",
