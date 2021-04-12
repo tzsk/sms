@@ -22,6 +22,8 @@ List of supported gateways:
 - [Tsms](http://www.tsms.ir)
 - [Farazsms](https://farazsms.com)
 - [SMS Gateway Me](https://smsgateway.me)
+- [Ghasedak](https://ghasedaksms.com/)
+
 - Others are under way.
 
 ## :package: Install

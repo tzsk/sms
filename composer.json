@@ -29,7 +29,8 @@
         "php": "^7.4|^8.0",
         "guzzlehttp/guzzle": "^7.0",
         "illuminate/http": "^7.0|^8.0",
-        "illuminate/support": "^7.0|^8.0"
+        "illuminate/support": "^7.0|^8.0",
+        "ext-curl": "*"
     },
     "require-dev": {
         "aws/aws-sdk-php": "^3.87",
