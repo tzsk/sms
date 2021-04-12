@@ -87,6 +87,11 @@ return [
             'apiToken' => 'Your Api Token',
             'from' => 'Your Default Device ID',
         ],
+        'ghasedak' => [
+            'url' => 'http://api.iransmsservice.com',
+            'apiKey' => 'Your api key',
+            'from' => 'Your Default From Number',
+        ],
     ],
 
     /*
@@ -112,5 +117,6 @@ return [
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
         'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
         'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
+        'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
     ]
 ];
