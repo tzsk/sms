@@ -33,7 +33,7 @@
     },
     "require-dev": {
         "aws/aws-sdk-php": "^3.87",
-        "friendsofphp/php-cs-fixer": "^2.16",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "kavenegar/php": "^1.2",
         "laravel/legacy-factories": "^1.0",
         "mediaburst/clockworksms": "^2.0",
