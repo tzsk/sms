@@ -118,5 +118,5 @@ return [
         'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
         'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
         'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
-    ]
+    ],
 ];
