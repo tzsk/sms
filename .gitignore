@@ -1,5 +1,6 @@
 .idea
 .php_cs
+.php-cs-fixer.cache
 .php_cs.cache
 .phpunit.result.cache
 .DS_Store
