@@ -28,7 +28,7 @@ class Melipayamak extends Driver
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
-            $response->put($recipient, $this->client->sms()->send(
+            $response->put($recipient, $this->client->sms($this->isSoap(),$this->isAsync())->send(
                 $recipient,
                 data_get($this->settings, 'from'),
                 $this->body,
@@ -37,5 +37,17 @@ class Melipayamak extends Driver
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;
+    }
+
+    protected function isSoap(){
+        if(data_get($this->settings,"soap")){
+            return "soap";
+        }
+    }
+
+    protected function isAsync(){
+        if(data_get($this->settings,"async")){
+            return "async";
+        }
     }
 }

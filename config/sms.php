@@ -10,7 +10,7 @@ return [
     | You can switch to a different driver at runtime.
     |
     */
-    'default' => 'textlocal',
+    'default' => 'melipayamak',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,10 +55,12 @@ return [
         ],
         // Install: composer require melipayamak/php
         'melipayamak' => [
-            'username' => 'Your Username',
-            'password' => 'Your Password',
-            'from' => 'Your Default From Number',
+            'username' => '09145985642',
+            'password' => 'bhshg@fjFGSFGJlskfghjshgs13j345t4rgfd',
+            'from' => '50004000985642',
             'flash' => false,
+            'soap' => true,
+            'async' => false,
         ],
         // Install: composer require kavenegar/php
         'kavenegar' => [
@@ -118,5 +120,5 @@ return [
         'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
         'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
         'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
-    ],
+    ]
 ];
