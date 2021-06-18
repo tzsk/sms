@@ -92,6 +92,12 @@ return [
             'apiKey' => 'Your api key',
             'from' => 'Your Default From Number',
         ],
+        // Install: composer require sms77/api
+        'sms77' => [
+            'apiKey' => 'Your API Key',
+            'flash' => false,
+            'from' => 'Sender name',
+        ],
     ],
 
     /*
@@ -118,5 +124,6 @@ return [
         'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
         'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
         'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
+        'sms77' => \Tzsk\Sms\Drivers\Sms77::class,
     ],
 ];
