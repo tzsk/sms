@@ -23,6 +23,7 @@ List of supported gateways:
 - [Farazsms](https://farazsms.com)
 - [SMS Gateway Me](https://smsgateway.me)
 - [Ghasedak](https://ghasedaksms.com/)
+- [Sms77](https://www.sms77.io)
 
 - Others are under way.
 
