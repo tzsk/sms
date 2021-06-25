@@ -18,7 +18,9 @@ class Sms77 extends Driver
     {
         $this->settings = $settings;
         $this->client = new Client(
-            data_get($this->settings, 'apiKey'), $this->sourceIdentifier);
+            data_get($this->settings, 'apiKey'),
+            $this->sourceIdentifier
+        );
     }
 
     public function asFlash(bool $flash = true)
