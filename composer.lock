@@ -4608,16 +4608,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.185.16",
+            "version": "3.185.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "5119dd32edda30c191ed1f6bcd3b48d717200de6"
+                "reference": "726d042a6e445557a5709735b494886d4f12025a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/5119dd32edda30c191ed1f6bcd3b48d717200de6",
-                "reference": "5119dd32edda30c191ed1f6bcd3b48d717200de6",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/726d042a6e445557a5709735b494886d4f12025a",
+                "reference": "726d042a6e445557a5709735b494886d4f12025a",
                 "shasum": ""
             },
             "require": {
@@ -4692,9 +4692,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.16"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.18"
             },
-            "time": "2021-07-19T18:14:16+00:00"
+            "time": "2021-07-21T18:18:25+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
