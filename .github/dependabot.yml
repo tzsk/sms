@@ -13,49 +13,5 @@ updates:
     interval: daily
     time: "23:30"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: aws/aws-sdk-php
-    versions:
-    - 3.173.0
-    - 3.173.2
-    - 3.173.3
-    - 3.173.4
-    - 3.173.5
-    - 3.173.6
-    - 3.173.7
-    - 3.173.8
-    - 3.173.9
-    - 3.174.0
-    - 3.174.1
-    - 3.174.2
-    - 3.174.3
-    - 3.175.0
-    - 3.175.1
-    - 3.175.2
-    - 3.175.3
-    - 3.176.0
-    - 3.177.0
-    - 3.178.0
-    - 3.178.1
-    - 3.178.11
-    - 3.178.2
-    - 3.178.3
-  - dependency-name: twilio/sdk
-    versions:
-    - 6.17.0
-    - 6.19.0
-    - 6.21.0
-  - dependency-name: orchestra/testbench
-    versions:
-    - 6.12.0
-    - 6.14.0
-    - 6.16.0
-  - dependency-name: guzzlehttp/guzzle
-    versions:
-    - 7.3.0
-  - dependency-name: vimeo/psalm
-    versions:
-    - 4.5.0
-    - 4.5.1
   registries:
   - composer-repository-nova-laravel-com
