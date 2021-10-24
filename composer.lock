@@ -8471,16 +8471,16 @@
         },
         {
             "name": "sms77/api",
-            "version": "v2.4.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sms77io/php-client.git",
-                "reference": "121ef7429b370cc648a3733adbc9a54236c873f1"
+                "reference": "ec0339d72bcdfa930b80ab1c8cd2e2838b944d46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sms77io/php-client/zipball/121ef7429b370cc648a3733adbc9a54236c873f1",
-                "reference": "121ef7429b370cc648a3733adbc9a54236c873f1",
+                "url": "https://api.github.com/repos/sms77io/php-client/zipball/ec0339d72bcdfa930b80ab1c8cd2e2838b944d46",
+                "reference": "ec0339d72bcdfa930b80ab1c8cd2e2838b944d46",
                 "shasum": ""
             },
             "require": {
@@ -8532,7 +8532,7 @@
                 "rss": "https://www.sms77.io/de/feed/",
                 "source": "https://github.com/sms77io/php-client"
             },
-            "time": "2021-05-10T08:01:36+00:00"
+            "time": "2021-09-21T07:31:40+00:00"
         },
         {
             "name": "smsgatewayme/client",
