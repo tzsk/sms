@@ -4,6 +4,7 @@ namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
 use Tzsk\Sms\Contracts\Driver;
+use Tzsk\Sms\Exceptions\InvalidSmsConfigurationException;
 
 class Smsir extends Driver
 {
@@ -35,8 +36,8 @@ class Smsir extends Driver
     }
 
     /**
-     * @param string $recipient
-     * @param string $token
+     * @param  string  $recipient
+     * @param  string  $token
      * @return array
      */
     protected function payload($recipient, $token)
@@ -65,9 +66,10 @@ class Smsir extends Driver
             ['json' => $body, 'connect_timeout' => 30]
         );
 
-        $body = json_decode((string) $response->getBody(), true);
+        $body = json_decode((string) $response->getBody(), true, 512, JSON_THROW_ON_ERROR);
+
         if (empty($body['TokenKey'])) {
-            throw new \Exception('Smsir token could not be generated.');
+            throw new InvalidSmsConfigurationException('Smsir token could not be generated.');
         }
 
         return $body['TokenKey'];
