@@ -8,13 +8,12 @@ use Tzsk\Sms\Exceptions\InvalidSmsConfigurationException;
 
 class Smsir extends Driver
 {
-    protected array $settings;
-
     protected Client $client;
 
     public function __construct(array $settings)
     {
-        $this->settings = $settings;
+        parent::__construct($settings);
+
         $this->client = new Client();
     }
 

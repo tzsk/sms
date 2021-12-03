@@ -7,13 +7,12 @@ use Tzsk\Sms\Contracts\Driver;
 
 class Kavenegar extends Driver
 {
-    protected array $settings;
-
     protected KavenegarApi $client;
 
     public function __construct(array $settings)
     {
-        $this->settings = $settings;
+        parent::__construct($settings);
+
         $this->client = new KavenegarApi(data_get($this->settings, 'apiKey'));
     }
 

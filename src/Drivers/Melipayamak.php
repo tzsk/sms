@@ -7,13 +7,12 @@ use Tzsk\Sms\Contracts\Driver;
 
 class Melipayamak extends Driver
 {
-    protected array $settings;
-
     protected MelipayamakApi $client;
 
     public function __construct(array $settings)
     {
-        $this->settings = $settings;
+        parent::__construct($settings);
+
         $this->client = new MelipayamakApi(data_get($this->settings, 'username'), data_get($this->settings, 'password'));
     }
 

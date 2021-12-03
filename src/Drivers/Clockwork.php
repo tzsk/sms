@@ -7,13 +7,12 @@ use Tzsk\Sms\Contracts\Driver;
 
 class Clockwork extends Driver
 {
-    protected array $settings;
-
     protected ClockworkClient $client;
 
     public function __construct(array $settings)
     {
-        $this->settings = $settings;
+        parent::__construct($settings);
+
         $this->client = new ClockworkClient(data_get($this->settings, 'key'));
     }
 

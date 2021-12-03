@@ -7,13 +7,12 @@ use Tzsk\Sms\Contracts\Driver;
 
 class Twilio extends Driver
 {
-    protected array $settings;
-
     protected Client $client;
 
     public function __construct(array $settings)
     {
-        $this->settings = $settings;
+        parent::__construct($settings);
+
         $this->client = new Client(data_get($this->settings, 'sid'), data_get($this->settings, 'token'));
     }
 

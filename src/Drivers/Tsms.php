@@ -2,19 +2,12 @@
 
 namespace Tzsk\Sms\Drivers;
 
-use \SoapClient;
+use SoapClient;
 use Tzsk\Sms\Contracts\Driver;
 
 class Tsms extends Driver
 {
-    protected array $settings;
-
     protected SoapClient $client;
-
-    public function __construct(array $settings)
-    {
-        $this->settings = $settings;
-    }
 
     public function send()
     {

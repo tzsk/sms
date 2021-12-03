@@ -10,13 +10,11 @@ use Tzsk\Sms\Contracts\Driver;
 
 class SmsGatewayMe extends Driver
 {
-    protected array $settings;
-
     protected MessageApi $client;
 
     public function __construct(array $settings)
     {
-        $this->settings = $settings;
+        parent::__construct($settings);
 
         $config = Configuration::getDefaultConfiguration()
             ->setApiKey('Authorization', data_get($this->settings, 'apiToken'));

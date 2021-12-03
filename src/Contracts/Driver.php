@@ -6,11 +6,16 @@ use Tzsk\Sms\Exceptions\InvalidMessageException;
 
 abstract class Driver
 {
+    protected array $settings = [];
+
     protected array $recipients = [];
 
     protected string $body = '';
 
-    abstract public function __construct(array $settings);
+    public function __construct(array $settings)
+    {
+        $this->settings = $settings;
+    }
 
     public function to($numbers): Driver
     {
