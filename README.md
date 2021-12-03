@@ -245,6 +245,7 @@ In your driver, You just have to extend `Tzsk\Sms\Contracts\Driver`.
 Ex. You created a class : `App\Packages\SMSDriver\MyDriver`.
 
 ```php
+
 namespace App\Packages\SMSDriver;
 
 use Tzsk\Sms\Contracts\Driver;
@@ -260,11 +261,6 @@ class MyDriver extends Driver
     */
 
     /**
-    * @var array
-    */
-    protected $settings;
-
-    /**
     * @var mixed
     */
     protected $client;
@@ -274,9 +270,10 @@ class MyDriver extends Driver
     *
     * @var array $settings
     */
-    public function __construct($settings)
+    public function __construct(array $settings)
     {
-        $this->settings = $settings;
+        parent::__construct($settings);
+        
         # Initialize any Client that you want.
         $this->client = new Client(); # Guzzle Client for example.
     }
