@@ -12,4 +12,9 @@ class BarDriver extends Driver
     {
         return $this;
     }
+
+    protected function boot(): void
+    {
+        //
+    }
 }
