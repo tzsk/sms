@@ -256,9 +256,9 @@ use Tzsk\Sms\Contracts\Driver;
 class MyDriver extends Driver 
 {
     /**
-    * You Must implement these methods:
+    * You Should implement these methods:
     * 
-    * 1. boot() -> Initialize any variable or configuration that you need.
+    * 1. boot() -> (optional) Initialize any variable or configuration that you need.
     * 2. send() -> Main method to send messages.
     * 
     * Note: settings array will be automatically assigned in Driver class' constructor.
