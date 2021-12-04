@@ -15,9 +15,10 @@ abstract class Driver
     public function __construct(array $settings)
     {
         $this->settings = $settings;
+        $this->boot();
     }
 
-    public function to($numbers): Driver
+    public function to($numbers): self
     {
         $recipients = is_array($numbers) ? $numbers : [$numbers];
 
@@ -34,7 +35,7 @@ abstract class Driver
         return $this;
     }
 
-    public function message(string $message): Driver
+    public function message(string $message): self
     {
         $message = trim($message);
 
@@ -46,6 +47,8 @@ abstract class Driver
 
         return $this;
     }
+
+    abstract protected function boot(): void;
 
     abstract public function send();
 }

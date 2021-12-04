@@ -9,10 +9,8 @@ class Farazsms extends Driver
 {
     protected Client $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
-
         $this->client = new Client();
     }
 

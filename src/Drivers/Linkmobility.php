@@ -9,16 +9,15 @@ class Linkmobility extends Driver
 {
     protected Client $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
-
         $this->client = new Client();
     }
 
     public function send()
     {
         $response = collect();
+
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
@@ -29,7 +28,7 @@ class Linkmobility extends Driver
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    protected function payload($recipient)
+    protected function payload($recipient): array
     {
         return [
             'form_params' => [

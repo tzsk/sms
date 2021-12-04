@@ -9,10 +9,8 @@ class Sns extends Driver
 {
     protected SnsClient $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
-
         $this->client = new SnsClient([
             'credentials' => [
                 'key' => data_get($this->settings, 'key'),
@@ -26,6 +24,7 @@ class Sns extends Driver
     public function send()
     {
         $response = collect();
+
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
@@ -36,7 +35,7 @@ class Sns extends Driver
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    protected function payload($recipient)
+    protected function payload($recipient): array
     {
         return [
             'Message' => $this->body,

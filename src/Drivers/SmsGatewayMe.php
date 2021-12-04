@@ -12,18 +12,20 @@ class SmsGatewayMe extends Driver
 {
     protected MessageApi $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
+        $config = Configuration::getDefaultConfiguration()->setApiKey(
+            'Authorization',
+            data_get($this->settings, 'apiToken')
+        );
 
-        $config = Configuration::getDefaultConfiguration()
-            ->setApiKey('Authorization', data_get($this->settings, 'apiToken'));
         $this->client = new MessageApi(new ApiClient($config));
     }
 
     public function send()
     {
         $response = collect();
+
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
@@ -34,7 +36,7 @@ class SmsGatewayMe extends Driver
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    protected function payload($recipient)
+    protected function payload($recipient): SendMessageRequest
     {
         return new SendMessageRequest([
             'phoneNumber' => $recipient,

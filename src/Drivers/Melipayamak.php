@@ -9,14 +9,15 @@ class Melipayamak extends Driver
 {
     protected MelipayamakApi $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
-
-        $this->client = new MelipayamakApi(data_get($this->settings, 'username'), data_get($this->settings, 'password'));
+        $this->client = new MelipayamakApi(
+            data_get($this->settings, 'username'),
+            data_get($this->settings, 'password')
+        );
     }
 
-    public function asFlash($flash = true)
+    public function asFlash($flash = true): self
     {
         $this->settings['flash'] = $flash;
 

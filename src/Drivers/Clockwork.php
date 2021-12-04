@@ -9,10 +9,8 @@ class Clockwork extends Driver
 {
     protected ClockworkClient $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
-
         $this->client = new ClockworkClient(data_get($this->settings, 'key'));
     }
 

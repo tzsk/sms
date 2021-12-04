@@ -12,17 +12,12 @@ class Sms77 extends Driver
 
     private string $sourceIdentifier = 'Laravel-SMS-Gateway';
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
-
-        $this->client = new Client(
-            data_get($this->settings, 'apiKey'),
-            $this->sourceIdentifier
-        );
+        $this->client = new Client(data_get($this->settings, 'apiKey'), $this->sourceIdentifier);
     }
 
-    public function asFlash(bool $flash = true)
+    public function asFlash(bool $flash = true): self
     {
         $this->settings['flash'] = $flash;
 

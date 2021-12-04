@@ -9,10 +9,15 @@ class Tsms extends Driver
 {
     protected SoapClient $client;
 
-    public function send()
+    protected function boot(): void
     {
         $this->client = new SoapClient(data_get($this->settings, 'url'));
+    }
+
+    public function send()
+    {
         $response = collect();
+
         foreach ($this->recipients as $recipient) {
             $result = $this->client->sendSms(
                 data_get($this->settings, 'username'),

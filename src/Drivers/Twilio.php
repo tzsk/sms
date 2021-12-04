@@ -9,10 +9,8 @@ class Twilio extends Driver
 {
     protected Client $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        parent::__construct($settings);
-
         $this->client = new Client(data_get($this->settings, 'sid'), data_get($this->settings, 'token'));
     }
 
@@ -20,9 +18,6 @@ class Twilio extends Driver
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
-            /**
-             * @psalm-suppress UndefinedMagicPropertyFetch
-             */
             $result = $this->client->account->messages->create(
                 $recipient,
                 ['from' => data_get($this->settings, 'from'), 'body' => $this->body]
