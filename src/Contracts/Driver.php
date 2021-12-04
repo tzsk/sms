@@ -48,7 +48,10 @@ abstract class Driver
         return $this;
     }
 
-    abstract protected function boot(): void;
+    protected function boot(): void
+    {
+        //
+    }
 
     abstract public function send();
 }
