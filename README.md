@@ -7,10 +7,10 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tzsk/sms/Tests?label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/sms/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tzsk/sms.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/sms)
 
-
 This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
 
 List of supported gateways:
+
 - [AWS SNS](https://aws.amazon.com/sns/)
 - [Textlocal](http://textlocal.in)
 - [Twilio](https://www.twilio.com)
@@ -43,12 +43,14 @@ Publish the config file
 $ php artisan sms:publish
 ```
 
-In the config file you can set the default driver to use for all your SMS. But you can also change the driver at runtime.
+In the config file you can set the default driver to use for all your SMS. But you can also change the driver at
+runtime.
 
-Choose what gateway you would like to use for your application. Then make that as default driver so that you don't have to specify that everywhere. But, you can also use multiple gateways in a project.
+Choose what gateway you would like to use for your application. Then make that as default driver so that you don't have
+to specify that everywhere. But, you can also use multiple gateways in a project.
 
 ```php
-// Eg. if you wan to use SNS.
+// Eg. if you want to use SNS.
 'default' => 'sns',
 ```
 
@@ -126,11 +128,12 @@ composer require smsgatewayme/client
 ## :fire: Usage
 
 In your code just use it like this.
+
 ```php
 # On the top of the file.
 use Tzsk\Sms\Facades\Sms;
 
-...
+////
 
 # In your Controller.
 Sms::send("this message", function($sms) {
@@ -167,8 +170,8 @@ sms()->via('gateway')->send("this message")->to(['Number 1', 'Number 2'])->dispa
 
 ## :heart_eyes: Channel Usage
 
-First you have to create your notification using `php artisan make:notification` command.
-then `SmsChannel::class` can be used as channel like the below:
+First you have to create your notification using `php artisan make:notification` command. then `SmsChannel::class` can
+be used as channel like the below:
 
 ```php
 namespace App\Notifications;
@@ -227,7 +230,7 @@ Sms::via('gateway')->send($builder);
 
 #### Custom Made Driver, How To:
 
-First you have to name your driver in the drivers array and also you can specify any config params you want.
+First you have to name your driver in the drivers array ,and also specify any config params you want.
 
 ```php
 'drivers' => [
@@ -239,8 +242,8 @@ First you have to name your driver in the drivers array and also you can specify
 ]
 ```
 
-Now you have to create a Driver Map Class that will be used to send the SMS.
-In your driver, You just have to extend `Tzsk\Sms\Contracts\Driver`.
+Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You just have to
+extend `Tzsk\Sms\Contracts\Driver`.
 
 Ex. You created a class : `App\Packages\SMSDriver\MyDriver`.
 
@@ -252,11 +255,14 @@ use Tzsk\Sms\Contracts\Driver;
 
 class MyDriver extends Driver 
 {
-    # You will have to make 2 methods.
     /**
-    * 1. __constructor($settings) # {Mandatory} This settings is your Config Params that you've set.
-    * 2. send() # (Mandatory) This is the main message that will be sent.
-    *
+    * You Must implement these methods:
+    * 
+    * 1. boot() -> Initialize any variable or configuration that you need.
+    * 2. send() -> Main method to send messages.
+    * 
+    * Note: settings array will be automatically assigned in Driver class' constructor.
+    *  
     * Example Given below:
     */
 
@@ -265,16 +271,8 @@ class MyDriver extends Driver
     */
     protected $client;
 
-    /**
-    * Your Driver Config.
-    *
-    * @var array $settings
-    */
-    public function __construct(array $settings)
+    protected function boot() : void
     {
-        parent::__construct($settings);
-        
-        # Initialize any Client that you want.
         $this->client = new Client(); # Guzzle Client for example.
     }
 
