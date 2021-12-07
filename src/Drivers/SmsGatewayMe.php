@@ -10,22 +10,22 @@ use Tzsk\Sms\Contracts\Driver;
 
 class SmsGatewayMe extends Driver
 {
-    protected array $settings;
-
     protected MessageApi $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        $this->settings = $settings;
+        $config = Configuration::getDefaultConfiguration()->setApiKey(
+            'Authorization',
+            data_get($this->settings, 'apiToken')
+        );
 
-        $config = Configuration::getDefaultConfiguration()
-            ->setApiKey('Authorization', data_get($this->settings, 'apiToken'));
         $this->client = new MessageApi(new ApiClient($config));
     }
 
     public function send()
     {
         $response = collect();
+
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
@@ -36,7 +36,7 @@ class SmsGatewayMe extends Driver
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    protected function payload($recipient)
+    protected function payload($recipient): SendMessageRequest
     {
         return new SendMessageRequest([
             'phoneNumber' => $recipient,

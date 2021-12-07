@@ -7,13 +7,10 @@ use Tzsk\Sms\Contracts\Driver;
 
 class Farazsms extends Driver
 {
-    protected array $settings;
-
     protected Client $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        $this->settings = $settings;
         $this->client = new Client();
     }
 

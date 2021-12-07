@@ -7,19 +7,17 @@ use Tzsk\Sms\Contracts\Driver;
 
 class Textlocal extends Driver
 {
-    protected array $settings;
-
     protected Client $client;
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        $this->settings = $settings;
         $this->client = new Client();
     }
 
     public function send()
     {
         $response = collect();
+
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
@@ -30,7 +28,7 @@ class Textlocal extends Driver
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
-    public function payload($recipient)
+    public function payload($recipient): array
     {
         return [
             'form_params' => [

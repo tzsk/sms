@@ -8,22 +8,16 @@ use Tzsk\Sms\Contracts\Driver;
 
 class Sms77 extends Driver
 {
-    protected array $settings;
-
     protected Client $client;
 
     private string $sourceIdentifier = 'Laravel-SMS-Gateway';
 
-    public function __construct(array $settings)
+    protected function boot(): void
     {
-        $this->settings = $settings;
-        $this->client = new Client(
-            data_get($this->settings, 'apiKey'),
-            $this->sourceIdentifier
-        );
+        $this->client = new Client(data_get($this->settings, 'apiKey'), $this->sourceIdentifier);
     }
 
-    public function asFlash(bool $flash = true)
+    public function asFlash(bool $flash = true): self
     {
         $this->settings['flash'] = $flash;
 
