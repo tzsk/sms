@@ -29,7 +29,7 @@ class SmsGatewayMe extends Driver
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
-                $this->client->sendMessages($this->payload($recipient))
+                $this->client->sendMessages([$this->payload($recipient)])
             );
         }
 
