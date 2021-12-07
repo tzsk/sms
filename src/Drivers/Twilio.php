@@ -18,6 +18,9 @@ class Twilio extends Driver
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
+            /**
+             * @psalm-suppress UndefinedMagicPropertyFetch
+             */
             $result = $this->client->account->messages->create(
                 $recipient,
                 ['from' => data_get($this->settings, 'from'), 'body' => $this->body]
