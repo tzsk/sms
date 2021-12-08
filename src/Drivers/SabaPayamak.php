@@ -70,7 +70,7 @@ class SabaPayamak extends Driver
 
         $response = $response->json();
 
-        if (!isset($response['data']['token'])) {
+        if (! isset($response['data']['token'])) {
             $errors = $response['errors'];
             $errorMessage = $this->getErrorMessage($errors);
 
