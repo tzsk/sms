@@ -98,6 +98,13 @@ return [
             'flash' => false,
             'from' => 'Sender name',
         ],
+        'sabapayamak' => [
+            'url' => 'https://api.SabaPayamak.com',
+            'username' => 'Your Sabapayamak Username',
+            'password' => 'Your Sabapayamak Password',
+            'from' => 'Your Default From Number',
+            'token_valid_day' => 30,
+        ],
     ],
 
     /*
@@ -125,5 +132,6 @@ return [
         'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
         'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
         'sms77' => \Tzsk\Sms\Drivers\Sms77::class,
+        'sabapayamak' => \Tzsk\Sms\Drivers\SabaPayamak::class,
     ],
 ];
