@@ -87,6 +87,12 @@ return [
             'apiToken' => 'Your Api Token',
             'from' => 'Your Default Device ID',
         ],
+        'smsgateway24' => [
+            'url' => 'https://smsgateway24.com/getdata/addsms',
+            'token' => 'Your Api Token',
+            'deviceid' => 'Your Default Device ID',
+            'sim'=>'Device SIM Slot.  0 or 1'
+        ],
         'ghasedak' => [
             'url' => 'http://api.iransmsservice.com',
             'apiKey' => 'Your api key',
@@ -123,6 +129,7 @@ return [
         'sns' => \Tzsk\Sms\Drivers\Sns::class,
         'textlocal' => \Tzsk\Sms\Drivers\Textlocal::class,
         'twilio' => \Tzsk\Sms\Drivers\Twilio::class,
+        'smsgateway24' => \Tzsk\Sms\Drivers\SmsGateway24::class,
         'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
         'linkmobility' => \Tzsk\Sms\Drivers\Linkmobility::class,
         'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,

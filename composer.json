@@ -13,6 +13,7 @@
         "laravel smsir",
         "laravel tsms",
         "laravel farazsms",
+        "laravel SmsGateWay24",
         "laravel SMS gateway me"
     ],
     "homepage": "https://github.com/tzsk/sms",
