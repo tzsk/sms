@@ -91,7 +91,7 @@ return [
             'url' => 'https://smsgateway24.com/getdata/addsms',
             'token' => 'Your Api Token',
             'deviceid' => 'Your Default Device ID',
-            'sim'=>'Device SIM Slot.  0 or 1'
+            'sim' => 'Device SIM Slot.  0 or 1',
         ],
         'ghasedak' => [
             'url' => 'http://api.iransmsservice.com',
