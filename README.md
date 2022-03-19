@@ -18,9 +18,11 @@ List of supported gateways:
 - [LINK Mobility](https://www.linkmobility.com)
 - [Kavenegar](https://kavenegar.com)
 - [Melipayamak](https://www.melipayamak.com)
+- [Melipayamakpattern](https://www.melipayamak.com)
 - [Smsir](https://www.sms.ir)
 - [Tsms](http://www.tsms.ir)
 - [Farazsms](https://farazsms.com)
+- [Farazsmspattern](https://farazsms.com)
 - [SMS Gateway Me](https://smsgateway.me)
 - [SmsGateWay24](https://smsgateway24.com/en)
 - [Ghasedak](https://ghasedaksms.com/)
@@ -103,9 +105,9 @@ composer require twilio/sdk
 
 Then you just have to change the creadentials in the `twilio` driver section.
 
-#### Melipayamak Configuration:
+#### Melipayamak or Melipayamakpattern Configuration:
 
-In case you want to use Melipayamak. Then you have to pull a composer library first.
+In case you want to use Melipayamak or Melipayamakpattern, Then you have to pull a composer library first.
 
 ```bash
 composer require melipayamak/php
