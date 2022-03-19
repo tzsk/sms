@@ -60,6 +60,10 @@ return [
             'from' => 'Your Default From Number',
             'flash' => false,
         ],
+        'melipayamakpattern' => [
+            'username' => 'Your Username',
+            'password' => 'Your Password',
+        ],
         // Install: composer require kavenegar/php
         'kavenegar' => [
             'apiKey' => 'Your Api Key',
@@ -79,6 +83,12 @@ return [
         ],
         'farazsms' => [
             'url' => '188.0.240.110/services.jspd',
+            'username' => 'Your Username',
+            'password' => 'Your Password',
+            'from' => 'Your Default From Number',
+        ],
+        'farazsmspattern' => [
+            'url' => 'http://ippanel.com/patterns/pattern',
             'username' => 'Your Username',
             'password' => 'Your Password',
             'from' => 'Your Default From Number',
@@ -133,10 +143,12 @@ return [
         'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
         'linkmobility' => \Tzsk\Sms\Drivers\Linkmobility::class,
         'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,
+        'melipayamakpattern' => \Tzsk\Sms\Drivers\Melipayamakpattern::class,
         'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
         'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
         'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
         'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
+        'farazsmspattern' => \Tzsk\Sms\Drivers\Farazsmspattern::class,
         'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
         'sms77' => \Tzsk\Sms\Drivers\Sms77::class,
         'sabapayamak' => \Tzsk\Sms\Drivers\SabaPayamak::class,
