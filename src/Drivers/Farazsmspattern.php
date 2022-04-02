@@ -31,10 +31,13 @@ class Farazsmspattern extends Driver
         $input_data = [];
         $pattern_code = (explode('=', $body_data[0]))[1];
         foreach ($body_data as $key => $datum) {
-            if ($key === 0) continue;
+            if ($key === 0) {
+                continue;
+            }
             $key_value = explode("=", $datum);
             $input_data[$key_value[0]] = $key_value[1];
         }
+
         return [
             'username' => data_get($this->settings, 'username'),
             'password' => data_get($this->settings, 'password'),
@@ -51,4 +54,3 @@ class Farazsmspattern extends Driver
         $this->client = new Client();
     }
 }
-
