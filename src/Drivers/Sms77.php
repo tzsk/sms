@@ -26,6 +26,7 @@ class Sms77 extends Driver
 
     public function send()
     {
+        /** @var \Illuminate\Support\Collection $response */
         $response = collect();
         $params = (new SmsParams)
             ->setFlash(data_get($this->settings, 'flash'))

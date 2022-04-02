@@ -18,6 +18,7 @@ class Smsir extends Driver
     public function send()
     {
         $token = $this->getToken();
+        /** @var \Illuminate\Support\Collection $response */
         $response = collect();
 
         foreach ($this->recipients as $recipient) {

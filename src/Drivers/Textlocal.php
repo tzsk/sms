@@ -16,6 +16,7 @@ class Textlocal extends Driver
 
     public function send()
     {
+        /** @var \Illuminate\Support\Collection $response */
         $response = collect();
 
         foreach ($this->recipients as $recipient) {
