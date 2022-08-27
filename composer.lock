@@ -2459,16 +2459,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.0.11",
+            "version": "v6.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "09b8e50f09bf0e5bbde9b61b19d7f53751114725"
+                "reference": "c5c2e313aa682530167c25077d6bdff36346251e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/09b8e50f09bf0e5bbde9b61b19d7f53751114725",
-                "reference": "09b8e50f09bf0e5bbde9b61b19d7f53751114725",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c5c2e313aa682530167c25077d6bdff36346251e",
+                "reference": "c5c2e313aa682530167c25077d6bdff36346251e",
                 "shasum": ""
             },
             "require": {
@@ -2534,7 +2534,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.0.11"
+                "source": "https://github.com/symfony/console/tree/v6.0.12"
             },
             "funding": [
                 {
@@ -2550,7 +2550,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-22T14:17:38+00:00"
+            "time": "2022-08-23T20:52:30+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -4202,16 +4202,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.0.11",
+            "version": "v6.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "042b6bf0f6ccca6d456a0572eb788cfb8b1ff809"
+                "reference": "3a975ba1a1508ad97df45f4590f55b7cc4c1a0a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/042b6bf0f6ccca6d456a0572eb788cfb8b1ff809",
-                "reference": "042b6bf0f6ccca6d456a0572eb788cfb8b1ff809",
+                "url": "https://api.github.com/repos/symfony/string/zipball/3a975ba1a1508ad97df45f4590f55b7cc4c1a0a0",
+                "reference": "3a975ba1a1508ad97df45f4590f55b7cc4c1a0a0",
                 "shasum": ""
             },
             "require": {
@@ -4267,7 +4267,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.0.11"
+                "source": "https://github.com/symfony/string/tree/v6.0.12"
             },
             "funding": [
                 {
@@ -4283,7 +4283,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-27T15:50:26+00:00"
+            "time": "2022-08-12T18:05:20+00:00"
         },
         {
             "name": "symfony/translation",
@@ -9202,16 +9202,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "v4.25.0",
+            "version": "4.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "d7cd84c4ebca74ba3419b9601f81d177bcbe2aac"
+                "reference": "6998fabb2bf528b65777bf9941920888d23c03ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/d7cd84c4ebca74ba3419b9601f81d177bcbe2aac",
-                "reference": "d7cd84c4ebca74ba3419b9601f81d177bcbe2aac",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/6998fabb2bf528b65777bf9941920888d23c03ac",
+                "reference": "6998fabb2bf528b65777bf9941920888d23c03ac",
                 "shasum": ""
             },
             "require": {
@@ -9303,9 +9303,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/v4.25.0"
+                "source": "https://github.com/vimeo/psalm/tree/4.26.0"
             },
-            "time": "2022-07-25T17:04:37+00:00"
+            "time": "2022-07-31T13:10:26+00:00"
         },
         {
             "name": "webmozart/path-util",
