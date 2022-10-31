@@ -9167,16 +9167,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.43.0",
+            "version": "6.43.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:twilio/twilio-php.git",
-                "reference": "687245ed07dc807eec94389f715323cf13c1e316"
+                "reference": "040e989adccc39437371b14da5f20f068e586509"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/687245ed07dc807eec94389f715323cf13c1e316",
-                "reference": "687245ed07dc807eec94389f715323cf13c1e316",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/040e989adccc39437371b14da5f20f068e586509",
+                "reference": "040e989adccc39437371b14da5f20f068e586509",
                 "shasum": ""
             },
             "require": {
@@ -9212,7 +9212,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2022-10-19T19:27:21+00:00"
+            "time": "2022-10-31T19:29:12+00:00"
         },
         {
             "name": "vimeo/psalm",
