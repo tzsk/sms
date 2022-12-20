@@ -2,9 +2,9 @@
 
 namespace Tzsk\Sms\Tests\Mocks\Drivers;
 
-use Tzsk\Sms\Drivers\SabaPayamak;
+use Tzsk\Sms\Drivers\LSim;
 
-class MockLSim extends SabaPayamak
+class MockLSim extends LSim
 {
     use MockCommon;
 
