@@ -121,6 +121,11 @@ return [
             'from' => 'Your Default From Number',
             'token_valid_day' => 30,
         ],
+        'lsim' => [
+            'username' => 'Your LSIM login',
+            'password' => 'Your LSIM password',
+            'sender' => 'Your LSIM Sender ID',
+        ],
     ],
 
     /*
@@ -152,5 +157,6 @@ return [
         'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
         'sms77' => \Tzsk\Sms\Drivers\Sms77::class,
         'sabapayamak' => \Tzsk\Sms\Drivers\SabaPayamak::class,
+        'lsim' => \Tzsk\Sms\Drivers\LSim::class,
     ],
 ];
