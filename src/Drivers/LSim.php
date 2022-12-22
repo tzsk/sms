@@ -12,14 +12,13 @@ class LSim extends Driver
         $responses = [];
 
         foreach ($this->recipients as $recipient) {
-
             $result = Http::withOptions(['verify' => false])
-                ->get("http://apps.lsim.az/quicksms/v1/send",[
-                    'login'  => data_get($this->settings, 'username'),
+                ->get("http://apps.lsim.az/quicksms/v1/send", [
+                    'login' => data_get($this->settings, 'username'),
                     'msisdn' => $recipient,
-                    'text'   => $this->body,
+                    'text' => $this->body,
                     'sender' => data_get($this->settings, 'sender'),
-                    'key'    => $this->getKey($this->body, $recipient),
+                    'key' => $this->getKey($this->body, $recipient),
                 ]);
 
             $responses[$recipient] = $result;
