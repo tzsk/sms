@@ -4,39 +4,39 @@
 
 ![GitHub License](https://img.shields.io/github/license/tzsk/sms?style=for-the-badge)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/sms.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/sms)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tzsk/sms/Tests?label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/sms/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/tzsk/sms/run-tests.yml?branch=master&label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/sms/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tzsk/sms.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/sms)
 
 This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
 
 List of supported gateways:
 
-- [AWS SNS](https://aws.amazon.com/sns/)
-- [Textlocal](http://textlocal.in)
-- [Twilio](https://www.twilio.com)
-- [Clockwork](https://www.clockworksms.com/)
-- [LINK Mobility](https://www.linkmobility.com)
-- [Kavenegar](https://kavenegar.com)
-- [Melipayamak](https://www.melipayamak.com)
-- [Melipayamakpattern](https://www.melipayamak.com)
-- [Smsir](https://www.sms.ir)
-- [Tsms](http://www.tsms.ir)
-- [Farazsms](https://farazsms.com)
-- [Farazsmspattern](https://farazsms.com)
-- [SMS Gateway Me](https://smsgateway.me)
-- [SmsGateWay24](https://smsgateway24.com/en)
-- [Ghasedak](https://ghasedaksms.com/)
-- [Sms77](https://www.sms77.io)
-- [SabaPayamak](https://sabapayamak.com)
-- [LSim](https://sendsms.az/)
+-   [AWS SNS](https://aws.amazon.com/sns/)
+-   [Textlocal](http://textlocal.in)
+-   [Twilio](https://www.twilio.com)
+-   [Clockwork](https://www.clockworksms.com/)
+-   [LINK Mobility](https://www.linkmobility.com)
+-   [Kavenegar](https://kavenegar.com)
+-   [Melipayamak](https://www.melipayamak.com)
+-   [Melipayamakpattern](https://www.melipayamak.com)
+-   [Smsir](https://www.sms.ir)
+-   [Tsms](http://www.tsms.ir)
+-   [Farazsms](https://farazsms.com)
+-   [Farazsmspattern](https://farazsms.com)
+-   [SMS Gateway Me](https://smsgateway.me)
+-   [SmsGateWay24](https://smsgateway24.com/en)
+-   [Ghasedak](https://ghasedaksms.com/)
+-   [Sms77](https://www.sms77.io)
+-   [SabaPayamak](https://sabapayamak.com)
+-   [LSim](https://sendsms.az/)
 
-- Others are under way.
+-   Others are under way.
 
 ## :package: Install
 
 Via Composer
 
-``` bash
+```bash
 $ composer require tzsk/sms
 ```
 
@@ -258,16 +258,16 @@ namespace App\Packages\SMSDriver;
 
 use Tzsk\Sms\Contracts\Driver;
 
-class MyDriver extends Driver 
+class MyDriver extends Driver
 {
     /**
     * You Should implement these methods:
-    * 
+    *
     * 1. boot() -> (optional) Initialize any variable or configuration that you need.
     * 2. send() -> Main method to send messages.
-    * 
+    *
     * Note: settings array will be automatically assigned in Driver class' constructor.
-    *  
+    *
     * Example Given below:
     */
 
@@ -309,7 +309,7 @@ Once you crate that class you have to specify it in the `sms.php` Config file `m
 
 ## :microscope: Testing
 
-``` bash
+```bash
 composer test
 ```
 
@@ -327,8 +327,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## :crown: Credits
 
-- [Kazi Ahmed](https://github.com/tzsk)
-- [All Contributors](../../contributors)
+-   [Kazi Ahmed](https://github.com/tzsk)
+-   [All Contributors](../../contributors)
 
 ## :policeman: License
 
