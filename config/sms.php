@@ -29,12 +29,10 @@ return [
             'secret' => 'Your AWS SNS Secret Key',
             'region' => 'Your AWS SNS Region',
             'sender' => 'Your AWS SNS Sender ID',
-            'type' => 'Transactional',
-            // Or: 'Promotional'
+            'type' => 'Transactional', // Or: 'Promotional'
         ],
         'textlocal' => [
-            'url' => 'http://api.textlocal.in/send/',
-            // Country Wise this may change.
+            'url' => 'http://api.textlocal.in/send/', // Country Wise this may change.
             'username' => 'Your Username',
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
@@ -50,8 +48,7 @@ return [
             'key' => 'Your clockwork API Key',
         ],
         'linkmobility' => [
-            'url' => 'http://simple.pswin.com',
-            // Country Wise this may change.
+            'url' => 'http://simple.pswin.com', // Country Wise this may change.
             'username' => 'Your Username',
             'password' => 'Your Password',
             'sender' => 'Sender name',
