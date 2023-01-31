@@ -29,6 +29,7 @@ List of supported gateways:
 -   [Sms77](https://www.sms77.io)
 -   [SabaPayamak](https://sabapayamak.com)
 -   [LSim](https://sendsms.az/)
+-   [Rahyabcp](https://rahyabcp.ir/)
 
 -   Others are under way.
 

@@ -29,10 +29,12 @@ return [
             'secret' => 'Your AWS SNS Secret Key',
             'region' => 'Your AWS SNS Region',
             'sender' => 'Your AWS SNS Sender ID',
-            'type' => 'Transactional', // Or: 'Promotional'
+            'type' => 'Transactional',
+            // Or: 'Promotional'
         ],
         'textlocal' => [
-            'url' => 'http://api.textlocal.in/send/', // Country Wise this may change.
+            'url' => 'http://api.textlocal.in/send/',
+            // Country Wise this may change.
             'username' => 'Your Username',
             'hash' => 'Your Hash',
             'sender' => 'Sender Name',
@@ -48,7 +50,8 @@ return [
             'key' => 'Your clockwork API Key',
         ],
         'linkmobility' => [
-            'url' => 'http://simple.pswin.com', // Country Wise this may change.
+            'url' => 'http://simple.pswin.com',
+            // Country Wise this may change.
             'username' => 'Your Username',
             'password' => 'Your Password',
             'sender' => 'Sender name',
@@ -126,6 +129,13 @@ return [
             'password' => 'Your LSIM password',
             'sender' => 'Your LSIM Sender ID',
         ],
+        'rahyabcp' => [
+            'url' => 'https://p.1000sms.ir/Post/Send.asmx?wsdl',
+            'username' => 'Your Rahyabcp login',
+            'password' => 'Your Rahyabcp password',
+            'from' => 'Your Default From Number',
+            'flash' => false,
+        ],
     ],
 
     /*
@@ -158,5 +168,6 @@ return [
         'sms77' => \Tzsk\Sms\Drivers\Sms77::class,
         'sabapayamak' => \Tzsk\Sms\Drivers\SabaPayamak::class,
         'lsim' => \Tzsk\Sms\Drivers\LSim::class,
+        'rahyabcp' => \Tzsk\Sms\Drivers\Rahyabcp::class,
     ],
 ];
