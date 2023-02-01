@@ -133,6 +133,14 @@ return [
             'from' => 'Your Default From Number',
             'flash' => false,
         ],
+        'rahyabir' => [
+            'url' => 'https://api.rahyab.ir',
+            'username' => 'Your Rahyabir Username',
+            'password' => 'Your Rahyabir Password',
+            'company' => 'Your Rahyabir Company',
+            'from' => 'Your Default From Number',
+            'token_valid_day' => 1,
+        ],
     ],
 
     /*
@@ -166,5 +174,6 @@ return [
         'sabapayamak' => \Tzsk\Sms\Drivers\SabaPayamak::class,
         'lsim' => \Tzsk\Sms\Drivers\LSim::class,
         'rahyabcp' => \Tzsk\Sms\Drivers\Rahyabcp::class,
+        'rahyabir' => \Tzsk\Sms\Drivers\Rahyabir::class,
     ],
 ];

@@ -30,6 +30,7 @@ List of supported gateways:
 -   [SabaPayamak](https://sabapayamak.com)
 -   [LSim](https://sendsms.az/)
 -   [Rahyabcp](https://rahyabcp.ir/)
+-   [Rahyabir](https://sms.rahyab.ir/)
 
 -   Others are under way.
 
