@@ -31,6 +31,7 @@ List of supported gateways:
 -   [LSim](https://sendsms.az/)
 -   [Rahyabcp](https://rahyabcp.ir/)
 -   [Rahyabir](https://sms.rahyab.ir/)
+-   [D7networks](https://d7networks.com/)
 
 -   Others are under way.
 
@@ -172,6 +173,12 @@ sms()->via('gateway')->send("this message", function($sms) {
 });
 
 sms()->via('gateway')->send("this message")->to(['Number 1', 'Number 2'])->dispatch();
+
+# Sending argument and pattern code in pattern drivers such as melipayamakpattern and farazsmspattern.
+
+#Note: The first argument is always known as the pattern code.
+
+sms()->via('melipayamakpattern')->send("patterncode=123 \n arg1=name \n arg2=family")->to(['Number 1', 'Number 2'])->dispatch();
 
 ```
 

@@ -58,7 +58,7 @@ class Rahyabir extends Driver
             return $jsonResponse;
         }
 
-        throw new InvalidMessageException(serialize($jsonResponse), $response->status());
+        throw new InvalidMessageException(json_encode($jsonResponse), $response->status());
     }
 
     private function login(): void

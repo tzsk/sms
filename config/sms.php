@@ -141,6 +141,14 @@ return [
             'from' => 'Your Default From Number',
             'token_valid_day' => 1,
         ],
+        'd7networks' => [
+            'url' => 'https://api.d7networks.com',
+            'username' => 'Your D7networks ClientId',
+            'password' => 'Your D7networks clientSecret',
+            'originator' => 'SignOTP',
+            'report_url' => '',
+            'token_valid_day' => 1,
+        ],
     ],
 
     /*
@@ -175,5 +183,6 @@ return [
         'lsim' => \Tzsk\Sms\Drivers\LSim::class,
         'rahyabcp' => \Tzsk\Sms\Drivers\Rahyabcp::class,
         'rahyabir' => \Tzsk\Sms\Drivers\Rahyabir::class,
+        'd7networks' => \Tzsk\Sms\Drivers\D7networks::class,
     ],
 ];
