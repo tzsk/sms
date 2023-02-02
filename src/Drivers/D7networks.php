@@ -29,7 +29,7 @@ class D7networks extends Driver
         }
 
         if (count($this->recipients) > 200) {
-            throw new InvalidMessageException('Recipients cannot be more than 200 numbers.');
+            throw new InvalidMessageException('Recipients cannot be more than 100 numbers.');
         }
 
         $response = Http::withToken($this->token)->withHeaders($this->getHttpHeaders())

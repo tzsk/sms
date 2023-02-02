@@ -4,6 +4,7 @@ namespace Tzsk\Sms\Drivers;
 
 use SoapClient;
 use Tzsk\Sms\Contracts\Driver;
+use Tzsk\Sms\Exceptions\InvalidMessageException;
 
 class Rahyabcp extends Driver
 {
@@ -16,24 +17,22 @@ class Rahyabcp extends Driver
 
     public function send()
     {
-        $response = collect();
-
-        foreach ($this->recipients as $recipient) {
-            $result = $this->client->SendSms([
-                'username' => data_get($this->settings, 'username'),
-                'password' => data_get($this->settings, 'password'),
-                'from' => data_get($this->settings, 'from'),
-                'to' => [$recipient],
-                'text' => $this->body,
-                'isflash' => data_get($this->settings, 'flash'),
-                'udh' => "",
-                'recId' => [0],
-                'status' => [0],
-            ]);
-
-            $response->put($recipient, $result);
+        if (count($this->recipients) > 100) {
+            throw new InvalidMessageException('Recipients cannot be more than 100 numbers.');
         }
 
-        return (count($this->recipients) == 1) ? $response->first() : $response;
+        $response = $this->client->SendSms([
+            'username' => data_get($this->settings, 'username'),
+            'password' => data_get($this->settings, 'password'),
+            'from' => data_get($this->settings, 'from'),
+            'to' => $this->recipients,
+            'text' => $this->body,
+            'isflash' => data_get($this->settings, 'flash'),
+            'udh' => "",
+            'recId' => [0],
+            'status' => [0],
+        ]);
+
+        return $response;
     }
 }
