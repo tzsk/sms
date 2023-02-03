@@ -43,7 +43,7 @@ class Sns extends Driver
             'MessageAttributes' => [
                 'AWS.SNS.SMS.SenderID' => [
                     'DataType' => 'String',
-                    'StringValue' => data_get($this->settings, 'sender'),
+                    'StringValue' => $this->sender,
                 ],
                 'AWS.SNS.SMS.SMSType' => [
                     'DataType' => 'String',

@@ -20,7 +20,7 @@ class Farazsmspattern extends Driver
                 data_get($this->settings, 'url') . '?' . Arr::query($this->payload($recipient)),
             );
 
-            $response->put($recipient, (string)$result->getBody());
+            $response->put($recipient, (string) $result->getBody());
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;
@@ -42,7 +42,7 @@ class Farazsmspattern extends Driver
         return [
             'username' => data_get($this->settings, 'username'),
             'password' => data_get($this->settings, 'password'),
-            'from' => data_get($this->settings, 'from'),
+            'from' => $this->sender,
             'to' => json_encode([$recipient]),
             'pattern_code' => $pattern_code,
             'input_data' => json_encode($input_data),

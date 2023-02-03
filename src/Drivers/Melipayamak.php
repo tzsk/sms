@@ -28,12 +28,15 @@ class Melipayamak extends Driver
     {
         $response = collect();
         foreach ($this->recipients as $recipient) {
-            $response->put($recipient, $this->client->sms()->send(
+            $response->put(
                 $recipient,
-                data_get($this->settings, 'from'),
+                $this->client->sms()->send(
+                $recipient,
+                $this->sender,
                 $this->body,
                 data_get($this->settings, 'flash')
-            ));
+            )
+            );
         }
 
         return (count($this->recipients) == 1) ? $response->first() : $response;

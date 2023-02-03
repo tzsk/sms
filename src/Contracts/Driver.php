@@ -12,9 +12,12 @@ abstract class Driver
 
     protected string $body = '';
 
+    protected ?string $sender = '';
+
     public function __construct(array $settings)
     {
         $this->settings = $settings;
+        $this->from(data_get($settings, 'from'));
         $this->boot();
     }
 
@@ -31,6 +34,13 @@ abstract class Driver
         if (count($this->recipients) < 1) {
             throw new InvalidMessageException('Message recipients cannot be empty.');
         }
+
+        return $this;
+    }
+
+    public function from(?string $sender): self
+    {
+        $this->sender = $sender;
 
         return $this;
     }

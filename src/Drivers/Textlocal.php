@@ -36,7 +36,7 @@ class Textlocal extends Driver
                 'username' => data_get($this->settings, 'username'),
                 'hash' => data_get($this->settings, 'hash'),
                 'numbers' => $recipient,
-                'sender' => urlencode(data_get($this->settings, 'sender')),
+                'sender' => urlencode($this->sender),
                 'message' => $this->body,
             ],
         ];

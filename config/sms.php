@@ -28,14 +28,14 @@ return [
             'key' => 'Your AWS SNS Access Key',
             'secret' => 'Your AWS SNS Secret Key',
             'region' => 'Your AWS SNS Region',
-            'sender' => 'Your AWS SNS Sender ID',
+            'from' => 'Your AWS SNS Sender ID', // sender
             'type' => 'Transactional', // Or: 'Promotional'
         ],
         'textlocal' => [
             'url' => 'http://api.textlocal.in/send/', // Country Wise this may change.
             'username' => 'Your Username',
             'hash' => 'Your Hash',
-            'sender' => 'Sender Name',
+            'from' => 'Sender Name', // sender
         ],
         // Install: composer require twilio/sdk
         'twilio' => [
@@ -51,7 +51,7 @@ return [
             'url' => 'http://simple.pswin.com', // Country Wise this may change.
             'username' => 'Your Username',
             'password' => 'Your Password',
-            'sender' => 'Sender name',
+            'from' => 'Sender name', // sender
         ],
         // Install: composer require melipayamak/php
         'melipayamak' => [
@@ -101,7 +101,7 @@ return [
             'url' => 'https://smsgateway24.com/getdata/addsms',
             'token' => 'Your Api Token',
             'deviceid' => 'Your Default Device ID',
-            'sim' => 'Device SIM Slot.  0 or 1',
+            'from' => 'Device SIM Slot.  0 or 1', // sim
         ],
         'ghasedak' => [
             'url' => 'http://api.iransmsservice.com',
@@ -124,7 +124,7 @@ return [
         'lsim' => [
             'username' => 'Your LSIM login',
             'password' => 'Your LSIM password',
-            'sender' => 'Your LSIM Sender ID',
+            'from' => 'Your LSIM Sender ID', // sender
         ],
         'rahyabcp' => [
             'url' => 'https://p.1000sms.ir/Post/Send.asmx?wsdl',

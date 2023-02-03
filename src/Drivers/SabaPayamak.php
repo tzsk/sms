@@ -20,7 +20,7 @@ class SabaPayamak extends Driver
         $this->baseUrl = trim($this->settings['url'], '/');
         $this->username = $this->settings['username'];
         $this->password = $this->settings['password'];
-        $this->virtualNumber = $this->settings['from'];
+        $this->virtualNumber = $this->sender;
         $this->token = cache('sabapayamak_token');
     }
 
@@ -115,12 +115,12 @@ class SabaPayamak extends Driver
 
     private function getLoginApiUrl(): string
     {
-        return $this->baseUrl.'/api/v1/user/authenticate';
+        return $this->baseUrl . '/api/v1/user/authenticate';
     }
 
     private function getSendSmsApiUrl(): string
     {
-        return $this->baseUrl.'/api/v1/message';
+        return $this->baseUrl . '/api/v1/message';
     }
 
     private function getTokenValidDay()

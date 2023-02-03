@@ -24,7 +24,7 @@ class Rahyabcp extends Driver
         $response = $this->client->SendSms([
             'username' => data_get($this->settings, 'username'),
             'password' => data_get($this->settings, 'password'),
-            'from' => data_get($this->settings, 'from'),
+            'from' => $this->sender,
             'to' => $this->recipients,
             'text' => $this->body,
             'isflash' => data_get($this->settings, 'flash'),

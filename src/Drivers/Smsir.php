@@ -24,7 +24,7 @@ class Smsir extends Driver
         foreach ($this->recipients as $recipient) {
             $result = $this->client->request(
                 'POST',
-                data_get($this->settings, 'url').'/api/MessageSend',
+                data_get($this->settings, 'url') . '/api/MessageSend',
                 $this->payload($recipient, $token)
             );
             $response->put($recipient, $result);
@@ -44,7 +44,7 @@ class Smsir extends Driver
             'json' => [
                 'Messages' => [$this->body],
                 'MobileNumbers' => [$recipient],
-                'LineNumber' => data_get($this->settings, 'from'),
+                'LineNumber' => $this->sender,
             ],
             'headers' => [
                 'x-sms-ir-secure-token' => $token,
@@ -60,7 +60,7 @@ class Smsir extends Driver
             'SecretKey' => data_get($this->settings, 'secretKey'),
         ];
         $response = $this->client->post(
-            data_get($this->settings, 'url').'/api/Token',
+            data_get($this->settings, 'url') . '/api/Token',
             ['json' => $body, 'connect_timeout' => 30]
         );
 

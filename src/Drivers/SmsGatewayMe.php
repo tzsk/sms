@@ -42,7 +42,7 @@ class SmsGatewayMe extends Driver
         return new SendMessageRequest([
             'phoneNumber' => $recipient,
             'message' => $this->body,
-            'deviceId' => data_get($this->settings, 'from'),
+            'deviceId' => $this->sender,
         ]);
     }
 }

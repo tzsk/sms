@@ -17,7 +17,7 @@ class LSim extends Driver
                     'login' => data_get($this->settings, 'username'),
                     'msisdn' => $recipient,
                     'text' => $this->body,
-                    'sender' => data_get($this->settings, 'sender'),
+                    'sender' => $this->sender,
                     'key' => $this->getKey($this->body, $recipient),
                 ]);
 
@@ -36,7 +36,7 @@ class LSim extends Driver
             . data_get($this->settings, 'username')
             . $message
             . $number
-            . data_get($this->settings, 'sender')
+            . $this->sender
         );
     }
 }

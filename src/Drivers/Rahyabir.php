@@ -21,7 +21,7 @@ class Rahyabir extends Driver
         $this->baseUrl = trim($this->settings['url'], '/');
         $this->username = $this->settings['username'];
         $this->password = $this->settings['password'];
-        $this->number = $this->settings['from'];
+        $this->number = $this->sender;
         $this->company = $this->settings['company'];
         $this->token = cache('rahyabir_token');
     }

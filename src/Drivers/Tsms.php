@@ -22,7 +22,7 @@ class Tsms extends Driver
             $result = $this->client->sendSms(
                 data_get($this->settings, 'username'),
                 data_get($this->settings, 'password'),
-                [data_get($this->settings, 'from')],
+                [$this->sender],
                 [$recipient],
                 [$this->body],
                 [],
