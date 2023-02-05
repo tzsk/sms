@@ -32,6 +32,7 @@ List of supported gateways:
 -   [Rahyabcp](https://rahyabcp.ir/)
 -   [Rahyabir](https://sms.rahyab.ir/)
 -   [D7networks](https://d7networks.com/)
+-   [Hamyarsms](https://hamyarsms.com/)
 
 -   Others are under way.
 

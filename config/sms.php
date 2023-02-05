@@ -149,6 +149,13 @@ return [
             'report_url' => '',
             'token_valid_day' => 1,
         ],
+        'hamyarsms' => [
+            'url' => 'http://payamakapi.ir/SendService.svc?singleWsdl',
+            'username' => 'Your Hamyarsms Username',
+            'password' => 'Your Hamyarsms Password',
+            'from' => 'Your Default From Number',
+            'flash' => false,
+        ],
     ],
 
     /*
@@ -184,5 +191,6 @@ return [
         'rahyabcp' => \Tzsk\Sms\Drivers\Rahyabcp::class,
         'rahyabir' => \Tzsk\Sms\Drivers\Rahyabir::class,
         'd7networks' => \Tzsk\Sms\Drivers\D7networks::class,
+        'hamyarsms' => \Tzsk\Sms\Drivers\Hamyarsms::class,
     ],
 ];
