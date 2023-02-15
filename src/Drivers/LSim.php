@@ -13,7 +13,7 @@ class LSim extends Driver
 
         foreach ($this->recipients as $recipient) {
             $result = Http::withOptions(['verify' => false])
-                ->get("http://apps.lsim.az/quicksms/v1/send", [
+                ->get('http://apps.lsim.az/quicksms/v1/send', [
                     'login' => data_get($this->settings, 'username'),
                     'msisdn' => $recipient,
                     'text' => $this->body,
@@ -33,10 +33,10 @@ class LSim extends Driver
     {
         return md5(
             md5(data_get($this->settings, 'password'))
-            . data_get($this->settings, 'username')
-            . $message
-            . $number
-            . data_get($this->settings, 'sender')
+            .data_get($this->settings, 'username')
+            .$message
+            .$number
+            .data_get($this->settings, 'sender')
         );
     }
 }
