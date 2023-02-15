@@ -31,11 +31,11 @@ class Melipayamak extends Driver
             $response->put(
                 $recipient,
                 $this->client->sms()->send(
-                $recipient,
-                $this->sender,
-                $this->body,
-                data_get($this->settings, 'flash')
-            )
+                    $recipient,
+                    $this->sender,
+                    $this->body,
+                    data_get($this->settings, 'flash')
+                )
             );
         }
 

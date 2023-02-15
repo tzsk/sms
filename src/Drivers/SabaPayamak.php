@@ -119,12 +119,12 @@ class SabaPayamak extends Driver
 
     private function getLoginApiUrl(): string
     {
-        return $this->baseUrl . '/api/v1/user/authenticate';
+        return $this->baseUrl.'/api/v1/user/authenticate';
     }
 
     private function getSendSmsApiUrl(): string
     {
-        return $this->baseUrl . '/api/v1/message';
+        return $this->baseUrl.'/api/v1/message';
     }
 
     private function getTokenValidDay()

@@ -10,8 +10,11 @@ use Tzsk\Sms\Exceptions\InvalidSmsConfigurationException;
 class D7networks extends Driver
 {
     private ?string $baseUrl;
+
     private ?string $username;
+
     private ?string $password;
+
     private ?string $token;
 
     protected function boot(): void
@@ -114,12 +117,12 @@ class D7networks extends Driver
 
     private function getLoginApiUrl(): string
     {
-        return $this->baseUrl . '/auth/v1/login/application';
+        return $this->baseUrl.'/auth/v1/login/application';
     }
 
     private function getSendSmsApiUrl(): string
     {
-        return $this->baseUrl . '/messages/v1/send';
+        return $this->baseUrl.'/messages/v1/send';
     }
 
     private function getTokenValidDay()

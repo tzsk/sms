@@ -33,10 +33,10 @@ class LSim extends Driver
     {
         return md5(
             md5(data_get($this->settings, 'password'))
-            . data_get($this->settings, 'username')
-            . $message
-            . $number
-            . $this->sender
+            .data_get($this->settings, 'username')
+            .$message
+            .$number
+            .$this->sender
         );
     }
 }

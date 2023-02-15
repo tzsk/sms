@@ -22,7 +22,7 @@ class Ghasedak extends Driver
         foreach ($this->recipients as $recipient) {
             $result = $this->client->request(
                 'POST',
-                $this->settings['url'] . '/v2/sms/send/simple',
+                $this->settings['url'].'/v2/sms/send/simple',
                 [
                     'form_params' => [
                         'Receptor' => $recipient,

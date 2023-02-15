@@ -10,10 +10,15 @@ use Tzsk\Sms\Exceptions\InvalidSmsConfigurationException;
 class Rahyabir extends Driver
 {
     private ?string $baseUrl;
+
     private ?string $username;
+
     private ?string $password;
+
     private ?string $company;
+
     private ?string $number;
+
     private ?string $token;
 
     protected function boot(): void
@@ -103,7 +108,6 @@ class Rahyabir extends Driver
             throw new InvalidSmsConfigurationException('rahyabir config not found: company');
         }
 
-
         if (empty($this->number)) {
             throw new InvalidSmsConfigurationException('rahyabir config not found: from number');
         }
@@ -116,12 +120,12 @@ class Rahyabir extends Driver
 
     private function getLoginApiUrl(): string
     {
-        return $this->baseUrl . '/api/Auth/getToken';
+        return $this->baseUrl.'/api/Auth/getToken';
     }
 
     private function getSendSmsApiUrl(): string
     {
-        return $this->baseUrl . '/api/v1/SendSMS_Batch';
+        return $this->baseUrl.'/api/v1/SendSMS_Batch';
     }
 
     private function getTokenValidDay()

@@ -28,7 +28,7 @@ class Rahyabcp extends Driver
             'to' => $this->recipients,
             'text' => $this->body,
             'isflash' => data_get($this->settings, 'flash'),
-            'udh' => "",
+            'udh' => '',
             'recId' => [0],
             'status' => [0],
         ]);
