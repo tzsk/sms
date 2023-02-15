@@ -11,7 +11,7 @@ class SmsServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/sms.php' => config_path('sms.php'),
+                __DIR__.'/../config/sms.php' => config_path('sms.php'),
             ], 'sms-config');
 
             $this->commands([
@@ -26,6 +26,6 @@ class SmsServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/sms.php', 'sms');
+        $this->mergeConfigFrom(__DIR__.'/../config/sms.php', 'sms');
     }
 }

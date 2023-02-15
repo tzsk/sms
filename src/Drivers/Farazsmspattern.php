@@ -17,7 +17,7 @@ class Farazsmspattern extends Driver
         foreach ($this->recipients as $recipient) {
             $result = $this->client->request(
                 'GET',
-                data_get($this->settings, 'url') . '?' . Arr::query($this->payload($recipient)),
+                data_get($this->settings, 'url').'?'.Arr::query($this->payload($recipient)),
             );
 
             $response->put($recipient, (string) $result->getBody());
@@ -35,7 +35,7 @@ class Farazsmspattern extends Driver
             if ($key === 0) {
                 continue;
             }
-            $key_value = explode("=", $datum);
+            $key_value = explode('=', $datum);
             $input_data[$key_value[0]] = $key_value[1];
         }
 

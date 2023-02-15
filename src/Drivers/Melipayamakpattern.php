@@ -27,7 +27,7 @@ class Melipayamakpattern extends Driver
             if ($key === 0) {
                 continue;
             }
-            $key_value = explode("=", $datum);
+            $key_value = explode('=', $datum);
             $input_data[] = $key_value[1];
         }
         foreach ($this->recipients as $recipient) {

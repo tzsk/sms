@@ -10,9 +10,13 @@ use Tzsk\Sms\Exceptions\InvalidSmsConfigurationException;
 class SabaPayamak extends Driver
 {
     private ?string $baseUrl;
+
     private ?string $username;
+
     private ?string $password;
+
     private ?string $virtualNumber;
+
     private ?string $token;
 
     protected function boot(): void
