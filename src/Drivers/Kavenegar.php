@@ -21,7 +21,7 @@ class Kavenegar extends Driver
         foreach ($this->recipients as $recipient) {
             $response->put(
                 $recipient,
-                $this->client->Send(data_get($this->settings, 'from'), $recipient, $this->body)
+                $this->client->Send($this->sender, $recipient, $this->body)
             );
         }
 

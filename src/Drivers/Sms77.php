@@ -30,7 +30,7 @@ class Sms77 extends Driver
         $response = collect();
         $params = (new SmsParams)
             ->setFlash(data_get($this->settings, 'flash'))
-            ->setFrom(data_get($this->settings, 'from'))
+            ->setFrom($this->sender)
             ->setText($this->body);
 
         foreach ($this->recipients as $recipient) {

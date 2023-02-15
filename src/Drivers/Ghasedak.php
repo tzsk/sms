@@ -26,7 +26,7 @@ class Ghasedak extends Driver
                 [
                     'form_params' => [
                         'Receptor' => $recipient,
-                        'sender' => $this->settings['from'],
+                        'sender' => $this->sender,
                         'message' => $this->body,
                     ],
                     'headers' => [

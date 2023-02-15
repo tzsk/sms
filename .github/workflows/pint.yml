@@ -29,5 +29,5 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply php-cs Fixes
+          commit_message: Apply Pint Fixes
           commit_author: Kazi Ahmed <mailtokmahmed@gmail.com>

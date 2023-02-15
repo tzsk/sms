@@ -36,7 +36,7 @@ class Linkmobility extends Driver
                 'USER' => data_get($this->settings, 'username'),
                 'PW' => data_get($this->settings, 'password'),
                 'RCV' => $recipient,
-                'SND' => urlencode(data_get($this->settings, 'sender')),
+                'SND' => urlencode($this->sender),
                 'TXT' => $this->body,
             ],
         ];

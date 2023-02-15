@@ -28,14 +28,14 @@ return [
             'key' => 'Your AWS SNS Access Key',
             'secret' => 'Your AWS SNS Secret Key',
             'region' => 'Your AWS SNS Region',
-            'sender' => 'Your AWS SNS Sender ID',
+            'from' => 'Your AWS SNS Sender ID', // sender
             'type' => 'Transactional', // Or: 'Promotional'
         ],
         'textlocal' => [
             'url' => 'http://api.textlocal.in/send/', // Country Wise this may change.
             'username' => 'Your Username',
             'hash' => 'Your Hash',
-            'sender' => 'Sender Name',
+            'from' => 'Sender Name', // sender
         ],
         // Install: composer require twilio/sdk
         'twilio' => [
@@ -51,7 +51,7 @@ return [
             'url' => 'http://simple.pswin.com', // Country Wise this may change.
             'username' => 'Your Username',
             'password' => 'Your Password',
-            'sender' => 'Sender name',
+            'from' => 'Sender name', // sender
         ],
         // Install: composer require melipayamak/php
         'melipayamak' => [
@@ -101,7 +101,7 @@ return [
             'url' => 'https://smsgateway24.com/getdata/addsms',
             'token' => 'Your Api Token',
             'deviceid' => 'Your Default Device ID',
-            'sim' => 'Device SIM Slot.  0 or 1',
+            'from' => 'Device SIM Slot.  0 or 1', // sim
         ],
         'ghasedak' => [
             'url' => 'http://api.iransmsservice.com',
@@ -124,7 +124,37 @@ return [
         'lsim' => [
             'username' => 'Your LSIM login',
             'password' => 'Your LSIM password',
-            'sender' => 'Your LSIM Sender ID',
+            'from' => 'Your LSIM Sender ID', // sender
+        ],
+        'rahyabcp' => [
+            'url' => 'https://p.1000sms.ir/Post/Send.asmx?wsdl',
+            'username' => 'Your Rahyabcp login',
+            'password' => 'Your Rahyabcp password',
+            'from' => 'Your Default From Number',
+            'flash' => false,
+        ],
+        'rahyabir' => [
+            'url' => 'https://api.rahyab.ir',
+            'username' => 'Your Rahyabir Username',
+            'password' => 'Your Rahyabir Password',
+            'company' => 'Your Rahyabir Company',
+            'from' => 'Your Default From Number',
+            'token_valid_day' => 1,
+        ],
+        'd7networks' => [
+            'url' => 'https://api.d7networks.com',
+            'username' => 'Your D7networks ClientId',
+            'password' => 'Your D7networks clientSecret',
+            'originator' => 'SignOTP',
+            'report_url' => '',
+            'token_valid_day' => 1,
+        ],
+        'hamyarsms' => [
+            'url' => 'http://payamakapi.ir/SendService.svc?singleWsdl',
+            'username' => 'Your Hamyarsms Username',
+            'password' => 'Your Hamyarsms Password',
+            'from' => 'Your Default From Number',
+            'flash' => false,
         ],
     ],
 
@@ -158,5 +188,9 @@ return [
         'sms77' => \Tzsk\Sms\Drivers\Sms77::class,
         'sabapayamak' => \Tzsk\Sms\Drivers\SabaPayamak::class,
         'lsim' => \Tzsk\Sms\Drivers\LSim::class,
+        'rahyabcp' => \Tzsk\Sms\Drivers\Rahyabcp::class,
+        'rahyabir' => \Tzsk\Sms\Drivers\Rahyabir::class,
+        'd7networks' => \Tzsk\Sms\Drivers\D7networks::class,
+        'hamyarsms' => \Tzsk\Sms\Drivers\Hamyarsms::class,
     ],
 ];

@@ -44,7 +44,7 @@ class Smsir extends Driver
             'json' => [
                 'Messages' => [$this->body],
                 'MobileNumbers' => [$recipient],
-                'LineNumber' => data_get($this->settings, 'from'),
+                'LineNumber' => $this->sender,
             ],
             'headers' => [
                 'x-sms-ir-secure-token' => $token,

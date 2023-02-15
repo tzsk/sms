@@ -36,7 +36,7 @@ class Farazsms extends Driver
             'form_params' => [
                 'uname' => data_get($this->settings, 'username'),
                 'pass' => data_get($this->settings, 'password'),
-                'from' => data_get($this->settings, 'from'),
+                'from' => $this->sender,
                 'message' => $this->body,
                 'to' => json_encode([$recipient]),
                 'op' => 'send',

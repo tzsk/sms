@@ -29,6 +29,10 @@ List of supported gateways:
 -   [Sms77](https://www.sms77.io)
 -   [SabaPayamak](https://sabapayamak.com)
 -   [LSim](https://sendsms.az/)
+-   [Rahyabcp](https://rahyabcp.ir/)
+-   [Rahyabir](https://sms.rahyab.ir/)
+-   [D7networks](https://d7networks.com/)
+-   [Hamyarsms](https://hamyarsms.com/)
 
 -   Others are under way.
 
@@ -69,7 +73,7 @@ Then fill the credentials for that gateway in the drivers array.
         'key' => 'Your AWS SNS Access Key',
         'secret' => 'Your AWS SNS Secret Key',
         'region' => 'Your AWS SNS Region',
-        'sender' => 'Your AWS SNS Sender ID',
+        'from' => 'Your AWS SNS Sender ID', //sender
         'type' => 'Tansactional', // Or: 'Promotional'
     ],
     ...
@@ -170,6 +174,16 @@ sms()->via('gateway')->send("this message", function($sms) {
 });
 
 sms()->via('gateway')->send("this message")->to(['Number 1', 'Number 2'])->dispatch();
+
+# Change the from|sender|sim value with from() option:
+
+sms()->via('gateway')->send("this message")->from('Your From Number | Sender Value | Sim Value ')->to(['Number 1', 'Number 2'])->dispatch();
+
+# Sending argument and pattern code in pattern drivers such as melipayamakpattern and farazsmspattern.
+
+#Note: The first argument is always known as the pattern code.
+
+sms()->via('melipayamakpattern')->send("patterncode=123 \n arg1=name \n arg2=family")->to(['Number 1', 'Number 2'])->dispatch();
 
 ```
 

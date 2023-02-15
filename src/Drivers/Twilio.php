@@ -23,7 +23,7 @@ class Twilio extends Driver
              */
             $result = $this->client->account->messages->create(
                 $recipient,
-                ['from' => data_get($this->settings, 'from'), 'body' => $this->body]
+                ['from' => $this->sender, 'body' => $this->body]
             );
 
             $response->put($recipient, $result);

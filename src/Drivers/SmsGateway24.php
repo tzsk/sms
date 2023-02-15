@@ -38,7 +38,7 @@ class SmsGateway24 extends Driver
                 'sendto' => $recipient,
                 'body' => $this->body,
                 'device_id' => data_get($this->settings, 'deviceid'),
-                'sim' => data_get($this->settings, 'sim'),
+                'sim' => $this->sender,
             ],
         ];
     }
