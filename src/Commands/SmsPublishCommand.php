@@ -12,6 +12,6 @@ class SmsPublishCommand extends Command
 
     public function handle()
     {
-        $this->call('vendor:publish', ['--tag' => "sms-config"]);
+        $this->call('vendor:publish', ['--tag' => 'sms-config']);
     }
 }

@@ -4,7 +4,7 @@
 
 ![GitHub License](https://img.shields.io/github/license/tzsk/sms?style=for-the-badge)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/sms.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/sms)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/tzsk/sms/run-tests.yml?branch=master&label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/sms/actions?query=workflow%3ATests+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/tzsk/sms/tests.yml?branch=master&label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/sms/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tzsk/sms.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/sms)
 
 This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
