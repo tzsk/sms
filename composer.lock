@@ -8551,16 +8551,16 @@
         },
         {
             "name": "sms77/api",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sms77io/php-client.git",
-                "reference": "ec0339d72bcdfa930b80ab1c8cd2e2838b944d46"
+                "url": "https://github.com/seven-io/php-client.git",
+                "reference": "3ec6f3b9fa28eeecc7000dafa41c5c3239a138fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sms77io/php-client/zipball/ec0339d72bcdfa930b80ab1c8cd2e2838b944d46",
-                "reference": "ec0339d72bcdfa930b80ab1c8cd2e2838b944d46",
+                "url": "https://api.github.com/repos/seven-io/php-client/zipball/3ec6f3b9fa28eeecc7000dafa41c5c3239a138fd",
+                "reference": "3ec6f3b9fa28eeecc7000dafa41c5c3239a138fd",
                 "shasum": ""
             },
             "require": {
@@ -8587,14 +8587,14 @@
             ],
             "authors": [
                 {
-                    "name": "sms77 e.K.",
-                    "email": "a.matthies@sms77.io",
-                    "homepage": "https://www.sms77.io",
+                    "name": "seven communications GmbH & Co. KG",
+                    "email": "support@seven.io",
+                    "homepage": "https://www.seven.io",
                     "role": "Developer"
                 }
             ],
-            "description": "Official API Client for requesting the Sms77.io SMS Gateway.",
-            "homepage": "https://github.com/sms77io/php-client",
+            "description": "Official API Client for requesting the seven.io SMS Gateway.",
+            "homepage": "https://github.com/seven-io/php-client",
             "keywords": [
                 "2fa",
                 "cnam",
@@ -8606,13 +8606,13 @@
                 "tts"
             ],
             "support": {
-                "docs": "https://github.com/sms77io/php-client",
-                "email": "support@sms77.io",
-                "issues": "https://github.com/sms77io/php-client/issues",
-                "rss": "https://www.sms77.io/de/feed/",
-                "source": "https://github.com/sms77io/php-client"
+                "docs": "https://github.com/seven-io/php-client",
+                "email": "support@seven.io",
+                "issues": "https://github.com/seven-io/php-client/issues",
+                "rss": "https://www.seven.io/en/feed/",
+                "source": "https://github.com/seven-io/php-client"
             },
-            "time": "2021-09-21T07:31:40+00:00"
+            "time": "2023-02-27T21:31:53+00:00"
         },
         {
             "name": "smsgatewayme/client",
