@@ -2841,16 +2841,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "1ee04c65529dea5d8744774d474e7cbd2f1206d3"
+                "reference": "e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/1ee04c65529dea5d8744774d474e7cbd2f1206d3",
-                "reference": "1ee04c65529dea5d8744774d474e7cbd2f1206d3",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e",
+                "reference": "e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e",
                 "shasum": ""
             },
             "require": {
@@ -2888,7 +2888,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.2.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.2.1"
             },
             "funding": [
                 {
@@ -2904,7 +2904,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-25T10:21:52+00:00"
+            "time": "2023-03-01T10:25:55+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -5362,16 +5362,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.258.10",
+            "version": "3.261.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e164c9c5faf3965bd27ff2a4e9b7b3048ba8a337"
+                "reference": "63b03ec821473861af58439f1a35173e904d0f8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e164c9c5faf3965bd27ff2a4e9b7b3048ba8a337",
-                "reference": "e164c9c5faf3965bd27ff2a4e9b7b3048ba8a337",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/63b03ec821473861af58439f1a35173e904d0f8c",
+                "reference": "63b03ec821473861af58439f1a35173e904d0f8c",
                 "shasum": ""
             },
             "require": {
@@ -5450,9 +5450,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.258.10"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.261.6"
             },
-            "time": "2023-02-14T19:21:16+00:00"
+            "time": "2023-03-07T19:21:12+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",
