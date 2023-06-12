@@ -15,6 +15,10 @@ class SmsChannel
          */
         $message = $notification->toSms($notifiable);
 
+        if (empty($message->getRecipients()) && method_exists($notifiable, 'routeNotificationForSms')) {
+            $message->to($notifiable->routeNotificationForSms($notification));
+        }
+        
         $this->validate($message);
         $manager = app()->make('tzsk-sms');
 
