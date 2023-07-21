@@ -5460,16 +5460,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.269.2",
+            "version": "3.276.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "29318777b1a259471827d0f9f174e48677903d60"
+                "reference": "c8b38cfab677a3ec98e3f40bccd1a2bf851a014f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/29318777b1a259471827d0f9f174e48677903d60",
-                "reference": "29318777b1a259471827d0f9f174e48677903d60",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c8b38cfab677a3ec98e3f40bccd1a2bf851a014f",
+                "reference": "c8b38cfab677a3ec98e3f40bccd1a2bf851a014f",
                 "shasum": ""
             },
             "require": {
@@ -5549,9 +5549,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.269.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.276.3"
             },
-            "time": "2023-04-28T18:22:53+00:00"
+            "time": "2023-07-21T18:30:18+00:00"
         },
         {
             "name": "composer/pcre",
