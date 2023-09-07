@@ -156,6 +156,13 @@ return [
             'from' => 'Your Default From Number',
             'flash' => false,
         ],
+        'smsapi' => [
+            'url' => 'http://www.smsapi.si/poslji-sms',
+            'username' => 'Your SMSApi Username',
+            'password' => 'Your SMSApi Password',
+            'from' => 'Your Default From Number',
+            'cc' => 'Your Default Country Code'
+        ],
     ],
 
     /*
@@ -192,5 +199,6 @@ return [
         'rahyabir' => \Tzsk\Sms\Drivers\Rahyabir::class,
         'd7networks' => \Tzsk\Sms\Drivers\D7networks::class,
         'hamyarsms' => \Tzsk\Sms\Drivers\Hamyarsms::class,
+        'smsapi' => \Tzsk\Sms\Drivers\SmsApi::class,
     ],
 ];
