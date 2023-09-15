@@ -33,6 +33,7 @@ List of supported gateways:
 -   [Rahyabir](https://sms.rahyab.ir/)
 -   [D7networks](https://d7networks.com/)
 -   [Hamyarsms](https://hamyarsms.com/)
+-   [SMSApi](https://www.smsapi.si/)
 
 -   Others are under way.
 
