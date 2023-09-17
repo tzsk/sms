@@ -186,6 +186,12 @@ sms()->via('gateway')->send("this message")->from('Your From Number | Sender Val
 
 sms()->via('melipayamakpattern')->send("patterncode=123 \n arg1=name \n arg2=family")->to(['Number 1', 'Number 2'])->dispatch();
 
+# Using additional arguments or overriding existing config values when using the smsapi driver using the with() method:
+
+sms()->via('smsapi')->send("this message")->to(['Number 1', 'Number 2'])->with(['cc' => 387, 'sname' => 'Sender2', 'unicode' => '1'])
+
+#Note: Example changes country code, sender used and enables unicode. Read SmsApi documentation for a full list of available options.
+
 ```
 
 ## :heart_eyes: Channel Usage
