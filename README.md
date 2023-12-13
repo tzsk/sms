@@ -12,6 +12,7 @@ This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
 List of supported gateways:
 
 -   [AWS SNS](https://aws.amazon.com/sns/)
+-   [NRT SMS](https://www.nrtsms.com)
 -   [Textlocal](http://textlocal.in)
 -   [Twilio](https://www.twilio.com)
 -   [Clockwork](https://www.clockworksms.com/)
