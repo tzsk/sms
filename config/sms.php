@@ -161,7 +161,7 @@ return [
             'username' => 'Your SMSApi Username',
             'password' => 'Your SMSApi Password',
             'from' => 'Your Default From Number',
-            'cc' => 'Your Default Country Code'
+            'cc' => 'Your Default Country Code',
         ],
     ],
 

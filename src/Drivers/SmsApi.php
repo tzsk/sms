@@ -10,7 +10,7 @@ class SmsApi extends Driver
     protected Client $client;
 
     private array $options = [];
-    
+
     protected function boot(): void
     {
         $this->client = new Client();
@@ -19,17 +19,14 @@ class SmsApi extends Driver
 
     /**
      * Provides a way to pass additional valid parameters or override existing ones
-     *
-     * @param array $options
-     * @return self
      */
     public function with(array $options): self
     {
-        if (!empty(array_diff(array_keys($options), ['from', 'sname', 'cc', 'sid', 'ur', 'dr', 'stime', 'unicode', 'mms', 'mmstype', 'mmsurl']))) {
-            throw new \Exception(__METHOD__  . " contains invalid options");
+        if (! empty(array_diff(array_keys($options), ['from', 'sname', 'cc', 'sid', 'ur', 'dr', 'stime', 'unicode', 'mms', 'mmstype', 'mmsurl']))) {
+            throw new \Exception(__METHOD__.' contains invalid options');
         }
 
-        foreach($options as $option => $value) {
+        foreach ($options as $option => $value) {
             $this->options[$option] = $value;
         }
 
@@ -47,11 +44,12 @@ class SmsApi extends Driver
                     data_get($this->settings, 'url'),
                     [
                         'form_params' => $this->payload($recipient),
-                        'verify' => false
+                        'verify' => false,
                     ]
                 )
             );
         }
+
         return (count($this->recipients) == 1) ? $response->first() : $response;
     }
 
@@ -66,6 +64,6 @@ class SmsApi extends Driver
             'm' => $this->body,
         ];
 
-        return  array_merge($payload, $this->options);
+        return array_merge($payload, $this->options);
     }
 }
