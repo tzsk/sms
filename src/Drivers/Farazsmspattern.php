@@ -36,7 +36,7 @@ class Farazsmspattern extends Driver
                 continue;
             }
             $key_value = explode('=', $datum);
-            $input_data[trim($key_value[0])] = $key_value[1];
+            $input_data[trim($key_value[0])] = trim($key_value[1]);
         }
 
         return [

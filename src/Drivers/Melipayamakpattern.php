@@ -28,7 +28,7 @@ class Melipayamakpattern extends Driver
                 continue;
             }
             $key_value = explode('=', $datum);
-            $input_data[] = $key_value[1];
+            $input_data[] = trim($key_value[1]);
         }
         foreach ($this->recipients as $recipient) {
             $response->put($recipient, $this->client->sms('soap')->sendByBaseNumber(
