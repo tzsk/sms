@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a690df8f2d6126f7efbc8e6d41f20e7f",
+    "content-hash": "8a1d4cbde466c93cb098517c5bf0d2d6",
     "packages": [
         {
             "name": "brick/math",
@@ -9459,16 +9459,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "7.3.0",
+            "version": "8.2.2",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twilio/twilio-php.git",
-                "reference": "db64f7b5555b1bb4b5ea1511917cadf064342c0e"
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "10dbd6ecbc6ac1e0c61ab7d70c44e0794f8d3a1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/db64f7b5555b1bb4b5ea1511917cadf064342c0e",
-                "reference": "db64f7b5555b1bb4b5ea1511917cadf064342c0e",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/10dbd6ecbc6ac1e0c61ab7d70c44e0794f8d3a1f",
+                "reference": "10dbd6ecbc6ac1e0c61ab7d70c44e0794f8d3a1f",
                 "shasum": ""
             },
             "require": {
@@ -9504,7 +9504,11 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2023-04-20T07:20:58+00:00"
+            "support": {
+                "issues": "https://github.com/twilio/twilio-php/issues",
+                "source": "https://github.com/twilio/twilio-php/tree/8.2.2"
+            },
+            "time": "2024-07-02T09:32:09+00:00"
         },
         {
             "name": "vimeo/psalm",
@@ -9829,5 +9833,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
