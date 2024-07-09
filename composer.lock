@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a690df8f2d6126f7efbc8e6d41f20e7f",
+    "content-hash": "5fab31f42350ec18dcc195da1a4bcdbc",
     "packages": [
         {
             "name": "brick/math",
@@ -8675,16 +8675,16 @@
         },
         {
             "name": "sms77/api",
-            "version": "v2.6.0",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/seven-io/php-client.git",
-                "reference": "9d56308fbf959ca83ce3f2e1de7d7d45271d940e"
+                "reference": "e7d3aaecc00aa2a85460fbb7d6ae1fe2ab34082e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/seven-io/php-client/zipball/9d56308fbf959ca83ce3f2e1de7d7d45271d940e",
-                "reference": "9d56308fbf959ca83ce3f2e1de7d7d45271d940e",
+                "url": "https://api.github.com/repos/seven-io/php-client/zipball/e7d3aaecc00aa2a85460fbb7d6ae1fe2ab34082e",
+                "reference": "e7d3aaecc00aa2a85460fbb7d6ae1fe2ab34082e",
                 "shasum": ""
             },
             "require": {
@@ -8692,17 +8692,18 @@
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": ">=7.3"
+                "php": ">=8.2"
             },
             "require-dev": {
                 "ext-simplexml": "*",
                 "ext-soap": "*",
-                "phpunit/phpunit": "^9"
+                "ext-xdebug": "*",
+                "phpunit/phpunit": "^11"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Sms77\\Api\\": "src/"
+                    "Seven\\Api\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8717,7 +8718,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Official API Client for requesting the seven.io SMS Gateway.",
+            "description": "Official API Client for requesting the seven.io messaging Gateway.",
             "homepage": "https://github.com/seven-io/php-client",
             "keywords": [
                 "2fa",
@@ -8725,6 +8726,7 @@
                 "gateway",
                 "hlr",
                 "mnp",
+                "rcs",
                 "sms",
                 "text2speech",
                 "tts"
@@ -8736,7 +8738,8 @@
                 "rss": "https://www.seven.io/en/feed/",
                 "source": "https://github.com/seven-io/php-client"
             },
-            "time": "2023-05-26T12:27:14+00:00"
+            "abandoned": "seven.io/api",
+            "time": "2024-05-24T09:40:30+00:00"
         },
         {
             "name": "smsgatewayme/client",
@@ -9829,5 +9832,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
