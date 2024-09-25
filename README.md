@@ -26,7 +26,7 @@ List of supported gateways:
 -   [SMS Gateway Me](https://smsgateway.me)
 -   [SmsGateWay24](https://smsgateway24.com/en)
 -   [Ghasedak](https://ghasedaksms.com/)
--   [Sms77](https://www.sms77.io)
+-   [Seven](https://www.seven.io)
 -   [SabaPayamak](https://sabapayamak.com)
 -   [LSim](https://sendsms.az/)
 -   [Rahyabcp](https://rahyabcp.ir/)

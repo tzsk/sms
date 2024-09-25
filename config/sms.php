@@ -108,7 +108,7 @@ return [
             'apiKey' => 'Your api key',
             'from' => 'Your Default From Number',
         ],
-        // Install: composer require sms77/api
+        // Install: composer require seven.io/api
         'sms77' => [
             'apiKey' => 'Your API Key',
             'flash' => false,
