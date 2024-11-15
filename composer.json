@@ -43,7 +43,7 @@
         "phpunit/phpunit": "^9.3|^10.5",
         "sms77/api": "^v2.4.0",
         "smsgatewayme/client": "^0.0.1",
-        "twilio/sdk": "^7.3",
+        "twilio/sdk": "^8.3",
         "vimeo/psalm": "^5.0"
     },
     "autoload": {
