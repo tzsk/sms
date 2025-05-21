@@ -40,6 +40,19 @@ class Sms
         return $this;
     }
 
+    /**
+     * Override configuration at runtime.
+     *
+     * @param  array  $overrides  Configuration parameters to override
+     * @return $this
+     */
+    public function config(array $overrides): self
+    {
+        $this->settings = array_merge($this->settings, $overrides);
+
+        return $this;
+    }
+
     public function send($message, $callback = null)
     {
         if ($message instanceof Builder) {
