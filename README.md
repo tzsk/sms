@@ -188,6 +188,19 @@ sms()->via('melipayamakpattern')->send("patterncode=123 \n arg1=name \n arg2=fam
 
 ```
 
+### Runtime Configuration
+
+You can override the default gateway configuration at runtime:
+
+```php
+# Override configuration for this specific SMS
+Sms::via('gateway')
+    ->config(['from' => 'CUSTOM-SENDER'])
+    ->send('this message')
+    ->to(['Number1', 'Number2'])
+    ->dispatch();
+```
+
 ## :heart_eyes: Channel Usage
 
 First you have to create your notification using `php artisan make:notification` command. then `SmsChannel::class` can

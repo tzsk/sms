@@ -81,4 +81,30 @@ class SmsTest extends TestCase
         $this->assertEquals('foo', $response->getBody());
         $this->assertContains('baz', $response->getRecipients());
     }
+
+    public function test_it_can_override_config_at_runtime()
+    {
+        // Setup
+        $gateway = 'bar';
+        $customFrom = 'OVERRIDE-NUMBER';
+        $defaultFrom = 'DEFAULT-NUMBER';
+
+        // Set default config
+        config(['sms.drivers.bar.from' => $defaultFrom]);
+
+        // Test runtime override
+        $manager = (new MockSmsManager)->via($gateway)->config(['from' => $customFrom]);
+
+        // Verify settings were overridden
+        $settings = $manager->getSettings();
+        $this->assertEquals($customFrom, $settings['from']);
+
+        // Verify it's used in the actual flow
+        $driver = $manager->send('foo')->to('baz')->dispatch();
+        $this->assertEquals('foo', $driver->getBody());
+        $this->assertContains('baz', $driver->getRecipients());
+
+        // Verify the global config wasn't changed
+        $this->assertEquals($defaultFrom, config('sms.drivers.bar.from'));
+    }
 }
