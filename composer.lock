@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a690df8f2d6126f7efbc8e6d41f20e7f",
+    "content-hash": "88225cf2744b5def10213cf9992d8e70",
     "packages": [
         {
             "name": "brick/math",
@@ -9459,22 +9459,23 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "7.3.0",
+            "version": "8.8.6",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twilio/twilio-php.git",
-                "reference": "db64f7b5555b1bb4b5ea1511917cadf064342c0e"
+                "url": "https://github.com/twilio/twilio-php",
+                "reference": "130d9be431ff8184849bf9e9e47ae5e152246072"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/db64f7b5555b1bb4b5ea1511917cadf064342c0e",
-                "reference": "db64f7b5555b1bb4b5ea1511917cadf064342c0e",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/130d9be431ff8184849bf9e9e47ae5e152246072",
+                "reference": "130d9be431ff8184849bf9e9e47ae5e152246072",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
                 "guzzlehttp/guzzle": "^6.3 || ^7.0",
                 "phpunit/phpunit": ">=7.0 < 10"
             },
@@ -9504,7 +9505,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2023-04-20T07:20:58+00:00"
+            "time": "2025-11-11T07:50:54+00:00"
         },
         {
             "name": "vimeo/psalm",
@@ -9822,12 +9823,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }
