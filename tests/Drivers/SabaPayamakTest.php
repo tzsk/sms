@@ -11,6 +11,6 @@ class SabaPayamakTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockSabaPayamak();
+        return new MockSabaPayamak;
     }
 }

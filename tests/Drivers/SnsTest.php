@@ -11,6 +11,6 @@ class SnsTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockSns();
+        return new MockSns;
     }
 }

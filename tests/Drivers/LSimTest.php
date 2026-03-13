@@ -11,6 +11,6 @@ class LSimTest extends TestCase
 
     protected function getDriver(): MockLSim
     {
-        return new MockLSim();
+        return new MockLSim;
     }
 }

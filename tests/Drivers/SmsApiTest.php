@@ -12,7 +12,7 @@ class SmsApiTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockSmsApi();
+        return new MockSmsApi;
     }
 
     public function test_it_wont_accept_invalid_parameters()

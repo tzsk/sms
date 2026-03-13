@@ -11,6 +11,6 @@ class D7networksTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockD7networks();
+        return new MockD7networks;
     }
 }

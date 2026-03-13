@@ -11,6 +11,6 @@ class RahyabirTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockRahyabir();
+        return new MockRahyabir;
     }
 }

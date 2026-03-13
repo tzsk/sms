@@ -27,24 +27,28 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "guzzlehttp/guzzle": "^7.0",
-        "illuminate/http": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0"
+        "php": "^8.4",
+        "guzzlehttp/guzzle": "^7.8",
+        "illuminate/http": "^11.0|^12.0",
+        "illuminate/support": "^11.0|^12.0"
     },
     "require-dev": {
-        "aws/aws-sdk-php": "^3.87",
+        "aws/aws-sdk-php": "^3.300",
         "kavenegar/php": "^1.2",
-        "laravel/legacy-factories": "^1.0",
-        "laravel/pint": "^1.5",
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.18",
         "mediaburst/clockworksms": "^2.0",
         "melipayamak/php": "^1.0.0",
-        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0",
-        "phpunit/phpunit": "^9.3|^10.5|^11.5.3",
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-arch": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
         "sms77/api": "^v2.4.0",
         "smsgatewayme/client": "^0.0.1",
-        "twilio/sdk": "^7.3|^8.3",
-        "vimeo/psalm": "^5.0|^6.6"
+        "twilio/sdk": "^8.3"
     },
     "autoload": {
         "psr-4": {
@@ -60,12 +64,17 @@
         }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm",
-        "test": "vendor/bin/phpunit --colors=always",
+        "phpstan": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest --colors=always",
         "format": "vendor/bin/pint"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform-check": false,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {

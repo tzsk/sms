@@ -11,6 +11,6 @@ class TextlocalTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockTextLocal();
+        return new MockTextLocal;
     }
 }

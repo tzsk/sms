@@ -12,4 +12,10 @@ class MockHamyarsms extends Hamyarsms
     {
         parent::__construct(config('sms.drivers.hamyarsms'));
     }
+
+    protected function boot(): void
+    {
+        // Disable loading actual WSDL during tests
+        $this->client = \Mockery::mock(\SoapClient::class);
+    }
 }

@@ -1,10 +1,12 @@
 <?php
 
+use Tzsk\Sms\Sms;
+
 if (! function_exists('sms')) {
     /**
      * Access SmsManager through helper.
      *
-     * @return \Tzsk\Sms\Sms
+     * @return Sms
      */
     function sms()
     {

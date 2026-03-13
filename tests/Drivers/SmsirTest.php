@@ -11,6 +11,6 @@ class SmsirTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockSmsir();
+        return new MockSmsir;
     }
 }

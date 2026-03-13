@@ -11,6 +11,6 @@ class HamyarsmsTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockHamyarsms();
+        return new MockHamyarsms;
     }
 }

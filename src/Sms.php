@@ -19,7 +19,7 @@ class Sms
     public function __construct(array $config)
     {
         $this->config = $config;
-        $this->setBuilder(new Builder());
+        $this->setBuilder(new Builder);
         $this->via($this->config['default']);
     }
 
