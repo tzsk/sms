@@ -11,6 +11,6 @@ class RahyabcpTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockRahyabcp();
+        return new MockRahyabcp;
     }
 }

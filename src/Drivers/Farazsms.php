@@ -11,7 +11,7 @@ class Farazsms extends Driver
 
     protected function boot(): void
     {
-        $this->client = new Client();
+        $this->client = new Client;
     }
 
     public function send()

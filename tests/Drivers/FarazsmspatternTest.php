@@ -11,6 +11,6 @@ class FarazsmspatternTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockFarazsmspattern();
+        return new MockFarazsmspattern;
     }
 }

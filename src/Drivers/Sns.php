@@ -3,6 +3,7 @@
 namespace Tzsk\Sms\Drivers;
 
 use Aws\Sns\SnsClient;
+use Illuminate\Support\Collection;
 use Tzsk\Sms\Contracts\Driver;
 
 class Sns extends Driver
@@ -23,7 +24,7 @@ class Sns extends Driver
 
     public function send()
     {
-        /** @var \Illuminate\Support\Collection $response */
+        /** @var Collection $response */
         $response = collect();
 
         foreach ($this->recipients as $recipient) {

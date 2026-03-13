@@ -2,6 +2,7 @@
 
 namespace Tzsk\Sms\Drivers;
 
+use Illuminate\Support\Collection;
 use Sms77\Api\Client;
 use Sms77\Api\Params\SmsParams;
 use Tzsk\Sms\Contracts\Driver;
@@ -26,7 +27,7 @@ class Sms77 extends Driver
 
     public function send()
     {
-        /** @var \Illuminate\Support\Collection $response */
+        /** @var Collection $response */
         $response = collect();
         $params = (new SmsParams)
             ->setFlash(data_get($this->settings, 'flash'))

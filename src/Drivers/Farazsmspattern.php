@@ -4,6 +4,7 @@ namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Tzsk\Sms\Contracts\Driver;
 
 class Farazsmspattern extends Driver
@@ -12,7 +13,7 @@ class Farazsmspattern extends Driver
 
     public function send()
     {
-        /** @var \Illuminate\Support\Collection $response */
+        /** @var Collection $response */
         $response = collect();
         foreach ($this->recipients as $recipient) {
             $result = $this->client->request(
@@ -52,6 +53,6 @@ class Farazsmspattern extends Driver
 
     protected function boot(): void
     {
-        $this->client = new Client();
+        $this->client = new Client;
     }
 }

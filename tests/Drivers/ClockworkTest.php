@@ -11,6 +11,6 @@ class ClockworkTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockClockwork();
+        return new MockClockwork;
     }
 }

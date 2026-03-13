@@ -11,6 +11,6 @@ class Sms77Test extends TestCase
 
     protected function getDriver()
     {
-        return new MockSms77();
+        return new MockSms77;
     }
 }

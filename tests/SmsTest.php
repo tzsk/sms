@@ -11,7 +11,7 @@ class SmsTest extends TestCase
 {
     public function test_it_has_default_driver()
     {
-        $manager = new MockSmsManager();
+        $manager = new MockSmsManager;
 
         $this->assertSameSize(config('sms'), $manager->getConfig());
         $this->assertEquals(config('sms.default'), $manager->getDriver());
@@ -21,13 +21,13 @@ class SmsTest extends TestCase
     public function test_it_wont_accept_wrong_driver()
     {
         $this->expectException(\Exception::class);
-        $manager = (new MockSmsManager())->via('foo');
+        $manager = (new MockSmsManager)->via('foo');
     }
 
     public function test_driver_can_be_changed()
     {
         $gateway = 'twilio';
-        $manager = (new MockSmsManager())->via($gateway);
+        $manager = (new MockSmsManager)->via($gateway);
 
         $this->assertEquals($gateway, $manager->getDriver());
         $this->assertSameSize($manager->getSettings(), config('sms.drivers.'.$gateway));
@@ -35,7 +35,7 @@ class SmsTest extends TestCase
 
     public function test_can_call_directly()
     {
-        $response = (new MockSmsManager())->via('bar')
+        $response = (new MockSmsManager)->via('bar')
             ->send('foo', function ($message) {
                 $message->to(['baz']);
             });

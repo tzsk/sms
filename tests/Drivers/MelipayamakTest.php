@@ -11,6 +11,6 @@ class MelipayamakTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockMelipayamak();
+        return new MockMelipayamak;
     }
 }

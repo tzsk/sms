@@ -11,6 +11,6 @@ class TwilioTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockTwilio();
+        return new MockTwilio;
     }
 }

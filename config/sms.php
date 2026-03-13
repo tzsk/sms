@@ -1,5 +1,28 @@
 <?php
 
+use Tzsk\Sms\Drivers\Clockwork;
+use Tzsk\Sms\Drivers\D7networks;
+use Tzsk\Sms\Drivers\Farazsms;
+use Tzsk\Sms\Drivers\Farazsmspattern;
+use Tzsk\Sms\Drivers\Ghasedak;
+use Tzsk\Sms\Drivers\Hamyarsms;
+use Tzsk\Sms\Drivers\Kavenegar;
+use Tzsk\Sms\Drivers\Linkmobility;
+use Tzsk\Sms\Drivers\LSim;
+use Tzsk\Sms\Drivers\Melipayamak;
+use Tzsk\Sms\Drivers\Melipayamakpattern;
+use Tzsk\Sms\Drivers\Rahyabcp;
+use Tzsk\Sms\Drivers\Rahyabir;
+use Tzsk\Sms\Drivers\SabaPayamak;
+use Tzsk\Sms\Drivers\Sms77;
+use Tzsk\Sms\Drivers\SmsApi;
+use Tzsk\Sms\Drivers\SmsGateway24;
+use Tzsk\Sms\Drivers\Smsir;
+use Tzsk\Sms\Drivers\Sns;
+use Tzsk\Sms\Drivers\Textlocal;
+use Tzsk\Sms\Drivers\Tsms;
+use Tzsk\Sms\Drivers\Twilio;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -178,27 +201,27 @@ return [
     |
     */
     'map' => [
-        'sns' => \Tzsk\Sms\Drivers\Sns::class,
-        'textlocal' => \Tzsk\Sms\Drivers\Textlocal::class,
-        'twilio' => \Tzsk\Sms\Drivers\Twilio::class,
-        'smsgateway24' => \Tzsk\Sms\Drivers\SmsGateway24::class,
-        'clockwork' => \Tzsk\Sms\Drivers\Clockwork::class,
-        'linkmobility' => \Tzsk\Sms\Drivers\Linkmobility::class,
-        'melipayamak' => \Tzsk\Sms\Drivers\Melipayamak::class,
-        'melipayamakpattern' => \Tzsk\Sms\Drivers\Melipayamakpattern::class,
-        'kavenegar' => \Tzsk\Sms\Drivers\Kavenegar::class,
-        'smsir' => \Tzsk\Sms\Drivers\Smsir::class,
-        'tsms' => \Tzsk\Sms\Drivers\Tsms::class,
-        'farazsms' => \Tzsk\Sms\Drivers\Farazsms::class,
-        'farazsmspattern' => \Tzsk\Sms\Drivers\Farazsmspattern::class,
-        'ghasedak' => \Tzsk\Sms\Drivers\Ghasedak::class,
-        'sms77' => \Tzsk\Sms\Drivers\Sms77::class,
-        'sabapayamak' => \Tzsk\Sms\Drivers\SabaPayamak::class,
-        'lsim' => \Tzsk\Sms\Drivers\LSim::class,
-        'rahyabcp' => \Tzsk\Sms\Drivers\Rahyabcp::class,
-        'rahyabir' => \Tzsk\Sms\Drivers\Rahyabir::class,
-        'd7networks' => \Tzsk\Sms\Drivers\D7networks::class,
-        'hamyarsms' => \Tzsk\Sms\Drivers\Hamyarsms::class,
-        'smsapi' => \Tzsk\Sms\Drivers\SmsApi::class,
+        'sns' => Sns::class,
+        'textlocal' => Textlocal::class,
+        'twilio' => Twilio::class,
+        'smsgateway24' => SmsGateway24::class,
+        'clockwork' => Clockwork::class,
+        'linkmobility' => Linkmobility::class,
+        'melipayamak' => Melipayamak::class,
+        'melipayamakpattern' => Melipayamakpattern::class,
+        'kavenegar' => Kavenegar::class,
+        'smsir' => Smsir::class,
+        'tsms' => Tsms::class,
+        'farazsms' => Farazsms::class,
+        'farazsmspattern' => Farazsmspattern::class,
+        'ghasedak' => Ghasedak::class,
+        'sms77' => Sms77::class,
+        'sabapayamak' => SabaPayamak::class,
+        'lsim' => LSim::class,
+        'rahyabcp' => Rahyabcp::class,
+        'rahyabir' => Rahyabir::class,
+        'd7networks' => D7networks::class,
+        'hamyarsms' => Hamyarsms::class,
+        'smsapi' => SmsApi::class,
     ],
 ];
