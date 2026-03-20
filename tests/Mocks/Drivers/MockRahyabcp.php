@@ -12,4 +12,10 @@ class MockRahyabcp extends Rahyabcp
     {
         parent::__construct(config('sms.drivers.rahyabcp'));
     }
+
+    protected function boot(): void
+    {
+        // Disable loading actual WSDL during tests
+        $this->client = \Mockery::mock(\SoapClient::class);
+    }
 }

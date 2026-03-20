@@ -11,6 +11,6 @@ class SmsGatewayMeTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockSmsGatewayMe();
+        return new MockSmsGatewayMe;
     }
 }

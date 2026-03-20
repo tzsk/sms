@@ -11,6 +11,6 @@ class TsmsTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockTsms();
+        return new MockTsms;
     }
 }

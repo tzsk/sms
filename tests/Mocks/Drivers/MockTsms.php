@@ -12,4 +12,10 @@ class MockTsms extends Tsms
     {
         parent::__construct(config('sms.drivers.tsms'));
     }
+
+    protected function boot(): void
+    {
+        // Disable loading actual WSDL during tests
+        $this->client = \Mockery::mock(\SoapClient::class);
+    }
 }

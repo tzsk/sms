@@ -11,6 +11,6 @@ class LinkmobilityTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockLinkmobility();
+        return new MockLinkmobility;
     }
 }

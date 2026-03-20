@@ -3,6 +3,7 @@
 namespace Tzsk\Sms\Drivers;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Collection;
 use Tzsk\Sms\Contracts\Driver;
 use Tzsk\Sms\Exceptions\InvalidSmsConfigurationException;
 
@@ -12,13 +13,13 @@ class Smsir extends Driver
 
     protected function boot(): void
     {
-        $this->client = new Client();
+        $this->client = new Client;
     }
 
     public function send()
     {
         $token = $this->getToken();
-        /** @var \Illuminate\Support\Collection $response */
+        /** @var Collection $response */
         $response = collect();
 
         foreach ($this->recipients as $recipient) {

@@ -11,6 +11,6 @@ class SmsGateway24 extends TestCase
 
     protected function getDriver()
     {
-        return new MockSmsGateway24();
+        return new MockSmsGateway24;
     }
 }

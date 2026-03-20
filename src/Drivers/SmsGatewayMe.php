@@ -2,6 +2,7 @@
 
 namespace Tzsk\Sms\Drivers;
 
+use Illuminate\Support\Collection;
 use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\ApiClient;
 use SMSGatewayMe\Client\Configuration;
@@ -24,7 +25,7 @@ class SmsGatewayMe extends Driver
 
     public function send()
     {
-        /** @var \Illuminate\Support\Collection $response */
+        /** @var Collection $response */
         $response = collect();
 
         foreach ($this->recipients as $recipient) {

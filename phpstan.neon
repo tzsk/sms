@@ -1,0 +1,24 @@
+parameters:
+    paths:
+        - src/
+        - tests/
+
+    # Level 5 is a good starting point for Larastan
+    level: 5
+
+    ignoreErrors:
+        - '#has an unused parameter \$settings#'
+        - '#accept Mockery\\MockInterface#'
+        - '#Call to an undefined method Tzsk\\Sms\\Sms::getDriver\(\)#'
+        - '#Call to an undefined method Tzsk\\Sms\\Sms::getSettings\(\)#'
+        - '#Call to an undefined static method Tzsk\\Sms\\Facades\\Sms::via\(\)#'
+        - '#Call to an undefined static method Tzsk\\Sms\\Facades\\Sms::send\(\)#'
+        - '#Call to an undefined method Illuminate\\Notifications\\Notification::toSms\(\)#'
+        - '#is never assigned null so it can be removed from the property type#'
+        - '#Method Tzsk\\Sms\\Drivers\\[A-Za-z0-9_]+::getErrorMessage\(\) is unused#'
+        - '#Call to deprecated function utf8_decode\(\)#'
+        - '#Call to an undefined method Melipayamak\\MelipayamakApi::sms\(\)#'
+        - '#Access to an undefined property Twilio\\Rest\\Api\\V2010\\AccountInstance::\$messages#'
+
+    excludePaths:
+        - vendor/*

@@ -11,6 +11,6 @@ class KavenegarTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockKavenegar();
+        return new MockKavenegar;
     }
 }

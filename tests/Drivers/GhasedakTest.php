@@ -11,6 +11,6 @@ class GhasedakTest extends TestCase
 
     protected function getDriver()
     {
-        return new MockGhasedak();
+        return new MockGhasedak;
     }
 }
