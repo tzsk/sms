@@ -1,13 +1,13 @@
 # :gift: Laravel SMS Gateway
 
-![SMS Cover](resources/sms.svg)
+![SMS Cover](resources/sms.png)
 
 ![GitHub License](https://img.shields.io/github/license/tzsk/sms?style=for-the-badge)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tzsk/sms.svg?style=for-the-badge&logo=composer)](https://packagist.org/packages/tzsk/sms)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/tzsk/sms/tests.yml?branch=master&label=tests&style=for-the-badge&logo=github)](https://github.com/tzsk/sms/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tzsk/sms.svg?style=for-the-badge&logo=laravel)](https://packagist.org/packages/tzsk/sms)
 
-This is a Laravel Package for SMS Gateway Integration. Now Sending SMS is easy.
+This is a Laravel Package for SMS Gateway Integration. Now sending SMS is easy and reliable.
 
 List of supported gateways:
 
@@ -47,17 +47,17 @@ $ composer require tzsk/sms
 
 ## :zap: Configure
 
-Publish the config file
+Publish the configuration file:
 
 ```bash
 $ php artisan sms:publish
 ```
 
-In the config file you can set the default driver to use for all your SMS. But you can also change the driver at
+In the configuration file, you can set the default driver to use for sending your SMS messages. However, you can also seamlessly change the driver at
 runtime.
 
-Choose what gateway you would like to use for your application. Then make that as default driver so that you don't have
-to specify that everywhere. But, you can also use multiple gateways in a project.
+Choose the gateway you would like to use for your application. Then, set it as the default driver so that you do not have
+to specify it every time. You can also configure and use multiple gateways within the same project.
 
 ```php
 // Eg. if you want to use SNS.
@@ -83,11 +83,11 @@ Then fill the credentials for that gateway in the drivers array.
 
 #### Textlocal Configuration:
 
-Textlocal is added by default. You just have to change the creadentials in the `textlocal` driver section.
+Textlocal is added by default. You simply need to update the credentials in the `textlocal` driver section.
 
 #### AWS SNS Configuration:
 
-In case you want to use AWS SNS. Then you have to pull a composer library first.
+If you want to use AWS SNS, you must install the required composer library first:
 
 ```bash
 composer require aws/aws-sdk-php
@@ -95,7 +95,7 @@ composer require aws/aws-sdk-php
 
 #### Clockwork Configuration:
 
-In case you want to use Clockwork. Then you have to pull a composer library first.
+If you want to use Clockwork, you must install the required composer library first:
 
 ```bash
 composer require mediaburst/clockworksms
@@ -103,17 +103,17 @@ composer require mediaburst/clockworksms
 
 #### Twilio Configuration:
 
-In case you want to use Twilio. Then you have to pull a composer library first.
+If you want to use Twilio, you must install the required composer library first:
 
 ```bash
 composer require twilio/sdk
 ```
 
-Then you just have to change the creadentials in the `twilio` driver section.
+Then, simply update the credentials in the `twilio` driver section.
 
 #### Melipayamak or Melipayamakpattern Configuration:
 
-In case you want to use Melipayamak or Melipayamakpattern, Then you have to pull a composer library first.
+If you want to use Melipayamak or Melipayamakpattern, you must install the required composer library first:
 
 ```bash
 composer require melipayamak/php
@@ -121,7 +121,7 @@ composer require melipayamak/php
 
 #### Kavenegar Configuration:
 
-In case you want to use Kavenegar. Then you have to pull a composer library first.
+If you want to use Kavenegar, you must install the required composer library first:
 
 ```bash
 composer require kavenegar/php
@@ -129,7 +129,7 @@ composer require kavenegar/php
 
 #### SMS Gateway Me Configuration:
 
-In case you want to use SMS Gateway Me. Then you have to pull a composer library first.
+If you want to use SMS Gateway Me, you must install the required composer library first:
 
 ```bash
 composer require smsgatewayme/client
@@ -137,7 +137,7 @@ composer require smsgatewayme/client
 
 ## :fire: Usage
 
-In your code just use it like this.
+You can easily send SMS messages in your application code like this:
 
 ```php
 # On the top of the file.
@@ -203,8 +203,8 @@ Sms::via('gateway')
 
 ## :heart_eyes: Channel Usage
 
-First you have to create your notification using `php artisan make:notification` command. then `SmsChannel::class` can
-be used as channel like the below:
+First, you need to create your notification using the `php artisan make:notification` command. Then, the `SmsChannel::class` can
+be used as a notification channel like below:
 
 ```php
 namespace App\Notifications;
@@ -231,7 +231,7 @@ class InvoicePaid extends Notification implements ShouldQueue
     }
 
     /**
-     * Get the repicients and body of the notification.
+     * Get the recipients and body of the notification.
      *
      * @param  mixed  $notifiable
      * @return Builder
@@ -263,7 +263,7 @@ Sms::via('gateway')->send($builder);
 
 #### Custom Made Driver, How To:
 
-First you have to name your driver in the drivers array ,and also specify any config params you want.
+First, you must define the name of your driver in the drivers array and specify any configuration parameters you need.
 
 ```php
 'drivers' => [
@@ -275,10 +275,10 @@ First you have to name your driver in the drivers array ,and also specify any co
 ]
 ```
 
-Now you have to create a Driver Map Class that will be used to send the SMS. In your driver, You just have to
+Next, you need to create a Driver Map Class that will be used to handle sending the SMS. Your driver class simply needs to
 extend `Tzsk\Sms\Contracts\Driver`.
 
-Ex. You created a class : `App\Packages\SMSDriver\MyDriver`.
+For example, if you created a class: `App\Packages\SMSDriver\MyDriver`.
 
 ```php
 
@@ -324,7 +324,7 @@ class MyDriver extends Driver
 }
 ```
 
-Once you crate that class you have to specify it in the `sms.php` Config file `map` section.
+Once you create this class, you must specify it in the `sms.php` configuration file under the `map` section.
 
 ```php
 'map' => [
@@ -333,7 +333,7 @@ Once you crate that class you have to specify it in the `sms.php` Config file `m
 ]
 ```
 
-**Note:-** You have to make sure that the key of the `map` array is identical to the key of the `drivers` array.
+**Note:-** Ensure that the key of the `map` array is exactly identical to the key of the `drivers` array.
 
 ## :microscope: Testing
 
