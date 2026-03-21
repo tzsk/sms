@@ -29,8 +29,8 @@
     "require": {
         "php": "^8.4",
         "guzzlehttp/guzzle": "^7.8",
-        "illuminate/http": "^11.0|^12.0",
-        "illuminate/support": "^11.0|^12.0"
+        "illuminate/http": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0"
     },
     "require-dev": {
         "aws/aws-sdk-php": "^3.300",
@@ -39,7 +39,7 @@
         "laravel/pint": "^1.18",
         "mediaburst/clockworksms": "^2.0",
         "melipayamak/php": "^1.0.0",
-        "orchestra/testbench": "^9.0|^10.0",
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
         "pestphp/pest": "^3.0",
         "pestphp/pest-plugin-arch": "^3.0",
         "pestphp/pest-plugin-laravel": "^3.0",
