@@ -46,7 +46,7 @@
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "sms77/api": "^v2.4.0",
+        "sms77/api": "^v8.1.1",
         "smsgatewayme/client": "^0.0.1",
         "twilio/sdk": "^8.3"
     },
