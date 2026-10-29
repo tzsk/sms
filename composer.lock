@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48fd90713d2abb2e22370276d83bc2ff",
+    "content-hash": "d37dc45d79b50fbaba8f677e21121534",
     "packages": [
         {
             "name": "brick/math",
@@ -6398,20 +6398,23 @@
         },
         {
             "name": "kavenegar/php",
-            "version": "v1.2.2",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kavenegar/kavenegar-php.git",
-                "reference": "884561b8d8c91b01f7db25284c2be9923c809412"
+                "reference": "f8d15d81b96233604b1800a954eafcfeddcb1dc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kavenegar/kavenegar-php/zipball/884561b8d8c91b01f7db25284c2be9923c809412",
-                "reference": "884561b8d8c91b01f7db25284c2be9923c809412",
+                "url": "https://api.github.com/repos/kavenegar/kavenegar-php/zipball/f8d15d81b96233604b1800a954eafcfeddcb1dc9",
+                "reference": "f8d15d81b96233604b1800a954eafcfeddcb1dc9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
             },
             "type": "library",
             "autoload": {
@@ -6438,9 +6441,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kavenegar/kavenegar-php/issues",
-                "source": "https://github.com/kavenegar/kavenegar-php/tree/master"
+                "source": "https://github.com/kavenegar/kavenegar-php/tree/v2.1.0"
             },
-            "time": "2019-02-26T12:49:19+00:00"
+            "time": "2026-10-13T16:10:56+00:00"
         },
         {
             "name": "larastan/larastan",
